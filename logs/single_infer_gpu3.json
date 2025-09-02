@@ -1,0 +1,5 @@
+{
+  "has_analysis": false,
+  "has_final": false,
+  "preview": "We need to analyze given example: Input grid 3x3 with center cell value 1; all others zero. Output grid has ones everywhere except center remains 0? Wait expected output shows [[1,1,??]. Let's check: Provided \"expected output\" maybe wrong? They say output grid: [[1 ,1 , ?]] Actually they wrote: Expected output grid:[[1, 1, 1],[1,0,1],[...]]. So yes it's a ring of ones around central zero. That seems like transform: fill entire border cells with 1s (or color) while leaving interior unchanged? But there may be other rules: For any non-zero pixel in input, set its orthogonal neighbors to that sam"
+}

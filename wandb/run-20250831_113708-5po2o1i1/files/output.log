@@ -1,0 +1,53 @@
+2025-08-31 11:37:14,941 | INFO | Loading model and tokenizer...
+MXFP4 quantization requires triton >= 3.4.0 and triton_kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:15<00:00,  5.11s/it]
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-08-31 11:38:07,665 | INFO | ✅ Model and tokenizer loaded successfully
+2025-08-31 11:38:07,666 | INFO | 📊 Loaded 5 ARC problems
+2025-08-31 11:38:09,557 | INFO | 📊 Created dataset with 5 examples
+[2025-08-31 11:38:11,265] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-08-31 11:38:11,790 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -c /data/tmp/tmph0uda3sn/test.c -o /data/tmp/tmph0uda3sn/test.o
+2025-08-31 11:38:11,827 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat /data/tmp/tmph0uda3sn/test.o -laio -o /data/tmp/tmph0uda3sn/a.out
+2025-08-31 11:38:12,582 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -c /data/tmp/tmp1f418b35/test.c -o /data/tmp/tmp1f418b35/test.o
+2025-08-31 11:38:12,615 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat /data/tmp/tmp1f418b35/test.o -L/usr/local/cuda-12.6 -L/usr/local/cuda-12.6/lib64 -lcufile -o /data/tmp/tmp1f418b35/a.out
+2025-08-31 11:38:12,716 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -c /data/tmp/tmpm88q4cej/test.c -o /data/tmp/tmpm88q4cej/test.o
+2025-08-31 11:38:12,747 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat /data/tmp/tmpm88q4cej/test.o -laio -o /data/tmp/tmpm88q4cej/a.out
+[2025-08-31 11:38:17,906] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+2025-08-31 11:38:17,985 | INFO | 🚀 Starting HuggingFace TRL DAPO training...
+2025-08-31 11:38:17,986 | INFO | 📝 Using corrected Harmony format - no examples in input prompts
+2025-08-31 11:38:17,986 | INFO |    Loss type: bnpo
+2025-08-31 11:38:17,986 | INFO |    Epsilon: 0.2
+2025-08-31 11:38:17,986 | INFO |    Epsilon high: 0.28
+2025-08-31 11:38:17,986 | INFO |    Repetition penalty: 1.0
+2025-08-31 11:38:17,986 | INFO |    Reward components: 4 (format + size + pixel + final_channel)
+  0%|          | 0/100 [00:00<?, ?it/s]/data/miniforge3/envs/gptoss/lib/python3.11/site-packages/torch/utils/checkpoint.py:85: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+2025-08-31 11:48:00,125 | INFO | Computing rewards for 2 completions at step 0
+2025-08-31 11:48:00,127 | INFO | Completion 0: format=-0.100, size=0.000, pixel=0.000, final_penalty=0.050, total=-0.150
+2025-08-31 11:48:00,127 | INFO | Completion 1: format=-0.100, size=0.000, pixel=0.000, final_penalty=0.050, total=-0.150
+2025-08-31 11:48:00,146 | INFO | Step 0 reward summary: avg=-0.1500±0.0000, range=[-0.150, -0.150], grids_found=0/2, perfect=0
+2025-08-31 11:48:00,212 | INFO | Saved step 0 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00000.json
+  2%|▏         | 2/100 [10:06<6:50:54, 251.58s/it]2025-08-31 11:57:48,039 | INFO | Computing rewards for 2 completions at step 1
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 0.0, 'num_tokens': 5120.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.15000000596046448, 'rewards/reward_function/std': 0.0, 'reward': -0.15000000596046448, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.6181885004043579, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.1}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 2.0000000000000003e-06, 'entropy': 0.792273998260498, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.2}
+2025-08-31 11:57:48,040 | INFO | Completion 0: format=-0.110, size=0.000, pixel=0.000, final_penalty=0.060, total=-0.170
+2025-08-31 11:57:48,040 | INFO | Completion 1: format=-0.110, size=0.000, pixel=0.000, final_penalty=0.060, total=-0.170
+2025-08-31 11:57:48,041 | INFO | Step 1 reward summary: avg=-0.1700±0.0000, range=[-0.170, -0.170], grids_found=0/2, perfect=0
+2025-08-31 11:57:48,153 | INFO | Saved step 1 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00001.json
+  4%|▍         | 4/100 [19:42<6:28:09, 242.60s/it]2025-08-31 12:07:19,516 | INFO | Computing rewards for 2 completions at step 2
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 4.000000000000001e-06, 'num_tokens': 10240.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.17000000178813934, 'rewards/reward_function/std': 0.0, 'reward': -0.17000000178813934, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.9604941010475159, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.3}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 6e-06, 'entropy': 0.9763933420181274, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.4}
+2025-08-31 12:07:19,517 | INFO | Completion 0: format=-0.120, size=0.000, pixel=0.000, final_penalty=0.070, total=-0.190
+2025-08-31 12:07:19,517 | INFO | Completion 1: format=-0.120, size=0.000, pixel=0.000, final_penalty=0.070, total=-0.190
+2025-08-31 12:07:19,517 | INFO | Step 2 reward summary: avg=-0.1900±0.0000, range=[-0.190, -0.190], grids_found=0/2, perfect=0
+2025-08-31 12:07:19,582 | INFO | Saved step 2 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00002.json
+  6%|▌         | 6/100 [29:11<6:13:19, 238.29s/it]2025-08-31 12:16:47,931 | INFO | Computing rewards for 2 completions at step 3
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 8.000000000000001e-06, 'num_tokens': 15112.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.1899999976158142, 'rewards/reward_function/std': 0.0, 'reward': -0.1899999976158142, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.8235777616500854, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.5}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1e-05, 'entropy': 0.6552624702453613, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.6}
+2025-08-31 12:16:47,958 | INFO | Completion 0: format=-0.130, size=0.000, pixel=0.000, final_penalty=0.080, total=-0.210
+2025-08-31 12:16:47,959 | INFO | Completion 1: format=-0.130, size=0.000, pixel=0.000, final_penalty=0.080, total=-0.210
+2025-08-31 12:16:47,960 | INFO | Step 3 reward summary: avg=-0.2100±0.0000, range=[-0.210, -0.210], grids_found=0/2, perfect=0
+2025-08-31 12:16:48,070 | INFO | Saved step 3 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00003.json
+  8%|▊         | 8/100 [38:39<6:02:21, 236.33s/it]
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.894736842105264e-06, 'num_tokens': 20232.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.20999999344348907, 'rewards/reward_function/std': 0.0, 'reward': -0.20999999344348907, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.6714121699333191, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.7}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.789473684210527e-06, 'entropy': 0.8621562719345093, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.8}

@@ -1,0 +1,9 @@
+{
+  "gpu": 3,
+  "problem_uid": "feca6190",
+  "has_analysis": false,
+  "has_final": false,
+  "has_grid": false,
+  "grid_shape": null,
+  "preview": " 0 6/9 0 5 0 3 8 0 27 0 12 0 11 0 24 0 25 0 26 0 28 0 29 0 30 0 23 0 21 0 22 0 17 0 18 0 8 27 8 12 27 12 8  27  12    27   13  27\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n 0   1   0  .  27\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n 0  ,  1 \n 0  ,\n  0\n  0\n\n # Valid channels: 0 10 0\n\n# Valid\n\n#\n\n#\n\n##\n\n###\n\n####\n\n#####Arc...\n\n######\n\n#####Ar...\n\n######\n\nAr...\n\n#####El Arc...\n\nAr...\n\nTh Th Ar...\n\n###### El Arc Th...\n\nAr Th...\n\nAr...\n\nth Ar...\n\nar Th...\n\nth Ar....\n\n...\n\nth Ar.....\n\n...th Ar...\n\n...\n\nth Ar.......\n\n...\n\nth Arr...\n\n...\n\nthArr thArr thArr tArr thArr ...\n\n...\n\nthArr...\n\n...\n\ntharr."
+}

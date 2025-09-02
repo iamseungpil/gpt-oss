@@ -1,0 +1,13 @@
+2025-08-26 00:35:01,586 | INFO | Loading model and tokenizer...
+Using MXFP4 quantized models requires a GPU, we will default to dequantizing the model to bf16
+2025-08-26 00:35:21,535 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|██████████| 3/3 [01:17<00:00, 25.84s/it]
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-08-26 00:37:51,578 | INFO | ✅ Model and tokenizer loaded successfully
+2025-08-26 00:37:51,579 | INFO | 📊 Loaded 3 ARC problems
+2025-08-26 00:37:51,606 | INFO | 📊 Created dataset with 3 examples
+2025-08-26 00:37:51,607 | ERROR | ❌ Training error: GRPOConfig.__init__() got an unexpected keyword argument 'max_length'
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt_oss_arc_final/main_hf_trl_dapo.py", line 532, in main_hf_trl_dapo
+    grpo_config = GRPOConfig(
+TypeError: GRPOConfig.__init__() got an unexpected keyword argument 'max_length'

@@ -1,0 +1,54 @@
+2025-08-26 00:48:24,909 | INFO | Loading model and tokenizer...
+Using MXFP4 quantized models requires a GPU, we will default to dequantizing the model to bf16
+2025-08-26 00:48:46,637 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|██████████| 3/3 [00:25<00:00,  8.60s/it]
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-08-26 00:50:23,107 | INFO | ✅ Model and tokenizer loaded successfully
+2025-08-26 00:50:23,111 | INFO | 📊 Loaded 3 ARC problems
+2025-08-26 00:50:23,127 | INFO | 📊 Created dataset with 3 examples
+[2025-08-26 00:50:31,247] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-08-26 00:50:33,697 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -c /data/tmp/tmpro4t25gj/test.c -o /data/tmp/tmpro4t25gj/test.o
+2025-08-26 00:50:33,779 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat /data/tmp/tmpro4t25gj/test.o -laio -o /data/tmp/tmpro4t25gj/a.out
+2025-08-26 00:50:35,623 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -c /data/tmp/tmp2_0vln3m/test.c -o /data/tmp/tmp2_0vln3m/test.o
+2025-08-26 00:50:35,689 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat /data/tmp/tmp2_0vln3m/test.o -L/usr/local/cuda-12.6 -L/usr/local/cuda-12.6/lib64 -lcufile -o /data/tmp/tmp2_0vln3m/a.out
+2025-08-26 00:50:40,138 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -c /data/tmp/tmpk6lv9hqu/test.c -o /data/tmp/tmpk6lv9hqu/test.o
+2025-08-26 00:50:40,275 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat /data/tmp/tmpk6lv9hqu/test.o -laio -o /data/tmp/tmpk6lv9hqu/a.out
+[2025-08-26 00:50:47,726] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+2025-08-26 00:50:47,997 | INFO | 🚀 Starting HuggingFace TRL DAPO training...
+2025-08-26 00:50:47,997 | INFO | 📝 Using corrected Harmony format - no examples in input prompts
+2025-08-26 00:50:47,997 | INFO |    Loss type: bnpo
+2025-08-26 00:50:47,998 | INFO |    Epsilon: 0.2
+2025-08-26 00:50:47,998 | INFO |    Epsilon high: 0.28
+2025-08-26 00:50:47,998 | INFO |    Repetition penalty: 1.2
+2025-08-26 00:50:47,998 | INFO |    Reward components: 4 (format + size + pixel + final_channel)
+2025-08-26 00:50:48,493 | WARNING | Gradient accumulation steps mismatch: GradientAccumulationPlugin has 1, DeepSpeed config has 4. Using DeepSpeed's value.
+Installed CUDA version 12.6 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+Using /home/ubuntu/.cache/torch_extensions/py310_cu121 as PyTorch extensions root...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu121/cpu_adam/build.ninja...
+/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/torch/utils/cpp_extension.py:1964: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation.
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Building extension module cpu_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 2.813750743865967 seconds
+Parameter Offload - Persistent parameters statistics: param_count = 241, numel = 728640
+  0%|          | 0/100 [00:00<?, ?it/s]2025-08-26 01:16:56,459 | INFO | Computing rewards for 2 completions at step 0
+2025-08-26 01:16:56,481 | INFO | Completion 0: format=-1.000, size=0.000, pixel=0.000, final_penalty=1.000, total=-2.000
+2025-08-26 01:16:56,481 | INFO | Completion 1: format=-1.000, size=0.000, pixel=0.000, final_penalty=1.000, total=-2.000
+2025-08-26 01:16:56,483 | INFO | Step 0 reward summary: avg=-2.0000±0.0000, range=[-2.000, -2.000], grids_found=0/2, perfect=0
+2025-08-26 01:16:56,601 | INFO | Saved step 0 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00000.json
+2025-08-26 01:41:11,239 | INFO | Computing rewards for 2 completions at step 1
+2025-08-26 01:41:11,241 | INFO | Completion 0: format=-1.000, size=0.000, pixel=0.000, final_penalty=1.000, total=-2.000
+2025-08-26 01:41:11,241 | INFO | Completion 1: format=-1.000, size=0.000, pixel=0.000, final_penalty=1.000, total=-2.000
+2025-08-26 01:41:11,243 | INFO | Step 1 reward summary: avg=-2.0000±0.0000, range=[-2.000, -2.000], grids_found=0/2, perfect=0
+2025-08-26 01:41:11,348 | INFO | Saved step 1 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00001.json
+  1%|          | 1/100 [47:29<78:21:28, 2849.38s/it]2025-08-26 02:03:08,585 | INFO | Computing rewards for 2 completions at step 2
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 0.0, 'num_tokens': 10240.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -2.0, 'rewards/reward_function/std': 0.0, 'reward': -2.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.2003173828125, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.67}
+2025-08-26 02:03:08,586 | INFO | Completion 0: format=-1.000, size=0.000, pixel=0.000, final_penalty=1.000, total=-2.000
+2025-08-26 02:03:08,587 | INFO | Completion 1: format=-1.000, size=0.000, pixel=0.000, final_penalty=1.000, total=-2.000
+2025-08-26 02:03:08,588 | INFO | Step 2 reward summary: avg=-2.0000±0.0000, range=[-2.000, -2.000], grids_found=0/2, perfect=0
+2025-08-26 02:03:08,656 | INFO | Saved step 2 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00002.json
+  2%|▏         | 2/100 [1:09:22<52:58:23, 1945.95s/it]
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 2.0000000000000003e-06, 'num_tokens': 15360.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -2.0, 'rewards/reward_function/std': 0.0, 'reward': -2.0, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.16650390625, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 1.0}

@@ -1,0 +1,24 @@
+{
+  "os": "Linux-5.15.0-141-generic-x86_64-with-glibc2.35",
+  "python": "CPython 3.10.18",
+  "startedAt": "2025-08-26T14:22:54.457428Z",
+  "program": "/home/ubuntu/gpt_oss_arc_final/main_hf_trl_dapo.py",
+  "codePath": "main_hf_trl_dapo.py",
+  "codePathLocal": "main_hf_trl_dapo.py",
+  "email": "iamseungpil@gmail.com",
+  "root": "/home/ubuntu/gpt_oss_arc_final",
+  "host": "gpu-1",
+  "executable": "/data/miniforge3/envs/gpt_oss_rl/bin/python",
+  "cpu_count": 92,
+  "cpu_count_logical": 92,
+  "disk": {
+    "/": {
+      "total": "207929917440",
+      "used": "162274447360"
+    }
+  },
+  "memory": {
+    "total": "950716989440"
+  },
+  "writerId": "0xog0gtmnhgh4evuh3t4dayti2zo0d9f"
+}

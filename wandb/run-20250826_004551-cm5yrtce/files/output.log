@@ -1,0 +1,29 @@
+2025-08-26 00:46:06,758 | INFO | Loading model and tokenizer...
+Using MXFP4 quantized models requires a GPU, we will default to dequantizing the model to bf16
+2025-08-26 00:46:26,227 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:10<00:20, 10.32s/it]
+2025-08-26 00:46:55,583 | ERROR | ❌ Training error: CUDA out of memory. Tried to allocate 1.98 GiB. GPU 0 has a total capacity of 79.15 GiB of which 2.60 GiB is free. Process 3209058 has 30.55 GiB memory in use. Process 3234520 has 22.99 GiB memory in use. Including non-PyTorch memory, this process has 22.99 GiB memory in use. Of the allocated memory 22.43 GiB is allocated by PyTorch, and 79.09 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt_oss_arc_final/main_hf_trl_dapo.py", line 434, in main_hf_trl_dapo
+    model = AutoModelForCausalLM.from_pretrained(
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 600, in from_pretrained
+    return model_class.from_pretrained(
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/transformers/modeling_utils.py", line 317, in _wrapper
+    return func(*args, **kwargs)
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/transformers/modeling_utils.py", line 5074, in from_pretrained
+    ) = cls._load_pretrained_model(
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/transformers/modeling_utils.py", line 5537, in _load_pretrained_model
+    _error_msgs, disk_offload_index, cpu_offload_index = load_shard_file(args)
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/transformers/modeling_utils.py", line 975, in load_shard_file
+    disk_offload_index, cpu_offload_index = _load_state_dict_into_meta_model(
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/transformers/modeling_utils.py", line 883, in _load_state_dict_into_meta_model
+    hf_quantizer.create_quantized_param(
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/transformers/quantizers/quantizer_mxfp4.py", line 256, in create_quantized_param
+    dequantize(module, param_name, param_value, target_device, dq_param_name, **shard_kwargs)
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/transformers/integrations/mxfp4.py", line 342, in dequantize
+    dequantized = convert_moe_packed_tensors(getattr(module, blocks_attr), getattr(module, scales_attr))
+  File "/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/transformers/integrations/mxfp4.py", line 124, in convert_moe_packed_tensors
+    idx_hi = (blk >> 4).to(torch.long)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.98 GiB. GPU 0 has a total capacity of 79.15 GiB of which 2.60 GiB is free. Process 3209058 has 30.55 GiB memory in use. Process 3234520 has 22.99 GiB memory in use. Including non-PyTorch memory, this process has 22.99 GiB memory in use. Of the allocated memory 22.43 GiB is allocated by PyTorch, and 79.09 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

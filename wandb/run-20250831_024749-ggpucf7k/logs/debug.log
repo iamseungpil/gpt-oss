@@ -1,0 +1,25 @@
+2025-08-31 02:47:49,909 INFO    MainThread:191503 [wandb_setup.py:_flush():81] Current SDK version is 0.21.2
+2025-08-31 02:47:49,909 INFO    MainThread:191503 [wandb_setup.py:_flush():81] Configure stats pid to 191503
+2025-08-31 02:47:49,909 INFO    MainThread:191503 [wandb_setup.py:_flush():81] Loading settings from /home/ubuntu/.config/wandb/settings
+2025-08-31 02:47:49,909 INFO    MainThread:191503 [wandb_setup.py:_flush():81] Loading settings from /home/ubuntu/gpt_oss_arc_final/wandb/settings
+2025-08-31 02:47:49,909 INFO    MainThread:191503 [wandb_setup.py:_flush():81] Loading settings from environment variables
+2025-08-31 02:47:49,910 INFO    MainThread:191503 [wandb_init.py:setup_run_log_directory():686] Logging user logs to /home/ubuntu/gpt_oss_arc_final/wandb/run-20250831_024749-ggpucf7k/logs/debug.log
+2025-08-31 02:47:49,910 INFO    MainThread:191503 [wandb_init.py:setup_run_log_directory():687] Logging internal logs to /home/ubuntu/gpt_oss_arc_final/wandb/run-20250831_024749-ggpucf7k/logs/debug-internal.log
+2025-08-31 02:47:49,910 INFO    MainThread:191503 [wandb_init.py:init():813] calling init triggers
+2025-08-31 02:47:49,910 INFO    MainThread:191503 [wandb_init.py:init():818] wandb.init called with sweep_config: {}
+config: {'model': 'openai/gpt-oss-20b', 'learning_rate': 1e-05, 'batch_size': 1, 'num_problems': 3, 'reward_components': 4, '_wandb': {}}
+2025-08-31 02:47:49,910 INFO    MainThread:191503 [wandb_init.py:init():854] starting backend
+2025-08-31 02:47:50,131 INFO    MainThread:191503 [wandb_init.py:init():857] sending inform_init request
+2025-08-31 02:47:50,138 INFO    MainThread:191503 [wandb_init.py:init():865] backend started and connected
+2025-08-31 02:47:50,140 INFO    MainThread:191503 [wandb_init.py:init():936] updated telemetry
+2025-08-31 02:47:50,141 INFO    MainThread:191503 [wandb_init.py:init():960] communicating run to backend with 90.0 second timeout
+2025-08-31 02:47:53,983 INFO    MainThread:191503 [wandb_init.py:init():1011] starting run threads in backend
+2025-08-31 02:47:54,124 INFO    MainThread:191503 [wandb_run.py:_console_start():2494] atexit reg
+2025-08-31 02:47:54,124 INFO    MainThread:191503 [wandb_run.py:_redirect():2342] redirect: wrap_raw
+2025-08-31 02:47:54,124 INFO    MainThread:191503 [wandb_run.py:_redirect():2411] Wrapping output streams.
+2025-08-31 02:47:54,125 INFO    MainThread:191503 [wandb_run.py:_redirect():2434] Redirects installed.
+2025-08-31 02:47:54,129 INFO    MainThread:191503 [wandb_init.py:init():1057] run started, returning control to user process
+2025-08-31 11:32:47,034 INFO    MainThread:191503 [wandb_run.py:_finish():2260] finishing run gistdslab/gpt-oss-arc-hf-trl-dapo/ggpucf7k
+2025-08-31 11:32:47,034 INFO    MainThread:191503 [wandb_run.py:_atexit_cleanup():2459] got exitcode: 0
+2025-08-31 11:32:47,035 INFO    MainThread:191503 [wandb_run.py:_restore():2441] restore
+2025-08-31 11:32:47,035 INFO    MainThread:191503 [wandb_run.py:_restore():2447] restore done

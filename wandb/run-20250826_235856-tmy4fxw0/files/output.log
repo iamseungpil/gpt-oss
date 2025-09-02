@@ -1,0 +1,166 @@
+2025-08-26 23:59:01,295 | INFO | Loading model and tokenizer...
+Using MXFP4 quantized models requires a GPU, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:28<00:00,  9.54s/it]
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-08-27 00:00:16,673 | INFO | ✅ Model and tokenizer loaded successfully
+2025-08-27 00:00:16,674 | INFO | 📊 Loaded 3 ARC problems
+2025-08-27 00:00:16,691 | INFO | 📊 Created dataset with 3 examples
+[2025-08-27 00:00:17,005] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-08-27 00:00:17,527 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -c /data/tmp/tmpumorwijt/test.c -o /data/tmp/tmpumorwijt/test.o
+2025-08-27 00:00:17,560 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat /data/tmp/tmpumorwijt/test.o -laio -o /data/tmp/tmpumorwijt/a.out
+2025-08-27 00:00:18,295 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -c /data/tmp/tmp1iyrtyf0/test.c -o /data/tmp/tmp1iyrtyf0/test.o
+2025-08-27 00:00:18,328 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat /data/tmp/tmp1iyrtyf0/test.o -L/usr/local/cuda-12.6 -L/usr/local/cuda-12.6/lib64 -lcufile -o /data/tmp/tmp1iyrtyf0/a.out
+2025-08-27 00:00:18,430 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -c /data/tmp/tmp5urzut8b/test.c -o /data/tmp/tmp5urzut8b/test.o
+2025-08-27 00:00:18,462 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat /data/tmp/tmp5urzut8b/test.o -laio -o /data/tmp/tmp5urzut8b/a.out
+[2025-08-27 00:00:19,542] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+2025-08-27 00:00:19,581 | INFO | 🚀 Starting HuggingFace TRL DAPO training...
+2025-08-27 00:00:19,581 | INFO | 📝 Using corrected Harmony format - no examples in input prompts
+2025-08-27 00:00:19,581 | INFO |    Loss type: bnpo
+2025-08-27 00:00:19,582 | INFO |    Epsilon: 0.2
+2025-08-27 00:00:19,582 | INFO |    Epsilon high: 0.28
+2025-08-27 00:00:19,582 | INFO |    Repetition penalty: 1.0
+2025-08-27 00:00:19,582 | INFO |    Reward components: 4 (format + size + pixel + final_channel)
+2025-08-27 00:00:19,877 | WARNING | Gradient accumulation steps mismatch: GradientAccumulationPlugin has 1, DeepSpeed config has 4. Using DeepSpeed's value.
+Installed CUDA version 12.6 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+Using /home/ubuntu/.cache/torch_extensions/py310_cu121 as PyTorch extensions root...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu121/cpu_adam/build.ninja...
+/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/torch/utils/cpp_extension.py:1964: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation.
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Building extension module cpu_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 2.5143656730651855 seconds
+Parameter Offload - Persistent parameters statistics: param_count = 241, numel = 728640
+  0%|          | 0/100 [00:00<?, ?it/s]2025-08-27 00:27:42,188 | INFO | Computing rewards for 2 completions at step 0
+2025-08-27 00:27:42,190 | INFO | Completion 0: format=-0.100, size=0.000, pixel=0.000, final_penalty=0.050, total=-0.150
+2025-08-27 00:27:42,191 | INFO | Completion 1: format=-0.100, size=0.000, pixel=0.000, final_penalty=0.050, total=-0.150
+2025-08-27 00:27:42,191 | INFO | Step 0 reward summary: avg=-0.1500±0.0000, range=[-0.150, -0.150], grids_found=0/2, perfect=0
+2025-08-27 00:27:42,283 | INFO | Saved step 0 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00000.json
+2025-08-27 00:51:23,306 | INFO | Computing rewards for 2 completions at step 1
+2025-08-27 00:51:23,307 | INFO | Completion 0: format=-0.110, size=0.000, pixel=0.000, final_penalty=0.060, total=-0.170
+2025-08-27 00:51:23,307 | INFO | Completion 1: format=-0.110, size=0.000, pixel=0.000, final_penalty=0.060, total=-0.170
+2025-08-27 00:51:23,308 | INFO | Step 1 reward summary: avg=-0.1700±0.0000, range=[-0.170, -0.170], grids_found=0/2, perfect=0
+2025-08-27 00:51:23,404 | INFO | Saved step 1 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00001.json
+  1%|          | 1/100 [48:28<79:59:44, 2908.93s/it]2025-08-27 01:12:45,079 | INFO | Computing rewards for 2 completions at step 2
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 0.0, 'num_tokens': 10240.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.1600000038743019, 'rewards/reward_function/std': 0.0, 'reward': -0.1600000038743019, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.568359375, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.67}
+2025-08-27 01:12:45,081 | INFO | Completion 0: format=-0.120, size=0.000, pixel=0.000, final_penalty=0.070, total=-0.190
+2025-08-27 01:12:45,081 | INFO | Completion 1: format=-0.120, size=0.000, pixel=0.000, final_penalty=0.070, total=-0.190
+2025-08-27 01:12:45,081 | INFO | Step 2 reward summary: avg=-0.1900±0.0000, range=[-0.190, -0.190], grids_found=0/2, perfect=0
+2025-08-27 01:12:45,185 | INFO | Saved step 2 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00002.json
+  2%|▏         | 2/100 [1:09:51<53:08:17, 1952.02s/it]2025-08-27 01:34:00,848 | INFO | Computing rewards for 2 completions at step 3
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 2.0000000000000003e-06, 'num_tokens': 15360.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.1899999976158142, 'rewards/reward_function/std': 0.0, 'reward': -0.1899999976158142, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.474609375, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 1.0}
+2025-08-27 01:34:00,849 | INFO | Completion 0: format=-0.130, size=0.000, pixel=0.000, final_penalty=0.080, total=-0.210
+2025-08-27 01:34:00,850 | INFO | Completion 1: format=-0.130, size=0.000, pixel=0.000, final_penalty=0.080, total=-0.210
+2025-08-27 01:34:00,850 | INFO | Step 3 reward summary: avg=-0.2100±0.0000, range=[-0.210, -0.210], grids_found=0/2, perfect=0
+2025-08-27 01:34:00,936 | INFO | Saved step 3 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00003.json
+2025-08-27 01:55:43,332 | INFO | Computing rewards for 2 completions at step 4
+2025-08-27 01:55:43,336 | INFO | Completion 0: format=-0.140, size=0.000, pixel=0.000, final_penalty=0.090, total=-0.230
+2025-08-27 01:55:43,336 | INFO | Completion 1: format=-0.140, size=0.000, pixel=0.000, final_penalty=0.090, total=-0.230
+2025-08-27 01:55:43,337 | INFO | Step 4 reward summary: avg=-0.2300±0.0000, range=[-0.230, -0.230], grids_found=0/2, perfect=0
+2025-08-27 01:55:43,464 | INFO | Saved step 4 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00004.json
+  3%|▎         | 3/100 [1:52:49<60:17:54, 2237.89s/it]2025-08-27 02:17:53,430 | INFO | Computing rewards for 2 completions at step 5
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 4.000000000000001e-06, 'num_tokens': 25600.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.2199999988079071, 'rewards/reward_function/std': 0.0, 'reward': -0.2199999988079071, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.4775390625, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 1.67}
+2025-08-27 02:17:53,433 | INFO | Completion 0: format=-0.150, size=0.000, pixel=0.000, final_penalty=0.100, total=-0.250
+2025-08-27 02:17:53,433 | INFO | Completion 1: format=-0.150, size=0.000, pixel=0.000, final_penalty=0.100, total=-0.250
+2025-08-27 02:17:53,434 | INFO | Step 5 reward summary: avg=-0.2500±0.0000, range=[-0.250, -0.250], grids_found=0/2, perfect=0
+2025-08-27 02:17:53,517 | INFO | Saved step 5 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00005.json
+  4%|▍         | 4/100 [2:14:58<50:06:35, 1879.12s/it]2025-08-27 02:38:47,199 | INFO | Computing rewards for 2 completions at step 6
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 6e-06, 'num_tokens': 30720.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.25, 'rewards/reward_function/std': 0.0, 'reward': -0.25, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.27099609375, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 2.0}
+2025-08-27 02:38:47,200 | INFO | Completion 0: format=-0.160, size=0.000, pixel=0.000, final_penalty=0.110, total=-0.270
+2025-08-27 02:38:47,200 | INFO | Completion 1: format=-0.160, size=0.000, pixel=0.000, final_penalty=0.110, total=-0.270
+2025-08-27 02:38:47,201 | INFO | Step 6 reward summary: avg=-0.2700±0.0000, range=[-0.270, -0.270], grids_found=0/2, perfect=0
+2025-08-27 02:38:47,208 | INFO | Saved step 6 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00006.json
+2025-08-27 03:00:56,710 | INFO | Computing rewards for 2 completions at step 7
+2025-08-27 03:00:56,712 | INFO | Completion 0: format=-0.170, size=0.000, pixel=0.000, final_penalty=0.120, total=-0.290
+2025-08-27 03:00:56,713 | INFO | Completion 1: format=-0.170, size=0.000, pixel=0.000, final_penalty=0.120, total=-0.290
+2025-08-27 03:00:56,713 | INFO | Step 7 reward summary: avg=-0.2900±0.0000, range=[-0.290, -0.290], grids_found=0/2, perfect=0
+2025-08-27 03:00:56,719 | INFO | Saved step 7 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00007.json
+  5%|▌         | 5/100 [2:58:01<56:17:31, 2133.18s/it]2025-08-27 03:22:30,101 | INFO | Computing rewards for 2 completions at step 8
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 8.000000000000001e-06, 'num_tokens': 40960.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.2800000011920929, 'rewards/reward_function/std': 0.0, 'reward': -0.2800000011920929, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.25244140625, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 2.67}
+2025-08-27 03:22:30,104 | INFO | Completion 0: format=-0.180, size=0.000, pixel=0.000, final_penalty=0.130, total=-0.310
+2025-08-27 03:22:30,104 | INFO | Completion 1: format=-0.180, size=0.000, pixel=0.000, final_penalty=0.130, total=-0.310
+2025-08-27 03:22:30,105 | INFO | Step 8 reward summary: avg=-0.3100±0.0000, range=[-0.310, -0.310], grids_found=0/2, perfect=0
+2025-08-27 03:22:30,112 | INFO | Saved step 8 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00008.json
+  6%|▌         | 6/100 [3:19:36<48:15:26, 1848.15s/it]2025-08-27 03:44:10,793 | INFO | Computing rewards for 2 completions at step 9
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1e-05, 'num_tokens': 46080.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.3100000023841858, 'rewards/reward_function/std': 0.0, 'reward': -0.3100000023841858, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.6728515625, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 3.0}
+2025-08-27 03:44:10,795 | INFO | Completion 0: format=-0.190, size=0.000, pixel=0.000, final_penalty=0.140, total=-0.330
+2025-08-27 03:44:10,795 | INFO | Completion 1: format=-0.190, size=0.000, pixel=0.000, final_penalty=0.140, total=-0.330
+2025-08-27 03:44:10,796 | INFO | Step 9 reward summary: avg=-0.3300±0.0000, range=[-0.330, -0.330], grids_found=0/2, perfect=0
+2025-08-27 03:44:10,803 | INFO | Saved step 9 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00009.json
+2025-08-27 04:05:38,760 | INFO | Computing rewards for 2 completions at step 10
+2025-08-27 04:05:38,792 | INFO | Completion 0: format=-0.200, size=0.000, pixel=0.000, final_penalty=0.150, total=-0.350
+2025-08-27 04:05:38,792 | INFO | Completion 1: format=-0.200, size=0.000, pixel=0.000, final_penalty=0.150, total=-0.350
+2025-08-27 04:05:38,793 | INFO | Step 10 reward summary: avg=-0.3500±0.0000, range=[-0.350, -0.350], grids_found=0/2, perfect=0
+2025-08-27 04:05:38,798 | INFO | Saved step 10 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00010.json
+  7%|▋         | 7/100 [4:02:44<53:59:29, 2089.99s/it]2025-08-27 04:27:00,088 | INFO | Computing rewards for 2 completions at step 11
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.894736842105264e-06, 'num_tokens': 56320.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.3400000035762787, 'rewards/reward_function/std': 0.0, 'reward': -0.3400000035762787, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.39306640625, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 3.67}
+2025-08-27 04:27:00,089 | INFO | Completion 0: format=-0.210, size=0.000, pixel=0.000, final_penalty=0.160, total=-0.370
+2025-08-27 04:27:00,090 | INFO | Completion 1: format=-0.210, size=0.000, pixel=0.000, final_penalty=0.160, total=-0.370
+2025-08-27 04:27:00,091 | INFO | Step 11 reward summary: avg=-0.3700±0.0000, range=[-0.370, -0.370], grids_found=0/2, perfect=0
+2025-08-27 04:27:00,111 | INFO | Saved step 11 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00011.json
+  8%|▊         | 8/100 [4:24:06<46:49:56, 1832.57s/it]2025-08-27 04:48:53,185 | INFO | Computing rewards for 2 completions at step 12
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.789473684210527e-06, 'num_tokens': 61440.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.3700000047683716, 'rewards/reward_function/std': 0.0, 'reward': -0.3700000047683716, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.56640625, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 4.0}
+2025-08-27 04:48:53,187 | INFO | Completion 0: format=-0.220, size=0.000, pixel=0.000, final_penalty=0.170, total=-0.390
+2025-08-27 04:48:53,187 | INFO | Completion 1: format=-0.220, size=0.000, pixel=0.000, final_penalty=0.170, total=-0.390
+2025-08-27 04:48:53,187 | INFO | Step 12 reward summary: avg=-0.3900±0.0000, range=[-0.390, -0.390], grids_found=0/2, perfect=0
+2025-08-27 04:48:53,204 | INFO | Saved step 12 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00012.json
+2025-08-27 05:10:53,946 | INFO | Computing rewards for 2 completions at step 13
+2025-08-27 05:10:53,947 | INFO | Completion 0: format=-0.230, size=0.000, pixel=0.000, final_penalty=0.180, total=-0.410
+2025-08-27 05:10:53,947 | INFO | Completion 1: format=-0.230, size=0.000, pixel=0.000, final_penalty=0.180, total=-0.410
+2025-08-27 05:10:53,948 | INFO | Step 13 reward summary: avg=-0.4100±0.0000, range=[-0.410, -0.410], grids_found=0/2, perfect=0
+2025-08-27 05:10:53,973 | INFO | Saved step 13 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00013.json
+  9%|▉         | 9/100 [5:08:00<52:39:33, 2083.22s/it]2025-08-27 05:33:07,920 | INFO | Computing rewards for 2 completions at step 14
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.68421052631579e-06, 'num_tokens': 71680.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.3999999910593033, 'rewards/reward_function/std': 0.0, 'reward': -0.3999999910593033, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.3955078125, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 4.67}
+2025-08-27 05:33:07,923 | INFO | Completion 0: format=-0.240, size=0.000, pixel=0.000, final_penalty=0.190, total=-0.430
+2025-08-27 05:33:07,923 | INFO | Completion 1: format=-0.240, size=0.000, pixel=0.000, final_penalty=0.190, total=-0.430
+2025-08-27 05:33:07,923 | INFO | Step 14 reward summary: avg=-0.4300±0.0000, range=[-0.430, -0.430], grids_found=0/2, perfect=0
+2025-08-27 05:33:07,962 | INFO | Saved step 14 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00014.json
+ 10%|█         | 10/100 [5:30:13<46:17:35, 1851.73s/it]2025-08-27 05:55:49,838 | INFO | Computing rewards for 2 completions at step 15
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.578947368421054e-06, 'num_tokens': 76800.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.4300000071525574, 'rewards/reward_function/std': 0.0, 'reward': -0.4300000071525574, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.374755859375, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 5.0}
+2025-08-27 05:55:49,855 | INFO | Completion 0: format=-0.250, size=0.000, pixel=0.000, final_penalty=0.200, total=-0.450
+2025-08-27 05:55:49,856 | INFO | Completion 1: format=-0.250, size=0.000, pixel=0.000, final_penalty=0.200, total=-0.450
+2025-08-27 05:55:49,856 | INFO | Step 15 reward summary: avg=-0.4500±0.0000, range=[-0.450, -0.450], grids_found=0/2, perfect=0
+2025-08-27 05:55:49,873 | INFO | Saved step 15 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00015.json
+2025-08-27 06:17:56,496 | INFO | Computing rewards for 2 completions at step 16
+2025-08-27 06:17:56,497 | INFO | Completion 0: format=-0.260, size=0.000, pixel=0.000, final_penalty=0.210, total=-0.470
+2025-08-27 06:17:56,498 | INFO | Completion 1: format=-0.260, size=0.000, pixel=0.000, final_penalty=0.210, total=-0.470
+2025-08-27 06:17:56,498 | INFO | Step 16 reward summary: avg=-0.4700±0.0000, range=[-0.470, -0.470], grids_found=0/2, perfect=0
+2025-08-27 06:17:56,516 | INFO | Saved step 16 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00016.json
+ 11%|█         | 11/100 [6:15:02<52:06:42, 2107.89s/it]2025-08-27 06:40:03,550 | INFO | Computing rewards for 2 completions at step 17
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.473684210526315e-06, 'num_tokens': 87040.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.4599999934434891, 'rewards/reward_function/std': 0.0, 'reward': -0.4599999934434891, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.283447265625, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 5.67}
+2025-08-27 06:40:03,551 | INFO | Completion 0: format=-0.270, size=0.000, pixel=0.000, final_penalty=0.220, total=-0.490
+2025-08-27 06:40:03,551 | INFO | Completion 1: format=-0.270, size=0.000, pixel=0.000, final_penalty=0.220, total=-0.490
+2025-08-27 06:40:03,552 | INFO | Step 17 reward summary: avg=-0.4900±0.0000, range=[-0.490, -0.490], grids_found=0/2, perfect=0
+2025-08-27 06:40:03,576 | INFO | Saved step 17 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00017.json
+ 12%|█▏        | 12/100 [6:37:09<45:42:59, 1870.22s/it]2025-08-27 07:01:56,455 | INFO | Computing rewards for 2 completions at step 18
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.36842105263158e-06, 'num_tokens': 92160.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.49000000953674316, 'rewards/reward_function/std': 0.0, 'reward': -0.49000000953674316, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.23681640625, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 6.0}
+2025-08-27 07:01:56,457 | INFO | Completion 0: format=-0.280, size=0.000, pixel=0.000, final_penalty=0.230, total=-0.510
+2025-08-27 07:01:56,457 | INFO | Completion 1: format=-0.280, size=0.000, pixel=0.000, final_penalty=0.230, total=-0.510
+2025-08-27 07:01:56,458 | INFO | Step 18 reward summary: avg=-0.5100±0.0000, range=[-0.510, -0.510], grids_found=0/2, perfect=0
+2025-08-27 07:01:56,484 | INFO | Saved step 18 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00018.json
+2025-08-27 07:24:01,753 | INFO | Computing rewards for 2 completions at step 19
+2025-08-27 07:24:01,757 | INFO | Completion 0: format=-0.290, size=0.000, pixel=0.000, final_penalty=0.240, total=-0.530
+2025-08-27 07:24:01,758 | INFO | Completion 1: format=-0.290, size=0.000, pixel=0.000, final_penalty=0.240, total=-0.530
+2025-08-27 07:24:01,758 | INFO | Step 19 reward summary: avg=-0.5300±0.0000, range=[-0.530, -0.530], grids_found=0/2, perfect=0
+2025-08-27 07:24:01,780 | INFO | Saved step 19 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00019.json
+ 13%|█▎        | 13/100 [7:21:07<50:49:07, 2102.85s/it]2025-08-27 07:45:22,473 | INFO | Computing rewards for 2 completions at step 20
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.263157894736842e-06, 'num_tokens': 102400.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.5199999809265137, 'rewards/reward_function/std': 0.0, 'reward': -0.5199999809265137, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.4869384765625, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 6.67}
+2025-08-27 07:45:22,474 | INFO | Completion 0: format=-0.300, size=0.000, pixel=0.000, final_penalty=0.250, total=-0.550
+2025-08-27 07:45:22,475 | INFO | Completion 1: format=-0.300, size=0.000, pixel=0.000, final_penalty=0.250, total=-0.550
+2025-08-27 07:45:22,475 | INFO | Step 20 reward summary: avg=-0.5500±0.0000, range=[-0.550, -0.550], grids_found=0/2, perfect=0
+2025-08-27 07:45:22,515 | INFO | Saved step 20 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00020.json
+ 14%|█▍        | 14/100 [7:42:26<44:17:37, 1854.16s/it]2025-08-27 08:07:09,756 | INFO | Computing rewards for 2 completions at step 21
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.157894736842105e-06, 'num_tokens': 107520.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.550000011920929, 'rewards/reward_function/std': 0.0, 'reward': -0.550000011920929, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.3193359375, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 7.0}
+2025-08-27 08:07:09,758 | INFO | Completion 0: format=-0.310, size=0.000, pixel=0.000, final_penalty=0.260, total=-0.570
+2025-08-27 08:07:09,759 | INFO | Completion 1: format=-0.310, size=0.000, pixel=0.000, final_penalty=0.260, total=-0.570
+2025-08-27 08:07:09,759 | INFO | Step 21 reward summary: avg=-0.5700±0.0000, range=[-0.570, -0.570], grids_found=0/2, perfect=0
+2025-08-27 08:07:09,782 | INFO | Saved step 21 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00021.json
+2025-08-27 08:31:08,084 | INFO | Computing rewards for 2 completions at step 22
+2025-08-27 08:31:08,087 | INFO | Completion 0: format=-0.320, size=0.000, pixel=0.000, final_penalty=0.270, total=-0.590
+2025-08-27 08:31:08,088 | INFO | Completion 1: format=-0.320, size=0.000, pixel=0.000, final_penalty=0.270, total=-0.590
+2025-08-27 08:31:08,088 | INFO | Step 22 reward summary: avg=-0.5900±0.0000, range=[-0.590, -0.590], grids_found=0/2, perfect=0
+2025-08-27 08:31:08,105 | INFO | Saved step 22 info to /data/gpt_oss_final/logs/hf_trl_responses/step_00022.json
+ 15%|█▌        | 15/100 [8:28:13<50:07:54, 2123.23s/it]
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.05263157894737e-06, 'num_tokens': 117760.0, 'completions/mean_length': 2048.0, 'completions/min_length': 2048.0, 'completions/max_length': 2048.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.5799999833106995, 'rewards/reward_function/std': 0.0, 'reward': -0.5799999833106995, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'entropy': 0.4921875, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 7.67}

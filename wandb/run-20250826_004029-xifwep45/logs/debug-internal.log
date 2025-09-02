@@ -1,0 +1,13 @@
+{"time":"2025-08-26T00:40:29.963681711+09:00","level":"INFO","msg":"stream: starting","core version":"0.21.1"}
+{"time":"2025-08-26T00:40:35.047518851+09:00","level":"ERROR","msg":"monitor: failed to initialize GPU resource: monitor: could not get GPU binary port: timeout reading portfile /data/tmp/wandb-system-monitor-portfile-520195667"}
+{"time":"2025-08-26T00:40:35.380675617+09:00","level":"INFO","msg":"stream: created new stream","id":"xifwep45"}
+{"time":"2025-08-26T00:40:35.380748744+09:00","level":"INFO","msg":"stream: started","id":"xifwep45"}
+{"time":"2025-08-26T00:40:35.380800791+09:00","level":"INFO","msg":"writer: started","stream_id":"xifwep45"}
+{"time":"2025-08-26T00:40:35.380812403+09:00","level":"INFO","msg":"handler: started","stream_id":"xifwep45"}
+{"time":"2025-08-26T00:40:35.380844242+09:00","level":"INFO","msg":"sender: started","stream_id":"xifwep45"}
+{"time":"2025-08-26T00:43:22.922808973+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-26T00:43:23.020989792+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading summary, console lines 8-12","runtime_seconds":0.098070063}],"total_operations":1}}
+{"time":"2025-08-26T00:43:23.282247745+09:00","level":"INFO","msg":"stream: closing","id":"xifwep45"}
+{"time":"2025-08-26T00:43:23.282289063+09:00","level":"INFO","msg":"handler: closed","stream_id":"xifwep45"}
+{"time":"2025-08-26T00:43:23.282398948+09:00","level":"INFO","msg":"sender: closed","stream_id":"xifwep45"}
+{"time":"2025-08-26T00:43:23.28241096+09:00","level":"INFO","msg":"stream: closed","id":"xifwep45"}

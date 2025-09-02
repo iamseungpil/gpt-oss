@@ -1,0 +1,13 @@
+{"time":"2025-08-27T17:24:44.256519955+09:00","level":"INFO","msg":"stream: starting","core version":"0.21.1"}
+{"time":"2025-08-27T17:24:46.720747556+09:00","level":"INFO","msg":"stream: created new stream","id":"17nljko7"}
+{"time":"2025-08-27T17:24:46.720818478+09:00","level":"INFO","msg":"stream: started","id":"17nljko7"}
+{"time":"2025-08-27T17:24:46.720874772+09:00","level":"INFO","msg":"writer: started","stream_id":"17nljko7"}
+{"time":"2025-08-27T17:24:46.720881625+09:00","level":"INFO","msg":"handler: started","stream_id":"17nljko7"}
+{"time":"2025-08-27T17:24:46.720999796+09:00","level":"INFO","msg":"sender: started","stream_id":"17nljko7"}
+{"time":"2025-08-27T23:16:20.489717452+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-27T23:16:20.563701756+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading summary","runtime_seconds":0.073855112}],"total_operations":1}}
+{"time":"2025-08-27T23:16:21.880525927+09:00","level":"INFO","msg":"stream: closing","id":"17nljko7"}
+{"time":"2025-08-27T23:16:21.880587203+09:00","level":"INFO","msg":"handler: closed","stream_id":"17nljko7"}
+{"time":"2025-08-27T23:16:21.880698812+09:00","level":"INFO","msg":"sender: closed","stream_id":"17nljko7"}
+{"time":"2025-08-27T23:16:21.880897768+09:00","level":"INFO","msg":"stream: closed","id":"17nljko7"}
+{"time":"2025-08-27T23:16:21.880986143+09:00","level":"WARN","msg":"runwork: ignoring record after close","work":{"Work":{"Record":{"RecordType":{"Exit":{"exit_code":1}},"control":{"always_send":true}}},"TBHandler":{}}}

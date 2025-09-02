@@ -1,0 +1,13 @@
+{"time":"2025-08-26T00:34:55.263592236+09:00","level":"INFO","msg":"stream: starting","core version":"0.21.1"}
+{"time":"2025-08-26T00:35:00.341126974+09:00","level":"ERROR","msg":"monitor: failed to initialize GPU resource: monitor: could not get GPU binary port: timeout reading portfile /data/tmp/wandb-system-monitor-portfile-2431179081"}
+{"time":"2025-08-26T00:35:00.667806044+09:00","level":"INFO","msg":"stream: created new stream","id":"k61vhrek"}
+{"time":"2025-08-26T00:35:00.667857249+09:00","level":"INFO","msg":"stream: started","id":"k61vhrek"}
+{"time":"2025-08-26T00:35:00.66790671+09:00","level":"INFO","msg":"writer: started","stream_id":"k61vhrek"}
+{"time":"2025-08-26T00:35:00.66792801+09:00","level":"INFO","msg":"handler: started","stream_id":"k61vhrek"}
+{"time":"2025-08-26T00:35:00.66796539+09:00","level":"INFO","msg":"sender: started","stream_id":"k61vhrek"}
+{"time":"2025-08-26T00:37:52.371785545+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-26T00:37:52.611132924+09:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading summary, console lines 4-12","runtime_seconds":0.239216515}],"total_operations":1}}
+{"time":"2025-08-26T00:37:52.800706021+09:00","level":"INFO","msg":"stream: closing","id":"k61vhrek"}
+{"time":"2025-08-26T00:37:52.800750364+09:00","level":"INFO","msg":"handler: closed","stream_id":"k61vhrek"}
+{"time":"2025-08-26T00:37:52.800867884+09:00","level":"INFO","msg":"sender: closed","stream_id":"k61vhrek"}
+{"time":"2025-08-26T00:37:52.800879996+09:00","level":"INFO","msg":"stream: closed","id":"k61vhrek"}

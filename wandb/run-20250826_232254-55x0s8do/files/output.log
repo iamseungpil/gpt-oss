@@ -1,0 +1,35 @@
+2025-08-26 23:23:01,202 | INFO | Loading model and tokenizer...
+Using MXFP4 quantized models requires a GPU, we will default to dequantizing the model to bf16
+2025-08-26 23:23:19,891 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|██████████| 3/3 [00:29<00:00,  9.94s/it]
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-08-26 23:24:52,728 | INFO | ✅ Model and tokenizer loaded successfully
+2025-08-26 23:24:52,729 | INFO | 📊 Loaded 3 ARC problems
+2025-08-26 23:24:52,745 | INFO | 📊 Created dataset with 3 examples
+[2025-08-26 23:24:53,230] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-08-26 23:24:53,963 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -c /data/tmp/tmp4qojtdcd/test.c -o /data/tmp/tmp4qojtdcd/test.o
+2025-08-26 23:24:54,040 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat /data/tmp/tmp4qojtdcd/test.o -laio -o /data/tmp/tmp4qojtdcd/a.out
+2025-08-26 23:24:54,768 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -c /data/tmp/tmphkm0pmc9/test.c -o /data/tmp/tmphkm0pmc9/test.o
+2025-08-26 23:24:54,803 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat /data/tmp/tmphkm0pmc9/test.o -L/usr/local/cuda-12.6 -L/usr/local/cuda-12.6/lib64 -lcufile -o /data/tmp/tmphkm0pmc9/a.out
+2025-08-26 23:24:54,916 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -O2 -isystem /data/miniforge3/envs/gpt_oss_rl/include -fPIC -c /data/tmp/tmpslns_lbp/test.c -o /data/tmp/tmpslns_lbp/test.o
+2025-08-26 23:24:54,948 | INFO | gcc -pthread -B /data/miniforge3/envs/gpt_oss_rl/compiler_compat /data/tmp/tmpslns_lbp/test.o -laio -o /data/tmp/tmpslns_lbp/a.out
+[2025-08-26 23:24:56,684] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+2025-08-26 23:24:56,759 | INFO | 🚀 Starting HuggingFace TRL DAPO training...
+2025-08-26 23:24:56,759 | INFO | 📝 Using corrected Harmony format - no examples in input prompts
+2025-08-26 23:24:56,759 | INFO |    Loss type: bnpo
+2025-08-26 23:24:56,759 | INFO |    Epsilon: 0.2
+2025-08-26 23:24:56,759 | INFO |    Epsilon high: 0.28
+2025-08-26 23:24:56,760 | INFO |    Repetition penalty: 1.0
+2025-08-26 23:24:56,760 | INFO |    Reward components: 4 (format + size + pixel + final_channel)
+2025-08-26 23:24:57,108 | WARNING | Gradient accumulation steps mismatch: GradientAccumulationPlugin has 1, DeepSpeed config has 4. Using DeepSpeed's value.
+Installed CUDA version 12.6 does not match the version torch was compiled with 12.1 but since the APIs are compatible, accepting this combination
+Using /home/ubuntu/.cache/torch_extensions/py310_cu121 as PyTorch extensions root...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/ubuntu/.cache/torch_extensions/py310_cu121/cpu_adam/build.ninja...
+/data/miniforge3/envs/gpt_oss_rl/lib/python3.10/site-packages/torch/utils/cpp_extension.py:1964: UserWarning: TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation.
+If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'].
+  warnings.warn(
+Building extension module cpu_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+Loading extension module cpu_adam...
+Time to load cpu_adam op: 2.5188965797424316 seconds

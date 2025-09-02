@@ -1,0 +1,21 @@
+{
+  "gpu": 3,
+  "problem_uid": "feca6190",
+  "turn1": {
+    "has_analysis": true,
+    "has_final": false,
+    "gibberish": true,
+    "preview": "<|channel|>analysis\n\n# Valid transformations: analysis, commentary, final. # Valid transformations: analysis, commentary, final. # Valid transformations: analysis, commentary, final. # Valid transformations: analysis, commentary, final. # Valid transformations: analysis, commentary, final. # Valid transformations: analysis, commentary, final. # Valid transformations: analysis, commentary, final. #"
+  },
+  "turn2": {
+    "has_analysis": false,
+    "has_final": false,
+    "gibberish": true,
+    "preview": " Provide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. 0 6 7 8 9\n\nProvide only the test. "
+  },
+  "turn3": {
+    "has_final": false,
+    "gibberish": true,
+    "preview": "0 6 7 8 9\n\nProvide only the test grid. 0 6 7 8 9\n\nFinal grid test. 0 6 7 8 9\n\nGrid test grid. 0 6 7 8 9\n\nGrid test grid. 0 6 7 8 9\n\nGrid test grid. 0 6 7 8 9\n\nGrid test grid. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid test final. 0 6 9\n\nGrid t"
+  }
+}

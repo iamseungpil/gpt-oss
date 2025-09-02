@@ -1,0 +1,7 @@
+{
+  "gpu": 3,
+  "problem_uid": "feca6190",
+  "has_analysis": false,
+  "has_final": false,
+  "preview": "We need to analyze given two example transformations from small grids (5x? Actually inputs appear as single rows of length 5). The outputs are larger square matrices, maybe 10x10 for first case; second output appears 5x5 but rotated or something.\n\nLet's parse Example 1:\n\nInput: \"1  0   7   0    0\" a 1D array of length5 with values [1,0,7,0 ,0]. Output: 10 lines each containing 10 numbers. Let's examine pattern: It seems like we have diagonal shift of that sequence across matrix. Observing first few rows:\n\nRow0: 0 ... 0 then at column9 value 1.\nRow1: col8=1? Wait Row1 shows \"... 1 at index 8\"? "
+}

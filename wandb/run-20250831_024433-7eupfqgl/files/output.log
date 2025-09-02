@@ -1,0 +1,26 @@
+2025-08-31 02:44:35,489 | INFO | Loading model and tokenizer...
+MXFP4 quantization requires triton >= 3.4.0 and triton_kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:23<00:00,  7.72s/it]
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-08-31 02:46:21,755 | INFO | ✅ Model and tokenizer loaded successfully
+2025-08-31 02:46:21,755 | INFO | 📊 Loaded 5 ARC problems
+2025-08-31 02:46:23,447 | INFO | 📊 Created dataset with 5 examples
+[2025-08-31 02:46:27,554] [INFO] [real_accelerator.py:260:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-08-31 02:46:28,255 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -c /data/tmp/tmp24i3vm22/test.c -o /data/tmp/tmp24i3vm22/test.o
+2025-08-31 02:46:28,289 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat /data/tmp/tmp24i3vm22/test.o -laio -o /data/tmp/tmp24i3vm22/a.out
+2025-08-31 02:46:29,018 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -c /data/tmp/tmp1br3kr6l/test.c -o /data/tmp/tmp1br3kr6l/test.o
+2025-08-31 02:46:29,051 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat /data/tmp/tmp1br3kr6l/test.o -L/usr/local/cuda-12.6 -L/usr/local/cuda-12.6/lib64 -lcufile -o /data/tmp/tmp1br3kr6l/a.out
+2025-08-31 02:46:29,154 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat -DNDEBUG -fwrapv -O2 -Wall -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -O2 -isystem /data/miniforge3/envs/gptoss/include -fPIC -c /data/tmp/tmpgwxjk4q5/test.c -o /data/tmp/tmpgwxjk4q5/test.o
+2025-08-31 02:46:29,184 | INFO | gcc -pthread -B /data/miniforge3/envs/gptoss/compiler_compat /data/tmp/tmpgwxjk4q5/test.o -laio -o /data/tmp/tmpgwxjk4q5/a.out
+[2025-08-31 02:46:43,027] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+2025-08-31 02:46:43,213 | INFO | 🚀 Starting HuggingFace TRL DAPO training...
+2025-08-31 02:46:43,213 | INFO | 📝 Using corrected Harmony format - no examples in input prompts
+2025-08-31 02:46:43,213 | INFO |    Loss type: bnpo
+2025-08-31 02:46:43,214 | INFO |    Epsilon: 0.2
+2025-08-31 02:46:43,214 | INFO |    Epsilon high: 0.28
+2025-08-31 02:46:43,214 | INFO |    Repetition penalty: 1.0
+2025-08-31 02:46:43,214 | INFO |    Reward components: 4 (format + size + pixel + final_channel)
+2025-08-31 02:46:43,584 | WARNING | Gradient accumulation steps mismatch: GradientAccumulationPlugin has 1, DeepSpeed config has 4. Using DeepSpeed's value.
+Installed CUDA version 12.6 does not match the version torch was compiled with 12.8 but since the APIs are compatible, accepting this combination
+W0831 02:46:47.468000 177954 site-packages/torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation.
+W0831 02:46:47.468000 177954 site-packages/torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.

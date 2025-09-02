@@ -1,0 +1,108 @@
+_wandb:
+    value:
+        cli_version: 0.21.1
+        e:
+            pnhpagr6ukihaejcjoputerghxi6zcxh:
+                codePath: main_hf_trl_dapo.py
+                codePathLocal: main_hf_trl_dapo.py
+                cpu_count: 92
+                cpu_count_logical: 92
+                cudaVersion: "12.2"
+                disk:
+                    /:
+                        total: "207929917440"
+                        used: "163569561600"
+                email: iamseungpil@gmail.com
+                executable: /data/miniforge3/envs/gpt_oss_rl/bin/python
+                gpu: NVIDIA A100-SXM4-80GB
+                gpu_count: 8
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "85899345920"
+                      name: NVIDIA A100-SXM4-80GB
+                      uuid: GPU-12f596ac-b61a-9a1a-f759-4d1a6c128c93
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "85899345920"
+                      name: NVIDIA A100-SXM4-80GB
+                      uuid: GPU-561b2fe9-9038-5e8e-1720-1f2107cdfd47
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "85899345920"
+                      name: NVIDIA A100-SXM4-80GB
+                      uuid: GPU-257e20ec-5b11-f281-bc01-6ff3e63a0e46
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "85899345920"
+                      name: NVIDIA A100-SXM4-80GB
+                      uuid: GPU-00101981-dfe8-d090-a6ae-14d2ca7d3f7a
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "85899345920"
+                      name: NVIDIA A100-SXM4-80GB
+                      uuid: GPU-10af8323-c4f4-08cb-7fb7-7f7d99553a6e
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "85899345920"
+                      name: NVIDIA A100-SXM4-80GB
+                      uuid: GPU-5fd8c6d8-0e06-9555-8725-beef97e894e2
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "85899345920"
+                      name: NVIDIA A100-SXM4-80GB
+                      uuid: GPU-9db17793-8bcd-8f1e-25d1-7360deac386c
+                    - architecture: Ampere
+                      cudaCores: 6912
+                      memoryTotal: "85899345920"
+                      name: NVIDIA A100-SXM4-80GB
+                      uuid: GPU-f107f707-c50d-a35c-6b7a-060e578b6ed5
+                host: gpu-1
+                memory:
+                    total: "950716989440"
+                os: Linux-5.15.0-141-generic-x86_64-with-glibc2.35
+                program: /home/ubuntu/gpt_oss_arc_final/main_hf_trl_dapo.py
+                python: CPython 3.10.18
+                root: /home/ubuntu/gpt_oss_arc_final
+                startedAt: "2025-08-27T15:51:35.147195Z"
+                writerId: pnhpagr6ukihaejcjoputerghxi6zcxh
+        m: []
+        python_version: 3.10.18
+        t:
+            "1":
+                - 1
+                - 11
+                - 41
+                - 49
+                - 51
+                - 71
+                - 84
+                - 98
+            "2":
+                - 1
+                - 11
+                - 41
+                - 49
+                - 51
+                - 71
+                - 84
+                - 98
+            "3":
+                - 2
+                - 13
+                - 16
+            "4": 3.10.18
+            "5": 0.21.1
+            "6": 4.55.3
+            "12": 0.21.1
+            "13": linux-x86_64
+batch_size:
+    value: 1
+learning_rate:
+    value: 1e-05
+model:
+    value: openai/gpt-oss-20b
+num_problems:
+    value: 3
+reward_components:
+    value: 4

@@ -1,0 +1,13 @@
+{"time":"2025-08-26T00:45:57.744277216+09:00","level":"INFO","msg":"stream: starting","core version":"0.21.1"}
+{"time":"2025-08-26T00:46:06.007180846+09:00","level":"ERROR","msg":"monitor: failed to initialize GPU resource: monitor: could not get GPU binary port: timeout reading portfile /data/tmp/wandb-system-monitor-portfile-2900242704"}
+{"time":"2025-08-26T00:46:06.239553373+09:00","level":"INFO","msg":"stream: created new stream","id":"cm5yrtce"}
+{"time":"2025-08-26T00:46:06.239715506+09:00","level":"INFO","msg":"stream: started","id":"cm5yrtce"}
+{"time":"2025-08-26T00:46:06.239777502+09:00","level":"INFO","msg":"sender: started","stream_id":"cm5yrtce"}
+{"time":"2025-08-26T00:46:06.239797269+09:00","level":"INFO","msg":"handler: started","stream_id":"cm5yrtce"}
+{"time":"2025-08-26T00:46:06.239783423+09:00","level":"INFO","msg":"writer: started","stream_id":"cm5yrtce"}
+{"time":"2025-08-26T00:47:12.462060099+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-26T00:47:13.451292555+09:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-08-26T00:47:13.455406326+09:00","level":"INFO","msg":"stream: closing","id":"cm5yrtce"}
+{"time":"2025-08-26T00:47:13.455465818+09:00","level":"INFO","msg":"handler: closed","stream_id":"cm5yrtce"}
+{"time":"2025-08-26T00:47:13.45564376+09:00","level":"INFO","msg":"sender: closed","stream_id":"cm5yrtce"}
+{"time":"2025-08-26T00:47:13.455689045+09:00","level":"INFO","msg":"stream: closed","id":"cm5yrtce"}

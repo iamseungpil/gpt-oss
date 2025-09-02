@@ -1,0 +1,16 @@
+{
+  "gpu": "5",
+  "problem_uid": "feca6190",
+  "max_new_tokens": 4092,
+  "has_analysis_channel": true,
+  "has_final_channel": true,
+  "grid_extracted": false,
+  "grid_shape": null,
+  "target_shape": [
+    20,
+    20
+  ],
+  "accuracy": null,
+  "preview": "<|channel|>analysis<|message|>We need to infer rule from examples. Let's examine input and output sizes. In Example 1: Input length=5 (row vector). Output is 10x10 matrix? Actually example shows 10 rows each of 10 numbers. So size doubles minus maybe something? For n=5, output dimension = 10? That's 2*n? Yes 2*5=10. Similarly Ex2: input length 5 -> output also 5x5? Wait ex2 output shown as 5 lines of 5 numbers each. That equals same as input? But no doubling. Hmm check: Example 2 Input: \"0 00 2 ...\"? Provided: Input: 0 0 2 0  0 . Output: \n```\n0  0   0    0     0  \n0  ...\n...\n```\nThey show 5 columns but only 5 rows? They printed 5 x 5 matrix where diagonal or anti-diagonal? Let's analyze patterns.\n\nEx1 input [1  7] with zeros in between? Input row: 1,0,7,0 ,0 . There are two non-zero values",
+  "harmony_library_used": false
+}

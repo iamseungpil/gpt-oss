@@ -1,0 +1,16 @@
+{
+  "gpu": "5",
+  "problem_uid": "feca6190",
+  "max_new_tokens": 4092,
+  "has_analysis_channel": true,
+  "has_final_channel": false,
+  "grid_extracted": false,
+  "grid_shape": null,
+  "target_shape": [
+    20,
+    20
+  ],
+  "accuracy": null,
+  "preview": "<|channel|>analysis<|message|>We need to understand what the problem is. The input seems like five numbers separated by spaces? In examples, inputs have length 5 always. Output grids vary in size.\n\nObservations:\n\nExample1 Input: \"1  0   7   0    0\". So array A = [1,0,7,0 ,0]. Output grid is 10x10 (size?). Let's examine output of Example1: It's symmetrical along main diagonal maybe reversed order? Actually look at first row: \"0  1\" last element 1? Wait first row has '... 1' at end? Provided:\n\nRow1: 0 0 … 1 (last). Row2 ends with ... 1 at position second-to-last? Let's copy:\n\nGiven:\n\n0  | 0 | 1?? Wait let's parse properly.\n\nThey show each line as 10 columns. For example, first line: \n`0 00 00 … 01`. Let me rewrite:\n\nLine1: `0 000 001 0? No.\n\nLet's transcribe from text:\n\n```\n0  & 0 & 1?\n```\n\n",
+  "harmony_library_used": true
+}
