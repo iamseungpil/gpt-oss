@@ -1,27 +1,27 @@
 #!/usr/bin/env python3
 """
-GPT-OSS 20B ARC Training with HuggingFace TRL + QLoRA DAPO (v2)
-================================================================
-Updated version with:
-1. 30,000 token support for proper channel switching
-2. Memory leak prevention
-3. Optimized for long generation sequences
+GPT-OSS ARC DAPO Training v3 with HuggingFace TRL
+- Improved length penalty for overly long responses
+- Enhanced reward system with better balance
+- Same overall structure as v2 but with refined length handling
 """
 
 import os
-import sys
-import json
-import numpy as np
-import torch
-from datetime import datetime
-import logging
-from typing import List, Dict, Tuple, Optional
-from pathlib import Path
-import re
 import gc
+import torch
+import wandb
+import logging
+import numpy as np
+import re
+from datetime import datetime
+from typing import List, Dict, Optional, Tuple
 
-# Environment setup
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
+# Memory management
+torch.cuda.empty_cache()
+gc.collect()
+
+# Environment variables
+os.environ["WANDB_PROJECT"] = "gpt-oss-arc-dapo-v3"
 os.environ["WANDB_API_KEY"] = "2f4e627868f1f9dad10bcb1a14fbf96817e6baa9"
 # Memory optimization
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
@@ -30,7 +30,10 @@ os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 
 # 🔥 Port collision fix
 os.environ["MASTER_ADDR"] = "127.0.0.1"
-os.environ["MASTER_PORT"] = "39503"
+os.environ["MASTER_PORT"] = "39504"  # Different port from v2
+
+# Distributed training fix
+os.environ["LOCAL_RANK"] = "0"
 os.environ["WORLD_SIZE"] = "1"
 os.environ["RANK"] = "0"
 
@@ -42,81 +45,42 @@ from transformers import (
     AutoModelForCausalLM, 
     AutoTokenizer,
     BitsAndBytesConfig,
-    StoppingCriteria,
-    StoppingCriteriaList,
 )
-from trl import GRPOConfig, GRPOTrainer
 from peft import LoraConfig, get_peft_model, TaskType
-import torch.nn.functional as F
+from trl import GRPOConfig, GRPOTrainer
 
-# Import openai-harmony for proper GPT-OSS formatting
-from openai_harmony import (
-    load_harmony_encoding,
-    HarmonyEncodingName,
-    Role,
-    Message,
-    Conversation,
-    SystemContent,
-    DeveloperContent,
-    TextContent,
-    StreamableParser
-)
-
-# Configuration
-DATA_DIR = Path("/opt/dlami/nvme/gpt_oss")
-LOG_FILE = DATA_DIR / "logs" / "hf_trl_dapo_v2.log"
-RESPONSE_DIR = DATA_DIR / "logs" / "hf_trl_responses_v2"
-
-# Initialize Harmony encoding for GPT-OSS
-harmony_encoding = load_harmony_encoding(HarmonyEncodingName.HARMONY_GPT_OSS)
-harmony_stop_tokens = harmony_encoding.stop_tokens_for_assistant_actions()
-
-
-class StopOnSequences(StoppingCriteria):
-    """Stop generation when any of the provided token-id sequences appears."""
-
-    def __init__(self, stop_sequences: List[List[int]]):
-        super().__init__()
-        self.stop_sequences = [seq for seq in stop_sequences if seq]
-
-    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
-        if not self.stop_sequences:
-            return False
-        generated = input_ids[0].tolist()
-        for seq in self.stop_sequences:
-            L = len(seq)
-            if L <= len(generated) and generated[-L:] == seq:
-                return True
-        return False
-
-
-def clear_memory_cache():
-    """Clear GPU and CPU memory cache to prevent memory leaks."""
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
-        torch.cuda.synchronize()
-    gc.collect()
-
-
-# Setup logging
-LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
-RESPONSE_DIR.mkdir(parents=True, exist_ok=True)
-
+# Set up logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s | %(levelname)s | %(message)s',
-    handlers=[
-        logging.FileHandler(LOG_FILE),
-        logging.StreamHandler()
-    ]
+    datefmt='%Y-%m-%d %H:%M:%S'
 )
 logger = logging.getLogger(__name__)
 
+def clear_memory_cache():
+    """Clear GPU memory cache"""
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    gc.collect()
 
 def grid_to_string(grid: np.ndarray) -> str:
-    """Convert numpy grid to string format."""
-    return '\n'.join(' '.join(str(int(cell)) for cell in row) for row in grid)
+    """Convert grid to string representation."""
+    return '\n'.join(' '.join(map(str, row)) for row in grid)
 
+def string_to_grid(grid_str: str) -> np.ndarray:
+    """Convert string grid back to numpy array."""
+    try:
+        lines = grid_str.strip().split('\n')
+        grid = []
+        for line in lines:
+            if line.strip():
+                row = [int(x) for x in line.split()]
+                if row:
+                    grid.append(row)
+        return np.array(grid)
+    except Exception as e:
+        logger.error(f"❌ Error parsing grid: {e}")
+        return None
 
 def parse_grid_from_response(response: str, expected_shape: Optional[Tuple[int, int]] = None) -> Optional[np.ndarray]:
     """Extract grid from model response - handles various formats."""
@@ -168,35 +132,53 @@ def parse_grid_from_response(response: str, expected_shape: Optional[Tuple[int, 
     except:
         return None
 
-
 def create_harmony_prompt(problem) -> str:
-    """Create proper Harmony format prompt for ARC problem with 30k token support."""
-    examples = []
-    for i, train_pair in enumerate(problem.train_pairs, 1):
-        examples.append(
-            f"Example {i}:\n"
-            f"Input:\n{grid_to_string(train_pair.x)}\n"
-            f"Output:\n{grid_to_string(train_pair.y)}"
-        )
+    """Create Harmony format prompt for ARC problem."""
+    system_msg = f"""<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
+
+# ARC Problem Solving Instructions
+
+## Goal
+Analyze the Abstract Reasoning Corpus (ARC) puzzle and determine the transformation pattern to solve the test input.
+
+## Response Format Requirements
+You MUST use this exact channel format:
+
+1. Use <|channel|>analysis<|message|> for your reasoning process:
+   - Analyze each training example step by step
+   - Identify the transformation pattern
+   - Apply it to the test input
+
+2. Use <|channel|>final<|message|> for providing the final solution grid
+
+## Analysis Guidelines
+- Be thorough but concise (aim for 1000-2500 characters in analysis)
+- Focus on pattern identification and logical reasoning
+- Avoid overly verbose explanations (over 3000 characters will be penalized)
+
+Reasoning: medium<|end|><|start|>user<|message|>Solve this ARC puzzle by first analyzing the pattern, then providing the solution.
+
+## Training Examples
+
+"""
     
+    # Add training examples
+    examples_text = ""
+    for i, pair in enumerate(problem.train_pairs):
+        input_grid = grid_to_string(pair.x)
+        output_grid = grid_to_string(pair.y)
+        examples_text += f"### Example {i+1}:\nInput:\n{input_grid}\n\nOutput:\n{output_grid}\n\n"
+    
+    # Test input
     test_input = problem.test_pairs[0].x
-    examples_text = '\n\n'.join(examples)
     
-    # Updated prompt for medium reasoning with 8k tokens
-    prompt = f"""<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
-Knowledge cutoff: 2024-06
-
-Reasoning: medium
-
-# Valid channels: analysis, commentary, final. Channel must be included for every message.<|end|><|start|>developer<|message|># ARC Puzzle Solver
-
-You are an expert at solving Abstract Reasoning Corpus (ARC) puzzles.
+    # Final prompt construction
+    prompt = f"""{system_msg}{examples_text}
 
 ## Instructions
-You MUST use channels to structure your response:
-1. Use <|channel|>analysis<|message|> for pattern identification and reasoning
-   - Examine the training examples
-   - Identify the transformation rule
+1. Use <|channel|>analysis<|message|> to:
+   - Analyze what changes from input to output in each example
+   - Identify the consistent transformation pattern  
    - Apply it to the test input
 2. Use <|channel|>final<|message|> for providing the final solution grid
 
@@ -218,13 +200,13 @@ Analyze the pattern thoroughly, then provide the solution grid.<|end|><|start|>a
     return prompt
 
 
-def compute_five_component_reward(response: str, target_grid: np.ndarray, use_final_channel: bool = True, current_step: int = 0) -> Dict[str, float]:
+def compute_five_component_reward_v3(response: str, target_grid: np.ndarray, use_final_channel: bool = True, current_step: int = 0) -> Dict[str, float]:
     """
-    Compute 5-component reward with curriculum learning:
+    Compute 5-component reward with curriculum learning and improved length penalty:
     1. Format reward: Can extract valid grid
     2. Size accuracy: Grid has correct shape  
     3. Pixel accuracy: Cell-wise correctness
-    4. Length reward: Encourages detailed reasoning
+    4. Length reward: Balanced reasoning length (with penalty for excessive length)
     5. Final channel penalty: Proper format usage (curriculum learning)
     """
     
@@ -252,17 +234,24 @@ def compute_five_component_reward(response: str, target_grid: np.ndarray, use_fi
             penalty_strength = min(0.05 + (current_step * 0.01), 0.5)
             final_channel_penalty = penalty_strength
     
-    # 4. Length reward: Encourage detailed reasoning (analysis channel)
+    # 4. IMPROVED Length reward with penalty for excessive length
     analysis_start = predicted_text.find("<|channel|>analysis<|message|>")
     final_start = predicted_text.find("<|channel|>final<|message|>")
     
     if analysis_start != -1 and final_start != -1:
         analysis_length = final_start - analysis_start
-        # Reward longer analysis (target: 1000-3000 chars)
-        if analysis_length >= 1000:
-            length_reward = min(0.3, analysis_length / 10000)  # Max 0.3 points
-        elif analysis_length >= 500:
+        
+        # Improved length reward with penalties for too long responses
+        if analysis_length > 4000:  # Excessive length - strong penalty
+            length_reward = max(-0.2, 0.3 - (analysis_length - 4000) / 10000)
+        elif analysis_length > 3000:  # Too long - moderate penalty  
+            length_reward = max(0, 0.3 - (analysis_length - 3000) / 15000)
+        elif analysis_length >= 1000:  # Good length - reward
+            length_reward = min(0.3, analysis_length / 10000)
+        elif analysis_length >= 500:  # Acceptable length - small reward
             length_reward = 0.1
+        else:  # Too short - no reward
+            length_reward = 0
     
     # 1. Format reward: Can we extract a valid grid?
     predicted_grid = parse_grid_from_response(predicted_text, target_grid.shape)
@@ -307,20 +296,21 @@ def compute_five_component_reward(response: str, target_grid: np.ndarray, use_fi
 
 def continual_learning_main():
     logger.info("=" * 80)
-    logger.info("🚀 Starting GPT-OSS ARC Continual Learning with DAPO v2")
-    logger.info("📊 30,000 token support + Sequential problem training")
+    logger.info("🚀 Starting GPT-OSS ARC Continual Learning with DAPO v3")
+    logger.info("📊 Improved length penalty + Sequential problem training")
     logger.info("=" * 80)
     
     # Initialize wandb
     wandb.init(
-        project="gpt-oss-arc-dapo-v2",
-        name=f"hf_trl_dapo_v2_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+        project="gpt-oss-arc-dapo-v3",
+        name=f"hf_trl_dapo_v3_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
         config={
             "model": "openai/gpt-oss-20b",
-            "method": "HF TRL GRPO/DAPO",
+            "method": "HF TRL GRPO/DAPO v3",
             "max_tokens": 8000,
             "memory_optimized": True,
             "reward_components": 5,
+            "length_penalty_improved": True,
             "dataset_size": 10,
             "continual_learning": True,
             "steps_per_problem": 50,
@@ -334,14 +324,13 @@ def continual_learning_main():
     # Load tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     tokenizer.pad_token = tokenizer.eos_token
-    tokenizer.padding_side = "left"
     
-    # Load model with existing quantization (GPU 6 via CUDA_VISIBLE_DEVICES)
+    # Load model with existing quantization
     model = AutoModelForCausalLM.from_pretrained(
         model_name,
-        device_map="auto",  # Will use GPU 0 (which is actually GPU 6)
         trust_remote_code=True,
-        torch_dtype=torch.bfloat16,
+        device_map="auto",
+        torch_dtype=torch.bfloat16
     )
     
     # LoRA configuration
@@ -378,43 +367,10 @@ def continual_learning_main():
             "prompt": [prompt],
             "problem_id": [problem.uid]
         }
+        dataset = Dataset.from_dict(dataset_dict)
         
-        train_dataset = Dataset.from_dict(dataset_dict)
+        # Prepare targets for reward calculation  
         all_targets = [problem.test_pairs[0].y]
-    
-        # GRPO Config with 30k token support
-        grpo_config = GRPOConfig(
-            output_dir=str(DATA_DIR / "checkpoints_hf_trl_dapo_v2"),
-            learning_rate=5e-6,  # Reduced for stability with long sequences
-            num_train_epochs=1,
-            per_device_train_batch_size=1,
-            gradient_accumulation_steps=2,  # Reduced for memory
-            warmup_steps=10,
-            logging_steps=1,
-            save_steps=25,
-            bf16=True,
-            fp16=False,
-            optim="adamw_torch",
-            report_to="wandb",
-            remove_unused_columns=False,
-            dataloader_pin_memory=False,
-            
-            # GRPO/DAPO specific parameters
-            num_iterations=1,
-            epsilon=0.2,
-            epsilon_high=0.28,
-            beta=0.0,
-            loss_type="bnpo",
-            max_prompt_length=4096,  # Increased for ARC prompts
-            max_completion_length=8000,  # Reduced for faster training
-            num_generations=2,  # GRPO requires at least 2 generations
-            generation_batch_size=2,  # Match num_generations
-            max_steps=50,  # 50 steps per problem
-            
-            # Memory optimization
-            gradient_checkpointing=True,
-            max_grad_norm=1.0,
-        )
         
         # Create reward function for this specific problem  
         current_step = [0]  # Reset for each problem
@@ -425,8 +381,8 @@ def continual_learning_main():
             for i, (completion, prompt) in enumerate(zip(completions, prompts)):
                 target_grid = all_targets[0]  # Single problem target
                 
-                # Compute reward
-                reward_dict = compute_five_component_reward(
+                # Compute reward using v3 function
+                reward_dict = compute_five_component_reward_v3(
                     completion, 
                     target_grid,
                     use_final_channel=True,
@@ -438,6 +394,7 @@ def continual_learning_main():
                 if i == 0:  # Log first example
                     logger.info(f"Problem {problem_idx + 1} Step {current_step[0]} Reward: {reward_dict['total_reward']:.3f}")
                     logger.info(f"  Components - Format: {reward_dict['format_reward']:.2f}, Size: {reward_dict['size_accuracy']:.2f}, Pixel: {reward_dict['pixel_accuracy']:.2f}")
+                    logger.info(f"  Length: {reward_dict['length_reward']:.2f}, Final Channel Penalty: {reward_dict['final_channel_penalty']:.2f}")
             
             current_step[0] += 1
             
@@ -451,62 +408,47 @@ def continual_learning_main():
         trainer = GRPOTrainer(
             model=model,
             reward_funcs=reward_function,
-            args=grpo_config,
-            train_dataset=train_dataset,
-            processing_class=tokenizer,
+            tokenizer=tokenizer,
+            args=GRPOConfig(
+                output_dir=f"/opt/dlami/nvme/gpt_oss/problem_{problem_idx}",
+                num_train_epochs=50,
+                max_completion_length=8000,  # Reduced for faster training
+                per_device_train_batch_size=1,
+                gradient_accumulation_steps=1,
+                dataloader_drop_last=True,
+                eval_strategy="no",
+                save_strategy="no",
+                logging_steps=1,
+                remove_unused_columns=False,
+                gradient_checkpointing=True,
+                warmup_steps=5,
+                max_grad_norm=1.0,
+                learning_rate=5e-6,
+                lr_scheduler_type="cosine",
+                report_to="wandb"
+            ),
+            train_dataset=dataset,
         )
         
-        # Build stopping criteria for 30k tokens
-        stop_id_sequences: List[List[int]] = []
-        for stop_str in harmony_stop_tokens:
-            if isinstance(stop_str, str) and stop_str.strip():  # Ensure valid string
-                tokens = tokenizer(stop_str, add_special_tokens=False, return_tensors="pt").input_ids[0].tolist()
-                if tokens:
-                    stop_id_sequences.append(tokens)
+        logger.info(f"🎯 Starting training for problem {problem_idx + 1}...")
         
-        stopping_criteria = StoppingCriteriaList([StopOnSequences(stop_id_sequences)])
+        # Train for 50 steps on this problem
+        trainer.train()
         
-        # Configure generation kwargs for 30k tokens
-        generation_kwargs = {
-            "max_new_tokens": 8000,  # Reduced for faster training
-            "temperature": 0.7,
-            "top_p": 0.9,
-            "do_sample": True,
-            "pad_token_id": tokenizer.pad_token_id,
-            "eos_token_id": tokenizer.eos_token_id,
-            "stopping_criteria": stopping_criteria,
-        }
+        logger.info(f"✅ Completed problem {problem_idx + 1}/10")
         
-        trainer.generation_kwargs = generation_kwargs
-        
-        try:
-            logger.info(f"🎯 Starting training for problem {problem_idx + 1}...")
-            trainer.train()
-            
-            # Save model after each problem
-            problem_model_path = DATA_DIR / f"model_after_problem_{problem_idx + 1}"
-            trainer.save_model(str(problem_model_path))
-            logger.info(f"💾 Model saved after problem {problem_idx + 1}: {problem_model_path}")
-            
-        except Exception as e:
-            logger.error(f"❌ Training failed for problem {problem_idx + 1}: {e}")
-            import traceback
-            traceback.print_exc()
-            break  # Stop continual learning if one problem fails
-        
-        # Clear memory between problems
+        # Memory cleanup between problems
         clear_memory_cache()
     
     # Save final model
     logger.info("💾 Saving final continual learning model...")
-    final_model_path = DATA_DIR / "final_continual_model_hf_trl_dapo_v2"
-    trainer.save_model(str(final_model_path))
+    final_model_path = "/opt/dlami/nvme/gpt_oss/final_continual_model_hf_trl_dapo_v3"
+    model.save_pretrained(final_model_path)
+    tokenizer.save_pretrained(final_model_path)
     logger.info(f"✅ Continual learning complete! Final model saved to {final_model_path}")
     
-    # Cleanup
-    clear_memory_cache()
+    # Close wandb
     wandb.finish()
-
 
 if __name__ == "__main__":
     continual_learning_main()

@@ -1,0 +1,148 @@
+{
+  "completed_problems": 7,
+  "total_problems": 10,
+  "correct_so_far": 0,
+  "accuracy_so_far": "0/7 (0.0%)",
+  "results": [
+    {
+      "problem_idx": 0,
+      "problem_uid": "551d5bf1",
+      "inference_time": 1039.0,
+      "response_length": 87220,
+      "has_analysis": true,
+      "has_final": false,
+      "grid_extracted": false,
+      "predicted_shape": null,
+      "target_shape": [
+        26,
+        26
+      ],
+      "correct": false,
+      "max_tokens": 30000,
+      "memory_before": 0.0,
+      "memory_after": 0.0,
+      "timestamp": "2025-09-02T04:50:27.256123"
+    },
+    {
+      "problem_idx": 1,
+      "problem_uid": "3d31c5b3",
+      "inference_time": 1039.53,
+      "response_length": 73176,
+      "has_analysis": true,
+      "has_final": false,
+      "grid_extracted": false,
+      "predicted_shape": null,
+      "target_shape": [
+        3,
+        6
+      ],
+      "correct": false,
+      "max_tokens": 30000,
+      "memory_before": 0.0,
+      "memory_after": 0.0,
+      "timestamp": "2025-09-02T05:07:52.775756"
+    },
+    {
+      "problem_idx": 2,
+      "problem_uid": "66f2d22f",
+      "inference_time": 1042.66,
+      "response_length": 79055,
+      "has_analysis": true,
+      "has_final": false,
+      "grid_extracted": false,
+      "predicted_shape": null,
+      "target_shape": [
+        4,
+        7
+      ],
+      "correct": false,
+      "max_tokens": 30000,
+      "memory_before": 0.0,
+      "memory_after": 0.0,
+      "timestamp": "2025-09-02T05:25:21.059870"
+    },
+    {
+      "problem_idx": 3,
+      "problem_uid": "310f3251",
+      "inference_time": 1083.27,
+      "response_length": 79178,
+      "has_analysis": true,
+      "has_final": false,
+      "grid_extracted": false,
+      "predicted_shape": null,
+      "target_shape": [
+        12,
+        12
+      ],
+      "correct": false,
+      "max_tokens": 30000,
+      "memory_before": 0.0,
+      "memory_after": 0.0,
+      "timestamp": "2025-09-02T05:43:30.386743"
+    },
+    {
+      "problem_idx": 4,
+      "problem_uid": "9c1e755f",
+      "inference_time": 1103.15,
+      "response_length": 102149,
+      "has_analysis": true,
+      "has_final": false,
+      "grid_extracted": false,
+      "predicted_shape": null,
+      "target_shape": [
+        10,
+        10
+      ],
+      "correct": false,
+      "max_tokens": 30000,
+      "memory_before": 0.0,
+      "memory_after": 0.0,
+      "timestamp": "2025-09-02T06:01:59.268575"
+    },
+    {
+      "problem_idx": 5,
+      "problem_uid": "0becf7df",
+      "inference_time": 1110.45,
+      "response_length": 82369,
+      "has_analysis": true,
+      "has_final": false,
+      "grid_extracted": false,
+      "predicted_shape": null,
+      "target_shape": [
+        10,
+        10
+      ],
+      "correct": false,
+      "max_tokens": 30000,
+      "memory_before": 0.0,
+      "memory_after": 0.0,
+      "timestamp": "2025-09-02T06:20:35.523619"
+    },
+    {
+      "problem_idx": 6,
+      "problem_uid": "8ee62060",
+      "inference_time": 1122.99,
+      "response_length": 91596,
+      "has_analysis": true,
+      "has_final": false,
+      "grid_extracted": false,
+      "predicted_shape": null,
+      "target_shape": [
+        14,
+        14
+      ],
+      "correct": false,
+      "max_tokens": 30000,
+      "memory_before": 0.0,
+      "memory_after": 0.0,
+      "timestamp": "2025-09-02T06:39:24.279766"
+    }
+  ],
+  "config": {
+    "start_idx": 0,
+    "num_problems": 10,
+    "gpu": 6,
+    "max_tokens": 30000,
+    "version": "v4_fixed"
+  }
+}

@@ -1,0 +1,52 @@
+2025-09-02 06:03:47,334 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+2025-09-02 06:03:58,183 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|█| 3/3 [00:06<00:00,  2.10
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-02 06:04:06,828 | INFO | 📊 Loaded 10 problems for continual learning
+2025-09-02 06:04:06,828 | INFO | ============================================================
+2025-09-02 06:04:06,828 | INFO | 🎯 CONTINUAL LEARNING: Problem 1/10
+2025-09-02 06:04:06,828 | INFO | 📋 Problem UID: 6d75e8bb
+2025-09-02 06:04:06,828 | INFO | ============================================================
+[2025-09-02 06:04:07,124] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-09-02 06:04:07,196 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpb2gwfznh/test.c -o /tmp/tmpb2gwfznh/test.o
+2025-09-02 06:04:07,239 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpb2gwfznh/test.o -laio -o /tmp/tmpb2gwfznh/a.out
+2025-09-02 06:04:07,463 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmp03_lsohe/test.c -o /tmp/tmp03_lsohe/test.o
+2025-09-02 06:04:07,503 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmp03_lsohe/test.o -L/usr/local/cuda-12.8 -L/usr/local/cuda-12.8/lib64 -lcufile -o /tmp/tmp03_lsohe/a.out
+2025-09-02 06:04:08,662 | INFO | 🎯 Starting training for problem 1...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998, 'pad_token_id': 200002}.
+  0%|                              | 0/50 [00:00<?, ?it/s]`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Caching is incompatible with gradient checkpointing in GptOssDecoderLayer. Setting `past_key_values=None`.
+/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py:86: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+2025-09-02 07:30:17,766 | ERROR | ❌ Training failed for problem 1: continual_learning_main.<locals>.reward_function() got an unexpected keyword argument 'completion_ids'. Did you mean 'completions'?
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 483, in continual_learning_main
+    trainer.train()
+    ~~~~~~~~~~~~~^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+        args=args,
+    ...<2 lines>...
+        ignore_keys_for_eval=ignore_keys_for_eval,
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 4003, in training_step
+    inputs = self._prepare_inputs(inputs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 990, in _prepare_inputs
+    generation_batch = self._generate_and_score_completions(generation_batch)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 1248, in _generate_and_score_completions
+    rewards_per_func = self._calculate_rewards(inputs, prompts, completions, completion_ids_list)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 1027, in _calculate_rewards
+    output_reward_func = reward_func(
+        prompts=prompts, completions=completions, completion_ids=completion_ids_list, **reward_kwargs
+    )
+TypeError: continual_learning_main.<locals>.reward_function() got an unexpected keyword argument 'completion_ids'. Did you mean 'completions'?
+2025-09-02 07:30:17,772 | INFO | 💾 Saving final continual learning model...
+2025-09-02 07:30:18,506 | INFO | ✅ Continual learning complete! Final model saved to /opt/dlami/nvme/gpt_oss/final_continual_model_hf_trl_dapo_v2

@@ -288,7 +288,7 @@ def run_sequential_validation_fixed(start_idx: int = 0, num_problems: int = 10, 
         
         model_name = "openai/gpt-oss-20b"
         tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
-        device = torch.device(f"cuda:0" if torch.cuda.is_available() else "cpu")
+        device = torch.device(f"cuda:{gpu}" if torch.cuda.is_available() else "cpu")
         
         log_with_timestamp(f"⚡ Loading model to {device}...")
         model = AutoModelForCausalLM.from_pretrained(
@@ -333,7 +333,7 @@ def run_sequential_validation_fixed(start_idx: int = 0, num_problems: int = 10, 
             
             # Save intermediate progress
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            progress_file = f"/tmp/arc_v4_progress_{timestamp}.json"
+            progress_file = f"/home/ubuntu/gpt-oss/arc_v4_progress_{timestamp}.json"
             
             progress_data = {
                 "completed_problems": problem_num,
@@ -384,7 +384,7 @@ def run_sequential_validation_fixed(start_idx: int = 0, num_problems: int = 10, 
         
         # Save final results
         final_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        final_file = f"/tmp/arc_v4_final_{final_timestamp}.json"
+        final_file = f"/home/ubuntu/gpt-oss/SUCCESS_channel_switching_result_{final_timestamp}.json"
         
         final_data = {
             "validation_results": results,

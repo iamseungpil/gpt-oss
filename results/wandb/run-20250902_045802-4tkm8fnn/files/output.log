@@ -1,0 +1,26 @@
+2025-09-02 04:58:04,316 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|█| 3/3 [00:05<00:00,  1.95
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-02 04:58:17,195 | INFO | 📊 Preparing dataset...
+2025-09-02 04:58:17,277 | INFO | 📊 Created dataset with 400 examples
+[2025-09-02 04:58:17,871] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-09-02 04:58:18,031 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpek10bdq2/test.c -o /tmp/tmpek10bdq2/test.o
+2025-09-02 04:58:18,056 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpek10bdq2/test.o -laio -o /tmp/tmpek10bdq2/a.out
+2025-09-02 04:58:18,222 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmp_lnzl978/test.c -o /tmp/tmp_lnzl978/test.o
+2025-09-02 04:58:18,235 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmp_lnzl978/test.o -L/usr/local/cuda-12.8 -L/usr/local/cuda-12.8/lib64 -lcufile -o /tmp/tmp_lnzl978/a.out
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 507, in <module>
+    main()
+    ~~~~^^
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 465, in main
+    tokens = tokenizer(stop_str, add_special_tokens=False, return_tensors="pt").input_ids[0].tolist()
+             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 2911, in __call__
+    encodings = self._call_one(text=text, text_pair=text_pair, **all_kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/tokenization_utils_base.py", line 2971, in _call_one
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: text input must be of type `str` (single example), `list[str]` (batch or single pretokenized example) or `list[list[str]]` (batch of pretokenized examples).

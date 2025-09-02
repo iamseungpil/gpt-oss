@@ -1,0 +1,23 @@
+2025-09-02 04:53:54,220 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|█| 3/3 [00:04<00:00,  1.62
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-02 04:54:06,024 | INFO | 📊 Preparing dataset...
+2025-09-02 04:54:06,111 | INFO | 📊 Created dataset with 400 examples
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 507, in <module>
+    main()
+    ~~~~^^
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 388, in main
+    grpo_config = GRPOConfig(
+        output_dir=str(DATA_DIR / "checkpoints_hf_trl_dapo_v2"),
+    ...<28 lines>...
+        max_grad_norm=1.0,
+    )
+  File "<string>", line 175, in __init__
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_config.py", line 566, in __post_init__
+    raise ValueError(
+    ...<4 lines>...
+    )
+ValueError: The effective train batch size (1 x 1 x 1) must be evenly divisible by the number of generations per prompt (2). Given the current effective train batch size, the valid values for the number of generations are: [].

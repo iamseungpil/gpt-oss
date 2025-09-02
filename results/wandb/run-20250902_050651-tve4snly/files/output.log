@@ -1,0 +1,19 @@
+2025-09-02 05:06:53,483 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+2025-09-02 05:06:57,059 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|█| 3/3 [00:05<00:00,  1.80
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-02 05:07:05,131 | INFO | 📊 Preparing dataset...
+2025-09-02 05:07:05,136 | INFO | 📊 Created dataset with 10 examples
+[2025-09-02 05:07:05,301] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-09-02 05:07:05,347 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpl3qyhgqa/test.c -o /tmp/tmpl3qyhgqa/test.o
+2025-09-02 05:07:05,361 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpl3qyhgqa/test.o -laio -o /tmp/tmpl3qyhgqa/a.out
+2025-09-02 05:07:05,516 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpebgfrhi8/test.c -o /tmp/tmpebgfrhi8/test.o
+2025-09-02 05:07:05,528 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpebgfrhi8/test.o -L/usr/local/cuda-12.8 -L/usr/local/cuda-12.8/lib64 -lcufile -o /tmp/tmpebgfrhi8/a.out
+2025-09-02 05:07:06,325 | INFO | 🎯 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998, 'pad_token_id': 200002}.
+  0%|                             | 0/500 [00:00<?, ?it/s]`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Caching is incompatible with gradient checkpointing in GptOssDecoderLayer. Setting `past_key_values=None`.
+/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py:86: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(

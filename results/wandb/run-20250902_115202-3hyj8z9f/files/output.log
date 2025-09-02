@@ -1,0 +1,52 @@
+2025-09-02 11:52:03,157 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+2025-09-02 11:52:06,921 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|█| 3/3 [00:03<00:00,  1.26
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-02 11:52:11,801 | INFO | 📊 Loaded 10 problems for continual learning
+2025-09-02 11:52:11,801 | INFO | ============================================================
+2025-09-02 11:52:11,801 | INFO | 🎯 CONTINUAL LEARNING: Problem 1/10
+2025-09-02 11:52:11,801 | INFO | 📋 Problem UID: 6d75e8bb
+2025-09-02 11:52:11,801 | INFO | ============================================================
+[2025-09-02 11:52:12,428] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-09-02 11:52:12,473 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpiyqsh4eb/test.c -o /tmp/tmpiyqsh4eb/test.o
+2025-09-02 11:52:12,487 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpiyqsh4eb/test.o -laio -o /tmp/tmpiyqsh4eb/a.out
+2025-09-02 11:52:12,640 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpp9_zi9n2/test.c -o /tmp/tmpp9_zi9n2/test.o
+2025-09-02 11:52:12,653 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpp9_zi9n2/test.o -L/usr/local/cuda-12.8 -L/usr/local/cuda-12.8/lib64 -lcufile -o /tmp/tmpp9_zi9n2/a.out
+2025-09-02 11:52:13,440 | INFO | 🎯 Starting training for problem 1...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998, 'pad_token_id': 200002}.
+  0%|                              | 0/50 [00:00<?, ?it/s]`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Caching is incompatible with gradient checkpointing in GptOssDecoderLayer. Setting `past_key_values=None`.
+/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py:86: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+2025-09-02 12:10:42,414 | INFO | Problem 1 Step 0 Reward: {'format_reward': -0.1, 'size_accuracy': 0.0, 'pixel_accuracy': 0.0, 'length_reward': 0.0, 'final_channel_penalty': 0.05, 'total_reward': -0.15000000000000002}
+2025-09-02 12:10:42,417 | ERROR | ❌ Training failed for problem 1: must be real number, not dict
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 483, in continual_learning_main
+    trainer.train()
+    ~~~~~~~~~~~~~^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+        args=args,
+    ...<2 lines>...
+        ignore_keys_for_eval=ignore_keys_for_eval,
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 4003, in training_step
+    inputs = self._prepare_inputs(inputs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 990, in _prepare_inputs
+    generation_batch = self._generate_and_score_completions(generation_batch)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 1248, in _generate_and_score_completions
+    rewards_per_func = self._calculate_rewards(inputs, prompts, completions, completion_ids_list)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 1033, in _calculate_rewards
+    rewards_per_func[:, i] = torch.tensor(output_reward_func, dtype=torch.float32, device=device)
+                             ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: must be real number, not dict
+2025-09-02 12:10:42,421 | INFO | 💾 Saving final continual learning model...
+2025-09-02 12:10:43,173 | INFO | ✅ Continual learning complete! Final model saved to /opt/dlami/nvme/gpt_oss/final_continual_model_hf_trl_dapo_v2

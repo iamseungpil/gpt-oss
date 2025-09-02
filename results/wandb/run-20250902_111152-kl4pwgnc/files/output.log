@@ -1,0 +1,64 @@
+2025-09-02 11:11:53,360 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+2025-09-02 11:11:56,179 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards:  67%|▋| 2/3 [00:36<00:18, 18.31
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 511, in <module>
+    continual_learning_main()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 340, in continual_learning_main
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+    ...<2 lines>...
+        torch_dtype=torch.bfloat16,
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py", line 604, in from_pretrained
+    return model_class.from_pretrained(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pretrained_model_name_or_path, *model_args, config=config, **hub_kwargs, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/modeling_utils.py", line 288, in _wrapper
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/modeling_utils.py", line 5176, in from_pretrained
+    ) = cls._load_pretrained_model(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        model,
+        ^^^^^^
+    ...<13 lines>...
+        weights_only=weights_only,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/modeling_utils.py", line 5639, in _load_pretrained_model
+    _error_msgs, disk_offload_index, cpu_offload_index = load_shard_file(args)
+                                                         ~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/modeling_utils.py", line 946, in load_shard_file
+    disk_offload_index, cpu_offload_index = _load_state_dict_into_meta_model(
+                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        model_to_load,
+        ^^^^^^^^^^^^^^
+    ...<13 lines>...
+        device_mesh=device_mesh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/modeling_utils.py", line 854, in _load_state_dict_into_meta_model
+    hf_quantizer.create_quantized_param(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        model, param, param_name, param_device, state_dict, unexpected_keys
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/quantizers/quantizer_mxfp4.py", line 249, in create_quantized_param
+    dequantize(module, param_name, param_value, target_device, dq_param_name, **shard_kwargs)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/integrations/mxfp4.py", line 329, in dequantize
+    dequantized = convert_moe_packed_tensors(getattr(module, blocks_attr), getattr(module, scales_attr))
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/integrations/mxfp4.py", line 117, in convert_moe_packed_tensors
+    idx_hi = (blk >> 4).to(torch.long)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.98 GiB. GPU 0 has a total capacity of 139.81 GiB of which 1.28 GiB is free. Process 2064088 has 121.91 GiB memory in use. Including non-PyTorch memory, this process has 16.62 GiB memory in use. Of the allocated memory 15.83 GiB is allocated by PyTorch, and 196.83 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

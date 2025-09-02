@@ -1,0 +1,67 @@
+2025-09-02 05:00:02,478 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|█| 3/3 [00:06<00:00,  2.23
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-02 05:00:15,013 | INFO | 📊 Preparing dataset...
+2025-09-02 05:00:15,098 | INFO | 📊 Created dataset with 400 examples
+[2025-09-02 05:00:15,261] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-09-02 05:00:15,307 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpbj7ny2ns/test.c -o /tmp/tmpbj7ny2ns/test.o
+2025-09-02 05:00:15,321 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpbj7ny2ns/test.o -laio -o /tmp/tmpbj7ny2ns/a.out
+2025-09-02 05:00:15,476 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpeqo40i5k/test.c -o /tmp/tmpeqo40i5k/test.o
+2025-09-02 05:00:15,490 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpeqo40i5k/test.o -L/usr/local/cuda-12.8 -L/usr/local/cuda-12.8/lib64 -lcufile -o /tmp/tmpeqo40i5k/a.out
+2025-09-02 05:00:16,294 | INFO | 🎯 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998, 'pad_token_id': 200002}.
+2025-09-02 05:00:18,922 | ERROR | ❌ Training failed: CUDA out of memory. Tried to allocate 508.00 MiB. GPU 0 has a total capacity of 139.81 GiB of which 455.06 MiB is free. Process 4143420 has 111.57 GiB memory in use. Process 1856215 has 612.00 MiB memory in use. Including non-PyTorch memory, this process has 27.18 GiB memory in use. Of the allocated memory 26.67 GiB is allocated by PyTorch, and 2.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 487, in main
+    trainer.train()
+    ~~~~~~~~~~~~~^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+        args=args,
+    ...<2 lines>...
+        ignore_keys_for_eval=ignore_keys_for_eval,
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2483, in _inner_training_loop
+    model, self.optimizer = self.accelerator.prepare(self.model, self.optimizer)
+                            ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/accelerate/accelerator.py", line 1432, in prepare
+    result = tuple(
+        self._prepare_one(obj, first_pass=True, device_placement=d) for obj, d in zip(args, device_placement)
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/accelerate/accelerator.py", line 1433, in <genexpr>
+    self._prepare_one(obj, first_pass=True, device_placement=d) for obj, d in zip(args, device_placement)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/accelerate/accelerator.py", line 1281, in _prepare_one
+    return self.prepare_model(obj, device_placement=device_placement)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/accelerate/accelerator.py", line 1622, in prepare_model
+    model = model.to(self.device)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1355, in to
+    return self._apply(convert)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 915, in _apply
+    module._apply(fn)
+    ~~~~~~~~~~~~~^^^^
+  [Previous line repeated 4 more times]
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 942, in _apply
+    param_applied = fn(param)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1341, in convert
+    return t.to(
+           ~~~~^
+        device,
+        ^^^^^^^
+        dtype if t.is_floating_point() or t.is_complex() else None,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        non_blocking,
+        ^^^^^^^^^^^^^
+    )
+    ^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 508.00 MiB. GPU 0 has a total capacity of 139.81 GiB of which 455.06 MiB is free. Process 4143420 has 111.57 GiB memory in use. Process 1856215 has 612.00 MiB memory in use. Including non-PyTorch memory, this process has 27.18 GiB memory in use. Of the allocated memory 26.67 GiB is allocated by PyTorch, and 2.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
