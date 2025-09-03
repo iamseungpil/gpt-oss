@@ -1,0 +1,165 @@
+2025-09-02 15:27:40,380 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+2025-09-02 15:27:43,764 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|█| 3/3 [00:03<00:00,  1.28
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-02 15:27:49,661 | INFO | 📊 Loaded 10 problems for continual learning
+2025-09-02 15:27:49,661 | INFO | ============================================================
+2025-09-02 15:27:49,661 | INFO | 🎯 CONTINUAL LEARNING: Problem 1/10
+2025-09-02 15:27:49,661 | INFO | 📋 Problem UID: 6d75e8bb
+2025-09-02 15:27:49,661 | INFO | ============================================================
+[2025-09-02 15:27:49,817] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-09-02 15:27:49,863 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpknpl792j/test.c -o /tmp/tmpknpl792j/test.o
+2025-09-02 15:27:49,876 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpknpl792j/test.o -laio -o /tmp/tmpknpl792j/a.out
+2025-09-02 15:27:50,030 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmp088fhoe4/test.c -o /tmp/tmp088fhoe4/test.o
+2025-09-02 15:27:50,043 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmp088fhoe4/test.o -L/usr/local/cuda-12.8 -L/usr/local/cuda-12.8/lib64 -lcufile -o /tmp/tmp088fhoe4/a.out
+2025-09-02 15:27:50,812 | INFO | 🎯 Starting training for problem 1...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998, 'pad_token_id': 200002}.
+  0%|                              | 0/50 [00:00<?, ?it/s]`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Caching is incompatible with gradient checkpointing in GptOssDecoderLayer. Setting `past_key_values=None`.
+/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py:86: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+2025-09-02 16:37:43,563 | INFO | Problem 1 Step 0 Reward: -0.100
+2025-09-02 16:37:43,564 | INFO |   Components - Format: -0.10, Size: 0.00, Pixel: 0.00
+2025-09-02 16:37:45,308 | ERROR | ❌ Training failed for problem 1: CUDA out of memory. Tried to allocate 118.28 GiB. GPU 0 has a total capacity of 139.81 GiB of which 95.18 GiB is free. Including non-PyTorch memory, this process has 44.62 GiB memory in use. Of the allocated memory 43.84 GiB is allocated by PyTorch, and 119.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 481, in continual_learning_main
+    trainer.train()
+    ~~~~~~~~~~~~~^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+        args=args,
+    ...<2 lines>...
+        ignore_keys_for_eval=ignore_keys_for_eval,
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 1364, in compute_loss
+    return self._compute_loss(model, inputs)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 1374, in _compute_loss
+    per_token_logps = self._get_per_token_logps(model, input_ids, attention_mask, logits_to_keep)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 865, in _get_per_token_logps
+    logits = model(
+             ~~~~~^
+        input_ids=input_ids_batch, attention_mask=attention_mask_batch, logits_to_keep=logits_to_keep + 1
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ).logits
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/accelerate/utils/operations.py", line 818, in forward
+    return model_forward(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/accelerate/utils/operations.py", line 806, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+                           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/amp/autocast_mode.py", line 44, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/peft/peft_model.py", line 1845, in forward
+    return self.base_model(
+           ~~~~~~~~~~~~~~~^
+        input_ids=input_ids,
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/peft/tuners/tuners_utils.py", line 216, in forward
+    return self.model.forward(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/utils/generic.py", line 940, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 663, in forward
+    outputs: MoeModelOutputWithPast = self.model(
+                                      ~~~~~~~~~~^
+        input_ids=input_ids,
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 502, in forward
+    hidden_states = decoder_layer(
+        hidden_states,
+    ...<6 lines>...
+        **kwargs,
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return self._gradient_checkpointing_func(partial(super().__call__, **kwargs), *args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/_compile.py", line 51, in inner
+    return disable_fn(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/_dynamo/eval_frame.py", line 838, in _fn
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py", line 488, in checkpoint
+    return CheckpointFunction.apply(function, preserve, *args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py", line 263, in forward
+    outputs = run_function(*args)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 366, in forward
+    hidden_states, _ = self.self_attn(
+                       ~~~~~~~~~~~~~~^
+        hidden_states=hidden_states,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 323, in forward
+    attn_output, attn_weights = attention_interface(
+                                ~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<8 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 248, in eager_attention_forward
+    attn_weights = torch.matmul(query, key_states.transpose(2, 3)) * scaling
+                   ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 118.28 GiB. GPU 0 has a total capacity of 139.81 GiB of which 95.18 GiB is free. Including non-PyTorch memory, this process has 44.62 GiB memory in use. Of the allocated memory 43.84 GiB is allocated by PyTorch, and 119.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-09-02 16:37:45,320 | INFO | 💾 Saving final continual learning model...
+2025-09-02 16:37:46,067 | INFO | ✅ Continual learning complete! Final model saved to /opt/dlami/nvme/gpt_oss/final_continual_model_hf_trl_dapo_v2

@@ -34,6 +34,11 @@ os.environ["MASTER_PORT"] = "39503"
 os.environ["WORLD_SIZE"] = "1"
 os.environ["RANK"] = "0"
 
+# 🕒 Increase timeouts for 30k token generation
+os.environ["NCCL_TIMEOUT"] = "7200"  # 2 hours
+os.environ["TORCH_DISTRIBUTED_DETAIL"] = "DEBUG"
+os.environ["TIMEOUT"] = "7200"  # 2 hours general timeout
+
 # Core imports
 import wandb
 from arc import train_problems
@@ -186,7 +191,7 @@ def create_harmony_prompt(problem) -> str:
     prompt = f"""<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
 Knowledge cutoff: 2024-06
 
-Reasoning: medium
+Reasoning: high
 
 # Valid channels: analysis, commentary, final. Channel must be included for every message.<|end|><|start|>developer<|message|># ARC Puzzle Solver
 
@@ -241,16 +246,8 @@ def compute_five_component_reward(response: str, target_grid: np.ndarray, use_fi
     else:
         predicted_text = str(response)
     
-    # CURRICULUM LEARNING: Gradually increase final channel penalty
-    if use_final_channel:
-        has_final = (
-            "<|channel|>final<|message|>" in predicted_text or
-            "<|channel|>final<|" in predicted_text or
-            "channel|>final" in predicted_text
-        )
-        if not has_final:
-            penalty_strength = min(0.05 + (current_step * 0.01), 0.5)
-            final_channel_penalty = penalty_strength
+    # FINAL CHANNEL PENALTY REMOVED - Format penalty is sufficient
+    final_channel_penalty = 0.0
     
     # 4. Length reward: Encourage detailed reasoning (analysis channel)
     analysis_start = predicted_text.find("<|channel|>analysis<|message|>")
@@ -258,11 +255,16 @@ def compute_five_component_reward(response: str, target_grid: np.ndarray, use_fi
     
     if analysis_start != -1 and final_start != -1:
         analysis_length = final_start - analysis_start
-        # Reward longer analysis (target: 1000-3000 chars)
-        if analysis_length >= 1000:
-            length_reward = min(0.3, analysis_length / 10000)  # Max 0.3 points
-        elif analysis_length >= 500:
+        
+        # Improved length reward with penalty for excessive length (20,000+ chars)
+        if analysis_length > 20000:  # Excessive length - penalty
+            length_reward = max(-0.2, 0.3 - (analysis_length - 20000) / 30000)
+        elif analysis_length >= 1000:  # Good length - reward
+            length_reward = min(0.3, analysis_length / 10000)
+        elif analysis_length >= 500:  # Acceptable length - small reward
             length_reward = 0.1
+        else:  # Too short - no reward
+            length_reward = 0
     
     # 1. Format reward: Can we extract a valid grid?
     predicted_grid = parse_grid_from_response(predicted_text, target_grid.shape)
@@ -287,8 +289,8 @@ def compute_five_component_reward(response: str, target_grid: np.ndarray, use_fi
         format_penalty_strength = min(0.1 + (current_step * 0.01), 0.5)
         format_reward = -format_penalty_strength
     
-    # Calculate total reward
-    total_reward = format_reward + size_accuracy + pixel_accuracy + length_reward - final_channel_penalty
+    # Calculate total reward (final_channel_penalty removed)
+    total_reward = format_reward + size_accuracy + pixel_accuracy + length_reward
     
     # Clear any temporary variables to prevent memory buildup
     del predicted_text
@@ -318,7 +320,7 @@ def continual_learning_main():
         config={
             "model": "openai/gpt-oss-20b",
             "method": "HF TRL GRPO/DAPO",
-            "max_tokens": 8000,
+            "max_tokens": 30000,
             "memory_optimized": True,
             "reward_components": 5,
             "dataset_size": 10,
@@ -406,7 +408,7 @@ def continual_learning_main():
             beta=0.0,
             loss_type="bnpo",
             max_prompt_length=4096,  # Increased for ARC prompts
-            max_completion_length=8000,  # Reduced for faster training
+            max_completion_length=30000,  # Full reasoning with timeout increase
             num_generations=2,  # GRPO requires at least 2 generations
             generation_batch_size=2,  # Match num_generations
             max_steps=50,  # 50 steps per problem
@@ -468,7 +470,7 @@ def continual_learning_main():
         
         # Configure generation kwargs for 30k tokens
         generation_kwargs = {
-            "max_new_tokens": 8000,  # Reduced for faster training
+            "max_new_tokens": 30000,  # Full reasoning with timeout increase
             "temperature": 0.7,
             "top_p": 0.9,
             "do_sample": True,

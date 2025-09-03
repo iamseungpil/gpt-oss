@@ -4,3 +4,13 @@
 {"time":"2025-09-02T13:26:35.722200689Z","level":"INFO","msg":"writer: Do: started","stream_id":"mbptnj9o"}
 {"time":"2025-09-02T13:26:35.722207997Z","level":"INFO","msg":"handler: started","stream_id":"mbptnj9o"}
 {"time":"2025-09-02T13:26:35.722222078Z","level":"INFO","msg":"sender: started","stream_id":"mbptnj9o"}
+{"time":"2025-09-02T14:42:49.769354082Z","level":"ERROR","msg":"runconsolelogs: failed to write to file: failed to open file: open /home/ubuntu/gpt-oss/wandb/run-20250902_132634-mbptnj9o/files/output.log: no such file or directory"}
+{"time":"2025-09-02T15:16:03.163457711Z","level":"INFO","msg":"stream: closing","id":"mbptnj9o"}
+{"time":"2025-09-02T15:16:03.163712545Z","level":"ERROR","msg":"sender: failed to upload run summary: open /home/ubuntu/gpt-oss/wandb/run-20250902_132634-mbptnj9o/files/wandb-summary.json: no such file or directory"}
+{"time":"2025-09-02T15:16:03.168587669Z","level":"ERROR","msg":"sender: failed to upload run config: open /home/ubuntu/gpt-oss/wandb/run-20250902_132634-mbptnj9o/files/config.yaml: no such file or directory"}
+{"time":"2025-09-02T15:16:03.214504867Z","level":"WARN","msg":"runfiles: upload: file does not exist","path":"/home/ubuntu/gpt-oss/wandb/run-20250902_132634-mbptnj9o/files/output.log"}
+{"time":"2025-09-02T15:16:03.214540641Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-09-02T15:16:03.705893245Z","level":"INFO","msg":"handler: closed","stream_id":"mbptnj9o"}
+{"time":"2025-09-02T15:16:03.705925663Z","level":"INFO","msg":"writer: Close: closed","stream_id":"mbptnj9o"}
+{"time":"2025-09-02T15:16:03.70593036Z","level":"INFO","msg":"sender: closed","stream_id":"mbptnj9o"}
+{"time":"2025-09-02T15:16:03.706025285Z","level":"INFO","msg":"stream: closed","id":"mbptnj9o"}

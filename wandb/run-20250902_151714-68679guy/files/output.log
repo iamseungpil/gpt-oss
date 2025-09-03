@@ -1,0 +1,31 @@
+2025-09-02 15:17:16 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+2025-09-02 15:17:19 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|█| 3/3 [00:04<00:00,  1.67
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-02 15:17:25 | INFO | 📊 Loaded 10 problems for continual learning
+2025-09-02 15:17:25 | INFO | ============================================================
+2025-09-02 15:17:25 | INFO | 🎯 CONTINUAL LEARNING: Problem 1/10
+2025-09-02 15:17:25 | INFO | 📋 Problem UID: 6d75e8bb
+2025-09-02 15:17:25 | INFO | ============================================================
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v3.py", line 446, in <module>
+[rank0]:     continual_learning_main()
+[rank0]:     ~~~~~~~~~~~~~~~~~~~~~~~^^
+[rank0]:   File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v3.py", line 404, in continual_learning_main
+[rank0]:     args=GRPOConfig(
+[rank0]:          ~~~~~~~~~~^
+[rank0]:         output_dir=f"/opt/dlami/nvme/gpt_oss/problem_{problem_idx}",
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:     ...<14 lines>...
+[rank0]:         report_to="wandb"
+[rank0]:         ^^^^^^^^^^^^^^^^^
+[rank0]:     ),
+[rank0]:     ^
+[rank0]:   File "<string>", line 175, in __init__
+[rank0]:   File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_config.py", line 566, in __post_init__
+[rank0]:     raise ValueError(
+[rank0]:     ...<4 lines>...
+[rank0]:     )
+[rank0]: ValueError: The effective train batch size (1 x 1 x 1) must be evenly divisible by the number of generations per prompt (8). Given the current effective train batch size, the valid values for the number of generations are: [].

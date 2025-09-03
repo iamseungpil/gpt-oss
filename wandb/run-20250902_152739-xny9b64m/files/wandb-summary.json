@@ -1,0 +1,1 @@
+{"profiling/Time taken: GRPOTrainer._calculate_rewards":0.008648148039355874,"profiling/Time taken: GRPOTrainer._prepare_inputs":4192.490764893009,"_wandb":{"runtime":4206},"_runtime":4206,"train/global_step":0,"profiling/Time taken: GRPOTrainer.reward_function":0.007467391900718212,"_timestamp":1.756831063578542e+09,"_step":2}

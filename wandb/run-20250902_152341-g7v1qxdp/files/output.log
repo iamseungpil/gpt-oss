@@ -1,0 +1,127 @@
+2025-09-02 15:23:43,481 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+2025-09-02 15:23:46,824 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|█| 3/3 [00:04<00:00,  1.66
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-02 15:23:53,141 | INFO | 📊 Loaded 10 problems for continual learning
+2025-09-02 15:23:53,142 | INFO | ============================================================
+2025-09-02 15:23:53,142 | INFO | 🎯 CONTINUAL LEARNING: Problem 1/10
+2025-09-02 15:23:53,142 | INFO | 📋 Problem UID: 6d75e8bb
+2025-09-02 15:23:53,142 | INFO | ============================================================
+[2025-09-02 15:23:53,295] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-09-02 15:23:53,341 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpo3gxwjmw/test.c -o /tmp/tmpo3gxwjmw/test.o
+2025-09-02 15:23:53,355 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpo3gxwjmw/test.o -laio -o /tmp/tmpo3gxwjmw/a.out
+2025-09-02 15:23:53,510 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpt6pgdc9x/test.c -o /tmp/tmpt6pgdc9x/test.o
+2025-09-02 15:23:53,523 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpt6pgdc9x/test.o -L/usr/local/cuda-12.8 -L/usr/local/cuda-12.8/lib64 -lcufile -o /tmp/tmpt6pgdc9x/a.out
+2025-09-02 15:23:54,290 | INFO | 🎯 Starting training for problem 1...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998, 'pad_token_id': 200002}.
+  0%|                              | 0/50 [00:00<?, ?it/s]`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Caching is incompatible with gradient checkpointing in GptOssDecoderLayer. Setting `past_key_values=None`.
+/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py:86: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 504, in <module>
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2.py", line 476, in continual_learning_main
+    "stopping_criteria": stopping_criteria,
+    ^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+        args=args,
+    ...<2 lines>...
+        ignore_keys_for_eval=ignore_keys_for_eval,
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/trainer.py", line 4003, in training_step
+    inputs = self._prepare_inputs(inputs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 990, in _prepare_inputs
+    generation_batch = self._generate_and_score_completions(generation_batch)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/trl/trainer/grpo_trainer.py", line 1174, in _generate_and_score_completions
+    prompt_completion_ids = unwrapped_model.generate(
+        prompt_ids, attention_mask=prompt_mask, generation_config=self.generation_config
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/peft/peft_model.py", line 1968, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/generation/utils.py", line 2545, in generate
+    result = self._sample(
+        input_ids,
+    ...<5 lines>...
+        **model_kwargs,
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/generation/utils.py", line 2783, in _sample
+    outputs = model_forward(**model_inputs, return_dict=True)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/utils/generic.py", line 940, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 663, in forward
+    outputs: MoeModelOutputWithPast = self.model(
+                                      ~~~~~~~~~~^
+        input_ids=input_ids,
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 502, in forward
+    hidden_states = decoder_layer(
+        hidden_states,
+    ...<6 lines>...
+        **kwargs,
+    )
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return self._gradient_checkpointing_func(partial(super().__call__, **kwargs), *args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/_compile.py", line 51, in inner
+    return disable_fn(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/_dynamo/eval_frame.py", line 838, in _fn
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py", line 488, in checkpoint
+    return CheckpointFunction.apply(function, preserve, *args)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/autograd/function.py", line 575, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py", line 263, in forward
+    outputs = run_function(*args)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 381, in forward
+    hidden_states, _ = self.mlp(hidden_states)  # diff with llama: router scores
+                       ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 165, in forward
+    routed_out = self.experts(hidden_states, router_indices=router_indices, routing_weights=router_scores)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/lib/python3.13/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 115, in forward
+    up = up.clamp(min=-self.limit, max=self.limit)
+KeyboardInterrupt

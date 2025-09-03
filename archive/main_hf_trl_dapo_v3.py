@@ -156,7 +156,7 @@ You MUST use this exact channel format:
 - Focus on pattern identification and logical reasoning
 - Avoid overly verbose explanations (over 3000 characters will be penalized)
 
-Reasoning: medium<|end|><|start|>user<|message|>Solve this ARC puzzle by first analyzing the pattern, then providing the solution.
+Reasoning: high<|end|><|start|>user<|message|>Solve this ARC puzzle by first analyzing the pattern, then providing the solution.
 
 ## Training Examples
 
@@ -223,16 +223,8 @@ def compute_five_component_reward_v3(response: str, target_grid: np.ndarray, use
     else:
         predicted_text = str(response)
     
-    # CURRICULUM LEARNING: Gradually increase final channel penalty
-    if use_final_channel:
-        has_final = (
-            "<|channel|>final<|message|>" in predicted_text or
-            "<|channel|>final<|" in predicted_text or
-            "channel|>final" in predicted_text
-        )
-        if not has_final:
-            penalty_strength = min(0.05 + (current_step * 0.01), 0.5)
-            final_channel_penalty = penalty_strength
+    # FINAL CHANNEL PENALTY REMOVED - Format penalty is sufficient
+    final_channel_penalty = 0.0
     
     # 4. IMPROVED Length reward with penalty for excessive length
     analysis_start = predicted_text.find("<|channel|>analysis<|message|>")
@@ -276,8 +268,8 @@ def compute_five_component_reward_v3(response: str, target_grid: np.ndarray, use
         format_penalty_strength = min(0.1 + (current_step * 0.01), 0.5)
         format_reward = -format_penalty_strength
     
-    # Calculate total reward
-    total_reward = format_reward + size_accuracy + pixel_accuracy + length_reward - final_channel_penalty
+    # Calculate total reward (final_channel_penalty removed)
+    total_reward = format_reward + size_accuracy + pixel_accuracy + length_reward
     
     # Clear any temporary variables to prevent memory buildup
     del predicted_text
@@ -307,7 +299,7 @@ def continual_learning_main():
         config={
             "model": "openai/gpt-oss-20b",
             "method": "HF TRL GRPO/DAPO v3",
-            "max_tokens": 8000,
+            "max_tokens": 30000,
             "memory_optimized": True,
             "reward_components": 5,
             "length_penalty_improved": True,
@@ -412,7 +404,7 @@ def continual_learning_main():
             args=GRPOConfig(
                 output_dir=f"/opt/dlami/nvme/gpt_oss/problem_{problem_idx}",
                 num_train_epochs=50,
-                max_completion_length=8000,  # Reduced for faster training
+                max_completion_length=30000,  # Restored for full reasoning
                 per_device_train_batch_size=1,
                 gradient_accumulation_steps=1,
                 dataloader_drop_last=True,
@@ -425,7 +417,10 @@ def continual_learning_main():
                 max_grad_norm=1.0,
                 learning_rate=5e-6,
                 lr_scheduler_type="cosine",
-                report_to="wandb"
+                report_to="wandb",
+                # GRPO specific parameters
+                num_generations=1,  # Fix batch size divisibility issue
+                generation_batch_size=1
             ),
             train_dataset=dataset,
         )

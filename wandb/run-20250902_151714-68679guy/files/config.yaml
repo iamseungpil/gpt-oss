@@ -1,0 +1,122 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            p0q7ivsdvykewybiq2zqqttl0jcj4gqw:
+                codePath: main_hf_trl_dapo_v3.py
+                codePathLocal: main_hf_trl_dapo_v3.py
+                cpu_count: 96
+                cpu_count_logical: 192
+                cudaVersion: "12.8"
+                disk:
+                    /:
+                        total: "520120602624"
+                        used: "255972773888"
+                email: iamseungpil@gmail.com
+                executable: /home/ubuntu/miniconda3/bin/python
+                git:
+                    commit: 8d8aa6d8cb6b4fc854bff118ad8aa668a33218d3
+                    remote: https://github.com/iamseungpil/gpt-oss.git
+                gpu: NVIDIA H200
+                gpu_count: 8
+                gpu_nvidia:
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "150754820096"
+                      name: NVIDIA H200
+                      uuid: GPU-44d38bf4-f52b-5cf9-cb78-0ecb85532d6f
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "150754820096"
+                      name: NVIDIA H200
+                      uuid: GPU-7e117ab2-5fa7-b28a-da64-2969b81ee94b
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "150754820096"
+                      name: NVIDIA H200
+                      uuid: GPU-946331af-e1b7-04ca-d5b7-0465266adf65
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "150754820096"
+                      name: NVIDIA H200
+                      uuid: GPU-8f0f6acf-ef28-0d81-6e52-0387909a3442
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "150754820096"
+                      name: NVIDIA H200
+                      uuid: GPU-bf05a520-c153-ab29-88cd-c88dc3799821
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "150754820096"
+                      name: NVIDIA H200
+                      uuid: GPU-1eafdc55-218b-32fd-808b-c1613f36c543
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "150754820096"
+                      name: NVIDIA H200
+                      uuid: GPU-53ef3bb1-6c3a-20b1-d57b-5f99a5f07f05
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "150754820096"
+                      name: NVIDIA H200
+                      uuid: GPU-2744f889-38f0-a3bd-d9ba-f5ad3b2fed78
+                host: ip-10-10-28-56
+                memory:
+                    total: "2147425345536"
+                os: Linux-6.8.0-1029-aws-x86_64-with-glibc2.35
+                program: /home/ubuntu/gpt-oss/main_hf_trl_dapo_v3.py
+                python: CPython 3.13.2
+                root: /home/ubuntu/gpt-oss
+                startedAt: "2025-09-02T15:17:14.947268Z"
+                writerId: p0q7ivsdvykewybiq2zqqttl0jcj4gqw
+        m: []
+        python_version: 3.13.2
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 51
+                - 53
+                - 71
+                - 84
+                - 98
+            "2":
+                - 1
+                - 5
+                - 11
+                - 41
+                - 49
+                - 51
+                - 53
+                - 71
+                - 84
+                - 98
+            "3":
+                - 13
+                - 16
+            "4": 3.13.2
+            "5": 0.21.0
+            "6": 4.57.0.dev0
+            "12": 0.21.0
+            "13": linux-x86_64
+continual_learning:
+    value: true
+dataset_size:
+    value: 10
+length_penalty_improved:
+    value: true
+max_tokens:
+    value: 30000
+memory_optimized:
+    value: true
+method:
+    value: HF TRL GRPO/DAPO v3
+model:
+    value: openai/gpt-oss-20b
+reward_components:
+    value: 5
+steps_per_problem:
+    value: 50
