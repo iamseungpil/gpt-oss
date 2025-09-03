@@ -550,10 +550,10 @@ if __name__ == "__main__":
     import argparse
     
     parser = argparse.ArgumentParser(description="Sequential ARC Validation v4 FSDP - Dual A100 40GB")
-    parser.add_argument("--start", type=int, default=0, help="Starting problem index")
+    parser.add_argument("--start-idx", type=int, default=0, help="Starting problem index")
     parser.add_argument("--num", type=int, default=10, help="Number of problems")
     parser.add_argument("--tokens", type=int, default=30000, help="Max tokens (default: 30000)")
     
     args = parser.parse_args()
     
-    run_sequential_validation_fsdp(args.start, args.num, args.tokens)
+    run_sequential_validation_fsdp(args.start_idx, args.num, args.tokens)
