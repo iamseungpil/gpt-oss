@@ -230,12 +230,26 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
         if dist.get_rank() == 0:
             log_with_timestamp("⚡ Tokenizing input...")
         
-        inputs = tokenizer.apply_chat_template(
-            messages,
-            add_generation_prompt=True,
-            return_tensors="pt",
-            return_dict=True
-        ).cuda()
+        try:
+            inputs = tokenizer.apply_chat_template(
+                messages,
+                add_generation_prompt=True,
+                return_tensors="pt",
+                return_dict=True,
+                reasoning_effort="high"
+            ).cuda()
+            if dist.get_rank() == 0:
+                log_with_timestamp("✅ Using reasoning_effort=high")
+        except TypeError:
+            # Fallback without reasoning_effort
+            inputs = tokenizer.apply_chat_template(
+                messages,
+                add_generation_prompt=True,
+                return_tensors="pt",
+                return_dict=True
+            ).cuda()
+            if dist.get_rank() == 0:
+                log_with_timestamp("⚠️ reasoning_effort not supported, using default")
         
         if dist.get_rank() == 0:
             log_with_timestamp(f"📝 Input tokens: {inputs['input_ids'].shape[1]:,}")
