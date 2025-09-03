@@ -192,7 +192,7 @@ def create_harmony_prompt(problem, tokenizer) -> str:
             "role": "system", 
             "content": """You are ChatGPT, a large language model trained by OpenAI.
 
-Reasoning: medium
+Reasoning: high
 
 # Valid channels: analysis, commentary, final. Channel must be included for every message."""
         },
@@ -235,7 +235,8 @@ Analyze the pattern thoroughly, then provide the solution grid."""
         prompt = tokenizer.apply_chat_template(
             chat,
             tokenize=False,
-            add_generation_prompt=True
+            add_generation_prompt=True,
+            reasoning_effort="high"
         )
         return prompt + "<|channel|>"
     except Exception as e:

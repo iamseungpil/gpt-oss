@@ -77,8 +77,8 @@ def compare_grids(predicted: np.ndarray, target: np.ndarray) -> bool:
         return False
     return np.array_equal(predicted, target)
 
-def create_harmony_prompt(problem, tokenizer) -> str:
-    """Create chat template prompt for ARC problem using HuggingFace apply_chat_template."""
+def create_harmony_prompt(problem) -> list:
+    """Create proper harmony format prompt for ARC problem."""
     # Build ARC examples
     examples = []
     for i, train_pair in enumerate(problem.train_pairs, 1):
@@ -91,8 +91,8 @@ def create_harmony_prompt(problem, tokenizer) -> str:
     test_input = problem.test_pairs[0].x
     examples_text = '\n\n'.join(examples)
     
-    # Use HuggingFace chat template format
-    chat = [
+    # Use proper message format for GPT-OSS
+    messages = [
         {
             "role": "system", 
             "content": """You are ChatGPT, a large language model trained by OpenAI.
@@ -127,18 +127,7 @@ What is the output grid?"""
         }
     ]
     
-    # Apply chat template
-    try:
-        prompt = tokenizer.apply_chat_template(
-            chat,
-            tokenize=False,
-            add_generation_prompt=True
-        )
-        return prompt
-    except Exception as e:
-        # Fallback to manual format if chat template fails
-        log_with_timestamp(f"⚠️ Chat template failed: {e}, using manual format")
-        return f"""<|start|>system<|message|>{chat[0]['content']}<|end|><|start|>user<|message|>{chat[1]['content']}<|end|><|start|>assistant"""
+    return messages
 
 def clear_memory_cache():
     """Clear GPU and CPU memory cache."""
@@ -176,13 +165,18 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
         
         # Create prompt
         log_with_timestamp("🚀 Creating prompt...")
-        prompt = create_harmony_prompt(problem, tokenizer)
+        messages = create_harmony_prompt(problem)
         
-        # Tokenize
-        log_with_timestamp("⚡ Tokenizing input...")
-        input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
+        # Apply chat template
+        log_with_timestamp("⚡ Applying chat template...")
+        inputs = tokenizer.apply_chat_template(
+            messages,
+            add_generation_prompt=True,
+            return_tensors="pt",
+            return_dict=True
+        ).to(model.device)
         
-        log_with_timestamp(f"📝 Input tokens: {input_ids.shape[1]:,}")
+        log_with_timestamp(f"📝 Input tokens: {inputs['input_ids'].shape[1]:,}")
         log_with_timestamp("🎯 Starting inference...")
         
         start_inference = time.time()
@@ -190,7 +184,7 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
         # Generate with FIXED parameters (same as successful harmony_inference_final.py)
         with torch.no_grad():
             outputs = model.generate(
-                input_ids,
+                **inputs,
                 max_new_tokens=max_tokens,
                 temperature=0.7,
                 top_p=0.9,
@@ -202,7 +196,7 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
             )
         
         # Decode response
-        response = tokenizer.decode(outputs[0][input_ids.shape[1]:], skip_special_tokens=False)
+        response = tokenizer.decode(outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=False)
         inference_time = time.time() - start_inference
         
         # Clear tensors immediately after use
