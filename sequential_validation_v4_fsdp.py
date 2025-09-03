@@ -9,7 +9,7 @@ import json
 import time
 import gc
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional
 
 # Force unbuffered output
@@ -144,7 +144,7 @@ What is the output grid?"""
     return messages
 
 def setup_distributed():
-    """Setup distributed training environment."""
+    """Setup distributed training environment with NCCL optimizations."""
     if "LOCAL_RANK" not in os.environ:
         os.environ["LOCAL_RANK"] = "0"
     if "RANK" not in os.environ:
@@ -156,13 +156,39 @@ def setup_distributed():
     if "MASTER_PORT" not in os.environ:
         os.environ["MASTER_PORT"] = "29500"
     
+    # Set NCCL environment variables for better stability
+    os.environ['NCCL_TIMEOUT'] = '1800'  # 30 minutes timeout
+    os.environ['NCCL_DEBUG'] = 'INFO'
+    os.environ['NCCL_IB_DISABLE'] = '1'  # Disable InfiniBand
+    os.environ['NCCL_P2P_DISABLE'] = '1'  # Disable P2P for stability
+    os.environ['NCCL_SOCKET_NTHREADS'] = '1'
+    os.environ['NCCL_NSOCKS_PERTHREAD'] = '1'
+    os.environ['NCCL_BLOCKING_WAIT'] = '1'
+    
     local_rank = int(os.environ["LOCAL_RANK"])
     torch.cuda.set_device(local_rank)
     
-    dist.init_process_group(backend="nccl")
-    
-    log_with_timestamp(f"🚀 FSDP Distributed setup complete - Rank: {dist.get_rank()}/{dist.get_world_size()}")
-    return local_rank
+    try:
+        dist.init_process_group(
+            backend="nccl",
+            timeout=timedelta(minutes=60)  # Extended timeout
+        )
+        
+        # Test basic communication
+        if dist.is_initialized():
+            test_tensor = torch.tensor([local_rank], device=f'cuda:{local_rank}')
+            dist.all_reduce(test_tensor)
+            log_with_timestamp(f"✅ NCCL communication test passed, sum: {test_tensor.item()}")
+        
+        log_with_timestamp(f"🚀 FSDP Distributed setup complete - Rank: {dist.get_rank()}/{dist.get_world_size()}")
+        return local_rank
+    except Exception as e:
+        log_with_timestamp(f"❌ NCCL initialization failed: {e}")
+        # Fallback to single GPU mode
+        os.environ["WORLD_SIZE"] = "1"
+        os.environ["RANK"] = "0"
+        log_with_timestamp("⚠️ Falling back to single GPU mode")
+        return local_rank
 
 def wrap_model_with_fsdp(model):
     """Improved FSDP wrapping for dual H200 GPUs."""
@@ -236,10 +262,9 @@ def process_problems_distributed(start_idx, num_problems, model, tokenizer, max_
     return None
 
 def generate_with_fsdp(model, inputs, tokenizer, max_tokens):
-    """Handle generation in FSDP environment - only rank 0 generates."""
-    rank = dist.get_rank()
-    
-    if rank == 0:
+    """Handle generation in FSDP environment with improved error handling."""
+    if not dist.is_initialized():
+        log_with_timestamp("⚠️ Distributed not initialized, using single GPU generation")
         with torch.no_grad():
             outputs = model.generate(
                 **inputs,
@@ -252,15 +277,49 @@ def generate_with_fsdp(model, inputs, tokenizer, max_tokens):
                 repetition_penalty=1.1,
                 no_repeat_ngram_size=3
             )
-        result = tokenizer.decode(outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=False)
+        return tokenizer.decode(outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=False)
+    
+    rank = dist.get_rank()
+    log_with_timestamp(f"Starting generation on rank {rank}")
+    
+    if rank == 0:
+        try:
+            with torch.no_grad():
+                outputs = model.generate(
+                    **inputs,
+                    max_new_tokens=max_tokens,
+                    temperature=0.7,
+                    top_p=0.9,
+                    do_sample=True,
+                    pad_token_id=tokenizer.eos_token_id,
+                    eos_token_id=[tokenizer.eos_token_id, 200002],
+                    repetition_penalty=1.1,
+                    no_repeat_ngram_size=3
+                )
+            result = tokenizer.decode(outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=False)
+            log_with_timestamp(f"Generation completed on rank 0, length: {len(result)}")
+        except Exception as e:
+            log_with_timestamp(f"❌ Generation failed on rank 0: {e}")
+            result = f"Generation failed: {str(e)}"
     else:
         result = None
     
-    # Broadcast result to all ranks
-    result = [result]
-    dist.broadcast_object_list(result, src=0)
-    
-    return result[0]
+    # Synchronize all ranks before broadcast
+    try:
+        dist.barrier()
+        log_with_timestamp(f"Rank {rank} reached barrier")
+        
+        # Broadcast result from rank 0 to all ranks
+        result = [result]
+        dist.broadcast_object_list(result, src=0)
+        log_with_timestamp(f"Rank {rank} received broadcast result")
+        return result[0]
+    except Exception as e:
+        log_with_timestamp(f"❌ FSDP broadcast failed on rank {rank}: {e}")
+        if rank == 0:
+            return result if result else "Broadcast failed"
+        else:
+            return "Broadcast failed - no result received"
 
 def clear_memory_cache():
     """Clear GPU and CPU memory cache."""
@@ -440,7 +499,14 @@ def run_sequential_validation_fsdp(start_idx: int = 0, num_problems: int = 10, m
     # Setup distributed
     local_rank = setup_distributed()
     
-    if dist.get_rank() == 0:
+    # Check if distributed was initialized successfully
+    if not dist.is_initialized():
+        log_with_timestamp("❌ Distributed training not initialized. Running single GPU mode.")
+        rank = 0
+    else:
+        rank = dist.get_rank()
+    
+    if rank == 0:
         log_with_timestamp("🚀 STARTING FSDP ARC VALIDATION (v4)")
         log_with_timestamp(f"📊 Problems: {start_idx} to {start_idx + num_problems - 1}")
         log_with_timestamp(f"🖥️ Dual A100 40GB FSDP, Max tokens: {max_tokens:,}")
