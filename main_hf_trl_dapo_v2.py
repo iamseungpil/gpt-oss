@@ -48,7 +48,6 @@ from transformers import (
     AutoTokenizer,
     BitsAndBytesConfig,
     StoppingCriteria,
-    StoppingCriteriaList,
 )
 from trl import GRPOConfig, GRPOTrainer
 from peft import LoraConfig, get_peft_model, TaskType
@@ -187,13 +186,10 @@ def create_harmony_prompt(problem) -> str:
     test_input = problem.test_pairs[0].x
     examples_text = '\n\n'.join(examples)
     
-    # Updated prompt for medium reasoning with 8k tokens
-    prompt = f"""<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
-Knowledge cutoff: 2024-06
-
-Reasoning: high
-
-# Valid channels: analysis, commentary, final. Channel must be included for every message.<|end|><|start|>developer<|message|># ARC Puzzle Solver
+    # Use proper Harmony library for consistent formatting
+    system_content = SystemContent(content="You are ChatGPT, a large language model trained by OpenAI.\n\nReasoning: medium\n\n# Valid channels: analysis, commentary, final. Channel must be included for every message.")
+    
+    developer_content = DeveloperContent(content="""# ARC Puzzle Solver
 
 You are an expert at solving Abstract Reasoning Corpus (ARC) puzzles.
 
@@ -211,16 +207,24 @@ Looking at the training examples, I can see that...
 [pattern analysis and reasoning]
 [application to test input]
 <|channel|>final<|message|>
-[solution grid with numbers only]<|end|><|start|>user<|message|>Solve this ARC puzzle:
+[solution grid with numbers only]""")
+    
+    user_content = TextContent(content=f"""Solve this ARC puzzle:
 
 {examples_text}
 
 Test Input:
 {grid_to_string(test_input)}
 
-Analyze the pattern thoroughly, then provide the solution grid.<|end|><|start|>assistant<|channel|>"""
+Analyze the pattern thoroughly, then provide the solution grid.""")
     
-    return prompt
+    conversation = Conversation([
+        Message(role=Role.SYSTEM, content=[system_content]),
+        Message(role=Role.DEVELOPER, content=[developer_content]),  
+        Message(role=Role.USER, content=[user_content])
+    ])
+    
+    return conversation.get_prompt() + "<|channel|>"
 
 
 def compute_five_component_reward(response: str, target_grid: np.ndarray, use_final_channel: bool = True, current_step: int = 0) -> Dict[str, float]:
@@ -390,8 +394,8 @@ def continual_learning_main():
             learning_rate=5e-6,  # Reduced for stability with long sequences
             num_train_epochs=1,
             per_device_train_batch_size=1,
-            gradient_accumulation_steps=2,  # Reduced for memory
-            warmup_steps=10,
+            gradient_accumulation_steps=4,  # Increased for memory efficiency
+            warmup_steps=5,
             logging_steps=1,
             save_steps=25,
             bf16=True,
@@ -408,7 +412,7 @@ def continual_learning_main():
             beta=0.0,
             loss_type="bnpo",
             max_prompt_length=4096,  # Increased for ARC prompts
-            max_completion_length=30000,  # Full reasoning with timeout increase
+            max_completion_length=12000,  # Accept 12k limit, use medium reasoning
             num_generations=2,  # GRPO requires at least 2 generations
             generation_batch_size=2,  # Match num_generations
             max_steps=50,  # 50 steps per problem
@@ -443,9 +447,11 @@ def continual_learning_main():
             
             current_step[0] += 1
             
-            # Periodic memory cleanup
-            if current_step[0] % 10 == 0:
+            # Frequent memory cleanup to prevent 130GB buildup
+            if current_step[0] % 5 == 0:
                 clear_memory_cache()
+                import gc
+                gc.collect()
             
             return rewards
         
@@ -458,28 +464,7 @@ def continual_learning_main():
             processing_class=tokenizer,
         )
         
-        # Build stopping criteria for 30k tokens
-        stop_id_sequences: List[List[int]] = []
-        for stop_str in harmony_stop_tokens:
-            if isinstance(stop_str, str) and stop_str.strip():  # Ensure valid string
-                tokens = tokenizer(stop_str, add_special_tokens=False, return_tensors="pt").input_ids[0].tolist()
-                if tokens:
-                    stop_id_sequences.append(tokens)
-        
-        stopping_criteria = StoppingCriteriaList([StopOnSequences(stop_id_sequences)])
-        
-        # Configure generation kwargs for 30k tokens
-        generation_kwargs = {
-            "max_new_tokens": 30000,  # Full reasoning with timeout increase
-            "temperature": 0.7,
-            "top_p": 0.9,
-            "do_sample": True,
-            "pad_token_id": tokenizer.pad_token_id,
-            "eos_token_id": tokenizer.eos_token_id,
-            "stopping_criteria": stopping_criteria,
-        }
-        
-        trainer.generation_kwargs = generation_kwargs
+        # GRPO will handle generation with 12k token limit
         
         try:
             logger.info(f"🎯 Starting training for problem {problem_idx + 1}...")
