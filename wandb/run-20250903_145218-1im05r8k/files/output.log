@@ -1,0 +1,29 @@
+2025-09-03 14:52:19,992 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+2025-09-03 14:52:23,867 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:04<00:00,  1.50s/it]
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-03 14:52:30,294 | INFO | 📊 Loaded 10 problems for continual learning
+2025-09-03 14:52:30,294 | INFO | ============================================================
+2025-09-03 14:52:30,294 | INFO | 🎯 CONTINUAL LEARNING: Problem 1/10
+2025-09-03 14:52:30,294 | INFO | 📋 Problem UID: 6d75e8bb
+2025-09-03 14:52:30,294 | INFO | ============================================================
+[2025-09-03 14:52:30,503] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+2025-09-03 14:52:30,548 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpj_yvdp44/test.c -o /tmp/tmpj_yvdp44/test.o
+2025-09-03 14:52:30,563 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpj_yvdp44/test.o -laio -o /tmp/tmpj_yvdp44/a.out
+2025-09-03 14:52:30,718 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat -fno-strict-overflow -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -O2 -isystem /home/ubuntu/miniconda3/include -fPIC -c /tmp/tmpoiwedvrq/test.c -o /tmp/tmpoiwedvrq/test.o
+2025-09-03 14:52:30,732 | INFO | gcc -pthread -B /home/ubuntu/miniconda3/compiler_compat /tmp/tmpoiwedvrq/test.o -L/usr/local/cuda-12.8 -L/usr/local/cuda-12.8/lib64 -lcufile -o /tmp/tmpoiwedvrq/a.out
+2025-09-03 14:52:31,542 | INFO | 🎯 Starting training for problem 1...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998, 'pad_token_id': 200002}.
+  0%|                                                                                                                                                                                                                      | 0/50 [00:00<?, ?it/s]`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Caching is incompatible with gradient checkpointing in GptOssDecoderLayer. Setting `past_key_values=None`.
+/home/ubuntu/miniconda3/lib/python3.13/site-packages/torch/utils/checkpoint.py:86: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+2025-09-03 15:19:53,777 | INFO | Problem 1 Step 0 Reward: -0.100
+2025-09-03 15:19:53,777 | INFO |   Components - Format: -0.10, Size: 0.00, Pixel: 0.00
+  2%|▎             | 1/50 [28:19<23:07:41, 1699.21s/it]2025-09-03 15:48:13,733 | INFO | Problem 1 Step 1 Reward: -0.110                                                                                                                           
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 0.0, 'num_tokens': 26982.0, 'completions/mean_length': 12000.0, 'completions/min_length': 12000.0, 'completions/max_length': 12000.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.10000000149011612, 'rewards/reward_function/std': 0.0, 'reward': -0.10000000149011612, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 1.0}
+2025-09-03 15:48:13,734 | INFO |   Components - Format: -0.11, Size: 0.00, Pixel: 0.00
+  4%|▌             | 2/50 [56:25<22:33:06, 1691.38s/it]
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.0000000000000002e-06, 'num_tokens': 53964.0, 'completions/mean_length': 12000.0, 'completions/min_length': 12000.0, 'completions/max_length': 12000.0, 'completions/clipped_ratio': 1.0, 'completions/mean_terminated_length': 0.0, 'completions/min_terminated_length': 0.0, 'completions/max_terminated_length': 0.0, 'rewards/reward_function/mean': -0.10999999940395355, 'rewards/reward_function/std': 0.0, 'reward': -0.10999999940395355, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 2.0}

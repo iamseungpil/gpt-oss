@@ -192,7 +192,7 @@ def create_harmony_prompt(problem, tokenizer=None) -> list:
             "role": "system", 
             "content": """You are ChatGPT, a large language model trained by OpenAI.
 
-Reasoning: high
+Reasoning: medium
 
 # Valid channels: analysis, commentary, final"""
         },
@@ -383,8 +383,10 @@ def continual_learning_main():
             messages,
             tokenize=False,
             add_generation_prompt=True,
-            reasoning_effort="high"
+            reasoning_effort="medium"
         )
+        # Add channel start for GPT-OSS assistant response
+        prompt = prompt + "<|channel|>"
         dataset_dict = {
             "prompt": [prompt],
             "problem_id": [problem.uid]
@@ -399,7 +401,7 @@ def continual_learning_main():
             learning_rate=5e-6,  # Reduced for stability with long sequences
             num_train_epochs=1,
             per_device_train_batch_size=1,
-            gradient_accumulation_steps=4,  # Increased for memory efficiency
+            gradient_accumulation_steps=8,  # Further increased for 30k token sequences
             warmup_steps=5,
             logging_steps=1,
             save_steps=25,
@@ -417,7 +419,7 @@ def continual_learning_main():
             beta=0.0,
             loss_type="bnpo",
             max_prompt_length=4096,  # Increased for ARC prompts
-            max_completion_length=12000,  # Accept 12k limit, use medium reasoning
+            max_completion_length=30000,  # Full 30k tokens for proper channel switching  
             num_generations=2,  # GRPO requires at least 2 generations
             generation_batch_size=2,  # Match num_generations
             max_steps=50,  # 50 steps per problem

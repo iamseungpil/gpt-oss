@@ -29,7 +29,7 @@ from torch.distributed.fsdp.wrap import (
 
 # ARC problem import
 try:
-    from arc import validation_problems
+    from arc import validation_problems, train_problems
     HAS_ARC = True
 except ImportError:
     HAS_ARC = False
@@ -165,27 +165,102 @@ def setup_distributed():
     return local_rank
 
 def wrap_model_with_fsdp(model):
-    """Wrap model with FSDP for dual A100 40GB setup."""
+    """Improved FSDP wrapping for dual H200 GPUs."""
     from functools import partial
+    from torch.distributed.fsdp import MixedPrecision, ShardingStrategy
     
-    # Auto-wrap policy for large model sharding - updated API
-    auto_wrap_policy = partial(size_based_auto_wrap_policy, min_num_params=1e6)
+    # Auto-wrap policy - larger shards for H200s (144GB each)
+    auto_wrap_policy = partial(size_based_auto_wrap_policy, min_num_params=1e8)
     
-    # CPU offload for memory efficiency  
-    cpu_offload = CPUOffload(offload_params=True)
+    # Mixed precision for better performance on H200
+    mixed_precision = MixedPrecision(
+        param_dtype=torch.bfloat16,
+        reduce_dtype=torch.bfloat16,
+        buffer_dtype=torch.bfloat16,
+    )
     
     fsdp_model = FSDP(
         model,
         auto_wrap_policy=auto_wrap_policy,
-        cpu_offload=cpu_offload,
+        mixed_precision=mixed_precision,
+        sharding_strategy=ShardingStrategy.FULL_SHARD,
         device_id=torch.cuda.current_device(),
-        mixed_precision=None,  # Use bfloat16 directly in model
         sync_module_states=True,
-        param_init_fn=None,
+        # No CPU offload for H200 GPUs (144GB each)
     )
     
     log_with_timestamp(f"✅ Model wrapped with FSDP - Device: {torch.cuda.current_device()}")
     return fsdp_model
+
+def process_problems_distributed(start_idx, num_problems, model, tokenizer, max_tokens):
+    """Distribute problems across ranks for efficient processing."""
+    rank = dist.get_rank()
+    world_size = dist.get_world_size()
+    
+    # Calculate problems per rank
+    problems_per_rank = num_problems // world_size
+    extra = num_problems % world_size
+    
+    if rank < extra:
+        my_start = start_idx + rank * (problems_per_rank + 1)
+        my_count = problems_per_rank + 1
+    else:
+        my_start = start_idx + extra + rank * problems_per_rank
+        my_count = problems_per_rank
+    
+    if rank == 0:
+        log_with_timestamp(f"📊 Distributing {num_problems} problems across {world_size} ranks")
+        log_with_timestamp(f"📊 Rank 0 processing problems {my_start} to {my_start + my_count - 1}")
+    
+    my_results = []
+    for i in range(my_start, my_start + my_count):
+        if rank == 0:
+            log_with_timestamp(f"🔄 [{i - start_idx + 1}/{num_problems}] Starting problem {i}...")
+        
+        result, response = process_single_problem(i, model, tokenizer, max_tokens)
+        my_results.append((i, result, response))
+    
+    # Gather all results to rank 0
+    gathered = [None] * world_size
+    dist.all_gather_object(gathered, my_results)
+    
+    if rank == 0:
+        # Combine and sort all results by problem index
+        all_results = []
+        for rank_results in gathered:
+            if rank_results:
+                all_results.extend(rank_results)
+        all_results.sort(key=lambda x: x[0])  # Sort by problem index
+        return all_results
+    
+    return None
+
+def generate_with_fsdp(model, inputs, tokenizer, max_tokens):
+    """Handle generation in FSDP environment - only rank 0 generates."""
+    rank = dist.get_rank()
+    
+    if rank == 0:
+        with torch.no_grad():
+            outputs = model.generate(
+                **inputs,
+                max_new_tokens=max_tokens,
+                temperature=0.7,
+                top_p=0.9,
+                do_sample=True,
+                pad_token_id=tokenizer.eos_token_id,
+                eos_token_id=[tokenizer.eos_token_id, 200002],
+                repetition_penalty=1.1,
+                no_repeat_ngram_size=3
+            )
+        result = tokenizer.decode(outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=False)
+    else:
+        result = None
+    
+    # Broadcast result to all ranks
+    result = [result]
+    dist.broadcast_object_list(result, src=0)
+    
+    return result[0]
 
 def clear_memory_cache():
     """Clear GPU and CPU memory cache."""
@@ -206,7 +281,7 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
         log_with_timestamp(f"🔍 PROCESSING PROBLEM {problem_idx}")
         log_with_timestamp(f"=" * 60)
     
-    problem = validation_problems[problem_idx]
+    problem = train_problems[problem_idx]
     if dist.get_rank() == 0:
         log_with_timestamp(f"📋 Problem UID: {problem.uid}")
         log_with_timestamp(f"📐 Target shape: {problem.test_pairs[0].y.shape}")
@@ -237,7 +312,9 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
                 return_tensors="pt",
                 return_dict=True,
                 reasoning_effort="high"
-            ).cuda()
+            )
+            # Move tensors to CUDA
+            inputs = {k: v.cuda() for k, v in inputs.items()}
             if dist.get_rank() == 0:
                 log_with_timestamp("✅ Using reasoning_effort=high")
         except TypeError:
@@ -247,7 +324,9 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
                 add_generation_prompt=True,
                 return_tensors="pt",
                 return_dict=True
-            ).cuda()
+            )
+            # Move tensors to CUDA
+            inputs = {k: v.cuda() for k, v in inputs.items()}
             if dist.get_rank() == 0:
                 log_with_timestamp("⚠️ reasoning_effort not supported, using default")
         
@@ -257,26 +336,11 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
         
         start_inference = time.time()
         
-        # Generate with FIXED parameters (same as successful harmony_inference_final.py)
-        with torch.no_grad():
-            outputs = model.generate(
-                **inputs,
-                max_new_tokens=max_tokens,
-                temperature=0.7,
-                top_p=0.9,
-                do_sample=True,
-                pad_token_id=tokenizer.pad_token_id,
-                eos_token_id=[tokenizer.eos_token_id, 200002],
-                # Remove problematic use_cache=False
-                # Let model use default caching behavior
-            )
-        
-        # Decode response
-        response = tokenizer.decode(outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=False)
+        # Use FSDP-aware generation (only rank 0 generates, broadcasts to others)
+        response = generate_with_fsdp(model, inputs, tokenizer, max_tokens)
         inference_time = time.time() - start_inference
         
-        # Clear tensors immediately after use
-        del outputs  # Delete output tensor
+        # Clear memory cache
         clear_memory_cache()
         
         if dist.get_rank() == 0:
@@ -428,16 +492,16 @@ def run_sequential_validation_fsdp(start_idx: int = 0, num_problems: int = 10, m
         correct_count = 0
         total_start = time.time()
         
-        # Process all problems
-        for i in range(start_idx, start_idx + num_problems):
-            problem_num = i - start_idx + 1
-            if dist.get_rank() == 0:
-                log_with_timestamp(f"\n🔄 [{problem_num}/{num_problems}] Starting problem {i}...")
-            
-            result, response = process_single_problem(i, model, tokenizer, max_tokens)
-            
-            # Store results (only on rank 0)
-            if dist.get_rank() == 0:
+        # Use distributed processing for efficiency
+        if dist.get_rank() == 0:
+            log_with_timestamp(f"🚀 Starting distributed processing with {dist.get_world_size()} ranks")
+        
+        distributed_results = process_problems_distributed(start_idx, num_problems, model, tokenizer, max_tokens)
+        
+        # Process results (only on rank 0)
+        if distributed_results and dist.get_rank() == 0:
+            for i, result, response in distributed_results:
+                problem_num = i - start_idx + 1
                 results.append(result)
                 if response:
                     responses[str(i)] = response

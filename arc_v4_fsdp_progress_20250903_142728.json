@@ -1,0 +1,21 @@
+{
+  "completed_problems": 1,
+  "total_problems": 1,
+  "correct_so_far": 0,
+  "accuracy_so_far": "0/1 (0.0%)",
+  "results": [
+    {
+      "problem_idx": 0,
+      "problem_uid": "6d75e8bb",
+      "error": "",
+      "timestamp": "2025-09-03T14:27:28.950822"
+    }
+  ],
+  "config": {
+    "start_idx": 0,
+    "num_problems": 1,
+    "max_tokens": 30000,
+    "version": "v4_fsdp",
+    "world_size": 2
+  }
+}

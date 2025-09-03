@@ -1,0 +1,28 @@
+{
+  "validation_results": [
+    {
+      "problem_idx": 0,
+      "problem_uid": "6d75e8bb",
+      "error": "",
+      "timestamp": "2025-09-03T14:27:28.950822"
+    }
+  ],
+  "summary": {
+    "total_problems": 1,
+    "correct": 0,
+    "accuracy": "0/1 (0.0%)",
+    "total_time_seconds": 0.8,
+    "average_time_seconds": 0.8,
+    "model_load_time": 60.74
+  },
+  "config": {
+    "start_idx": 0,
+    "num_problems": 1,
+    "max_tokens": 30000,
+    "model": "openai/gpt-oss-20b",
+    "version": "v4_fsdp",
+    "world_size": 2,
+    "setup": "dual_a100_40gb"
+  },
+  "responses": {}
+}

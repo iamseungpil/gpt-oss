@@ -18,7 +18,7 @@ sys.stderr = os.fdopen(sys.stderr.fileno(), 'w', 1)
 
 # ARC problem import
 try:
-    from arc import validation_problems
+    from arc import validation_problems, train_problems
     HAS_ARC = True
 except ImportError:
     HAS_ARC = False
@@ -148,7 +148,7 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
     log_with_timestamp(f"🔍 PROCESSING PROBLEM {problem_idx}")
     log_with_timestamp(f"=" * 60)
     
-    problem = validation_problems[problem_idx]
+    problem = train_problems[problem_idx]
     log_with_timestamp(f"📋 Problem UID: {problem.uid}")
     log_with_timestamp(f"📐 Target shape: {problem.test_pairs[0].y.shape}")
     log_with_timestamp(f"🎯 Max tokens: {max_tokens:,}")

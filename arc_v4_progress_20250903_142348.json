@@ -1,0 +1,37 @@
+{
+  "completed_problems": 1,
+  "total_problems": 1,
+  "correct_so_far": 1,
+  "accuracy_so_far": "1/1 (100.0%)",
+  "results": [
+    {
+      "problem_idx": 0,
+      "problem_uid": "6d75e8bb",
+      "inference_time": 231.45,
+      "response_length": 14054,
+      "has_analysis": true,
+      "has_final": true,
+      "grid_extracted": true,
+      "predicted_shape": [
+        9,
+        11
+      ],
+      "target_shape": [
+        9,
+        11
+      ],
+      "correct": true,
+      "max_tokens": 30000,
+      "memory_before": 38.95864725112915,
+      "memory_after": 38.989920139312744,
+      "timestamp": "2025-09-03T14:23:48.839466"
+    }
+  ],
+  "config": {
+    "start_idx": 0,
+    "num_problems": 1,
+    "gpu": 0,
+    "max_tokens": 30000,
+    "version": "v4_fixed"
+  }
+}
