@@ -35,16 +35,7 @@ except ImportError:
     HAS_ARC = False
     print("❌ ARC module not found.")
 
-# Harmony imports
-try:
-    from openai_harmony import (
-        Role, Message, Conversation, SystemContent, DeveloperContent, 
-        TextContent, StreamableParser
-    )
-    HAS_HARMONY = True
-except ImportError:
-    HAS_HARMONY = False
-    print("❌ OpenAI Harmony module not found - using manual format")
+# No longer need openai_harmony - using HuggingFace chat template
 
 def log_with_timestamp(message):
     """Log message with timestamp and force flush."""
@@ -100,65 +91,33 @@ def compare_grids(predicted: np.ndarray, target: np.ndarray) -> bool:
         return False
     return np.array_equal(predicted, target)
 
-def create_harmony_prompt(problem) -> str:
-    """Create Harmony format prompt for ARC problem."""
+def create_harmony_prompt(problem, tokenizer) -> str:
+    """Create chat template prompt for ARC problem using HuggingFace apply_chat_template."""
+    # Build ARC examples
+    examples = []
+    for i, train_pair in enumerate(problem.train_pairs, 1):
+        examples.append(
+            f"Example {i}:\n"
+            f"Input:\n{grid_to_string(train_pair.x)}\n"
+            f"Output:\n{grid_to_string(train_pair.y)}"
+        )
     
-    if HAS_HARMONY:
-        # Use proper Harmony library
-        system_content = SystemContent(content="You are ChatGPT, a large language model trained by OpenAI.\n\nReasoning: medium\n\n# Valid channels: analysis, commentary, final")
-        
-        developer_content = DeveloperContent(content="""# ARC Puzzle Solver
-
-You are solving Abstract Reasoning Corpus (ARC) puzzles.
-
-For each puzzle:
-1. Use the analysis channel for examining patterns and reasoning
-2. Identify the transformation rule from training examples
-3. Apply the rule to the test input
-4. Switch to the final channel for your solution grid
-
-You will naturally switch channels as you progress through the solution.""")
-        
-        # Build ARC examples
-        examples = []
-        for i, train_pair in enumerate(problem.train_pairs, 1):
-            examples.append(
-                f"Example {i}:\n"
-                f"Input:\n{grid_to_string(train_pair.x)}\n"
-                f"Output:\n{grid_to_string(train_pair.y)}"
-            )
-        
-        test_input = problem.test_pairs[0].x
-        examples_text = '\n\n'.join(examples)
-        
-        user_content = TextContent(content=f"""Solve this ARC puzzle:
-
-{examples_text}
-
-Test Input:
-{grid_to_string(test_input)}
-
-What is the output grid?""")
-        
-        conversation = Conversation([
-            Message(role=Role.SYSTEM, content=[system_content]),
-            Message(role=Role.DEVELOPER, content=[developer_content]),  
-            Message(role=Role.USER, content=[user_content])
-        ])
-        
-        return conversation.get_prompt()
+    test_input = problem.test_pairs[0].x
+    examples_text = '\n\n'.join(examples)
     
-    else:
-        # Fallback to manual format with medium reasoning
-        system_msg = f"""<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
-Knowledge cutoff: 2024-06
-Current date: 2025-09-01
+    # Use HuggingFace chat template format
+    chat = [
+        {
+            "role": "system", 
+            "content": """You are ChatGPT, a large language model trained by OpenAI.
 
 Reasoning: medium
 
-# Valid channels: analysis, commentary, final<|end|>"""
-        
-        developer_msg = """<|start|>developer<|message|># ARC Puzzle Solver
+# Valid channels: analysis, commentary, final"""
+        },
+        {
+            "role": "user", 
+            "content": f"""# ARC Puzzle Solver
 
 You are solving Abstract Reasoning Corpus (ARC) puzzles.
 
@@ -168,30 +127,33 @@ For each puzzle:
 3. Apply the rule to the test input
 4. Switch to the final channel for your solution grid
 
-You will naturally switch channels as you progress through the solution.<|end|>"""
-        
-        # Build ARC examples
-        examples = []
-        for i, train_pair in enumerate(problem.train_pairs, 1):
-            examples.append(
-                f"Example {i}:\n"
-                f"Input:\n{grid_to_string(train_pair.x)}\n"
-                f"Output:\n{grid_to_string(train_pair.y)}"
-            )
-        
-        test_input = problem.test_pairs[0].x
-        examples_text = '\n\n'.join(examples)
-        
-        user_msg = f"""<|start|>user<|message|>Solve this ARC puzzle:
+You will naturally switch channels as you progress through the solution.
+
+## Task
+Solve this ARC puzzle:
 
 {examples_text}
 
 Test Input:
 {grid_to_string(test_input)}
 
-What is the output grid?<|end|>"""
-        
-        return f"{system_msg}{developer_msg}{user_msg}<|start|>assistant"
+What is the output grid?"""
+        }
+    ]
+    
+    # Apply chat template
+    try:
+        prompt = tokenizer.apply_chat_template(
+            chat,
+            tokenize=False,
+            add_generation_prompt=True
+        )
+        return prompt
+    except Exception as e:
+        # Fallback to manual format if chat template fails
+        if dist.get_rank() == 0:
+            log_with_timestamp(f"⚠️ Chat template failed: {e}, using manual format")
+        return f"""<|start|>system<|message|>{chat[0]['content']}<|end|><|start|>user<|message|>{chat[1]['content']}<|end|><|start|>assistant"""
 
 def setup_distributed():
     """Setup distributed training environment."""
@@ -273,7 +235,7 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
         # Create prompt
         if dist.get_rank() == 0:
             log_with_timestamp("🚀 Creating prompt...")
-        prompt = create_harmony_prompt(problem)
+        prompt = create_harmony_prompt(problem, tokenizer)
         
         # Tokenize
         if dist.get_rank() == 0:

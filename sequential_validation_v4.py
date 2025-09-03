@@ -77,28 +77,8 @@ def compare_grids(predicted: np.ndarray, target: np.ndarray) -> bool:
         return False
     return np.array_equal(predicted, target)
 
-def create_harmony_prompt(problem) -> str:
-    """Create Harmony format prompt for ARC problem."""
-    system_msg = f"""<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
-Knowledge cutoff: 2024-06
-Current date: 2025-09-01
-
-Reasoning: high
-
-# Valid channels: analysis, commentary, final<|end|>"""
-    
-    developer_msg = """<|start|>developer<|message|># ARC Puzzle Solver
-
-You are solving Abstract Reasoning Corpus (ARC) puzzles.
-
-For each puzzle:
-1. Use the analysis channel for examining patterns and reasoning
-2. Identify the transformation rule from training examples
-3. Apply the rule to the test input
-4. Switch to the final channel for your solution grid
-
-You will naturally switch channels as you progress through the solution.<|end|>"""
-    
+def create_harmony_prompt(problem, tokenizer) -> str:
+    """Create chat template prompt for ARC problem using HuggingFace apply_chat_template."""
     # Build ARC examples
     examples = []
     for i, train_pair in enumerate(problem.train_pairs, 1):
@@ -111,16 +91,54 @@ You will naturally switch channels as you progress through the solution.<|end|>"
     test_input = problem.test_pairs[0].x
     examples_text = '\n\n'.join(examples)
     
-    user_msg = f"""<|start|>user<|message|>Solve this ARC puzzle:
+    # Use HuggingFace chat template format
+    chat = [
+        {
+            "role": "system", 
+            "content": """You are ChatGPT, a large language model trained by OpenAI.
+
+Reasoning: high
+
+# Valid channels: analysis, commentary, final"""
+        },
+        {
+            "role": "user", 
+            "content": f"""# ARC Puzzle Solver
+
+You are solving Abstract Reasoning Corpus (ARC) puzzles.
+
+For each puzzle:
+1. Use the analysis channel for examining patterns and reasoning
+2. Identify the transformation rule from training examples
+3. Apply the rule to the test input
+4. Switch to the final channel for your solution grid
+
+You will naturally switch channels as you progress through the solution.
+
+## Task
+Solve this ARC puzzle:
 
 {examples_text}
 
 Test Input:
 {grid_to_string(test_input)}
 
-What is the output grid?<|end|>"""
+What is the output grid?"""
+        }
+    ]
     
-    return f"{system_msg}{developer_msg}{user_msg}<|start|>assistant"
+    # Apply chat template
+    try:
+        prompt = tokenizer.apply_chat_template(
+            chat,
+            tokenize=False,
+            add_generation_prompt=True
+        )
+        return prompt
+    except Exception as e:
+        # Fallback to manual format if chat template fails
+        log_with_timestamp(f"⚠️ Chat template failed: {e}, using manual format")
+        return f"""<|start|>system<|message|>{chat[0]['content']}<|end|><|start|>user<|message|>{chat[1]['content']}<|end|><|start|>assistant"""
 
 def clear_memory_cache():
     """Clear GPU and CPU memory cache."""
@@ -158,7 +176,7 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
         
         # Create prompt
         log_with_timestamp("🚀 Creating prompt...")
-        prompt = create_harmony_prompt(problem)
+        prompt = create_harmony_prompt(problem, tokenizer)
         
         # Tokenize
         log_with_timestamp("⚡ Tokenizing input...")
