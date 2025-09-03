@@ -173,8 +173,8 @@ def parse_grid_from_response(response: str, expected_shape: Optional[Tuple[int, 
         return None
 
 
-def create_harmony_prompt(problem, tokenizer) -> str:
-    """Create proper chat template prompt for ARC problem using HuggingFace apply_chat_template."""
+def create_harmony_prompt(problem, tokenizer=None) -> list:
+    """Create proper harmony format messages for ARC problem."""
     examples = []
     for i, train_pair in enumerate(problem.train_pairs, 1):
         examples.append(
@@ -186,37 +186,29 @@ def create_harmony_prompt(problem, tokenizer) -> str:
     test_input = problem.test_pairs[0].x
     examples_text = '\n\n'.join(examples)
     
-    # Use HuggingFace chat template format
-    chat = [
+    # Return messages in proper format (same as inference)
+    messages = [
         {
             "role": "system", 
             "content": """You are ChatGPT, a large language model trained by OpenAI.
 
 Reasoning: high
 
-# Valid channels: analysis, commentary, final. Channel must be included for every message."""
+# Valid channels: analysis, commentary, final"""
         },
         {
             "role": "user", 
             "content": f"""# ARC Puzzle Solver
 
-You are an expert at solving Abstract Reasoning Corpus (ARC) puzzles.
+You are solving Abstract Reasoning Corpus (ARC) puzzles.
 
-## Instructions
-You MUST use channels to structure your response:
-1. Use <|channel|>analysis<|message|> for pattern identification and reasoning
-   - Examine the training examples
-   - Identify the transformation rule
-   - Apply it to the test input
-2. Use <|channel|>final<|message|> for providing the final solution grid
+For each puzzle:
+1. Use the analysis channel for examining patterns and reasoning
+2. Identify the transformation rule from training examples
+3. Apply the rule to the test input
+4. Switch to the final channel for your solution grid
 
-## Example Response Format
-<|channel|>analysis<|message|>
-Looking at the training examples, I can see that...
-[pattern analysis and reasoning]
-[application to test input]
-<|channel|>final<|message|>
-[solution grid with numbers only]
+You will naturally switch channels as you progress through the solution.
 
 ## Task
 Solve this ARC puzzle:
@@ -226,23 +218,11 @@ Solve this ARC puzzle:
 Test Input:
 {grid_to_string(test_input)}
 
-Analyze the pattern thoroughly, then provide the solution grid."""
+What is the output grid?"""
         }
     ]
     
-    # Apply chat template
-    try:
-        prompt = tokenizer.apply_chat_template(
-            chat,
-            tokenize=False,
-            add_generation_prompt=True,
-            reasoning_effort="high"
-        )
-        return prompt + "<|channel|>"
-    except Exception as e:
-        # Fallback to manual format if chat template fails
-        print(f"⚠️ Chat template failed: {e}, using manual format")
-        return f"""<|start|>system<|message|>{chat[0]['content']}<|end|><|start|>user<|message|>{chat[1]['content']}<|end|><|start|>assistant<|channel|>"""
+    return messages
 
 
 def compute_five_component_reward(response: str, target_grid: np.ndarray, use_final_channel: bool = True, current_step: int = 0) -> Dict[str, float]:
@@ -396,8 +376,15 @@ def continual_learning_main():
         logger.info(f"📋 Problem UID: {problem.uid}")
         logger.info("=" * 60)
         
-        # Create single-problem dataset
-        prompt = create_harmony_prompt(problem, tokenizer)
+        # Create single-problem dataset using messages format
+        messages = create_harmony_prompt(problem, tokenizer)
+        # Convert messages to prompt using tokenizer.apply_chat_template
+        prompt = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+            reasoning_effort="high"
+        )
         dataset_dict = {
             "prompt": [prompt],
             "problem_id": [problem.uid]
