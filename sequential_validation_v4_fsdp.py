@@ -178,11 +178,12 @@ def setup_distributed():
 
 def wrap_model_with_fsdp(model):
     """Wrap model with FSDP for dual A100 40GB setup."""
+    from functools import partial
     
-    # Auto-wrap policy for large model sharding
-    auto_wrap_policy = size_based_auto_wrap_policy(min_num_params=1e6)  # 1M params minimum
+    # Auto-wrap policy for large model sharding - updated API
+    auto_wrap_policy = partial(size_based_auto_wrap_policy, min_num_params=1e6)
     
-    # CPU offload for memory efficiency
+    # CPU offload for memory efficiency  
     cpu_offload = CPUOffload(offload_params=True)
     
     fsdp_model = FSDP(
