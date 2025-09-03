@@ -173,8 +173,8 @@ def parse_grid_from_response(response: str, expected_shape: Optional[Tuple[int, 
         return None
 
 
-def create_harmony_prompt(problem) -> str:
-    """Create proper Harmony format prompt for ARC problem with 30k token support."""
+def create_harmony_prompt(problem, tokenizer) -> str:
+    """Create proper chat template prompt for ARC problem using HuggingFace apply_chat_template."""
     examples = []
     for i, train_pair in enumerate(problem.train_pairs, 1):
         examples.append(
@@ -186,10 +186,19 @@ def create_harmony_prompt(problem) -> str:
     test_input = problem.test_pairs[0].x
     examples_text = '\n\n'.join(examples)
     
-    # Use proper Harmony library for consistent formatting
-    system_content = SystemContent(content="You are ChatGPT, a large language model trained by OpenAI.\n\nReasoning: medium\n\n# Valid channels: analysis, commentary, final. Channel must be included for every message.")
-    
-    developer_content = DeveloperContent(content="""# ARC Puzzle Solver
+    # Use HuggingFace chat template format
+    chat = [
+        {
+            "role": "system", 
+            "content": """You are ChatGPT, a large language model trained by OpenAI.
+
+Reasoning: medium
+
+# Valid channels: analysis, commentary, final. Channel must be included for every message."""
+        },
+        {
+            "role": "user", 
+            "content": f"""# ARC Puzzle Solver
 
 You are an expert at solving Abstract Reasoning Corpus (ARC) puzzles.
 
@@ -207,24 +216,32 @@ Looking at the training examples, I can see that...
 [pattern analysis and reasoning]
 [application to test input]
 <|channel|>final<|message|>
-[solution grid with numbers only]""")
-    
-    user_content = TextContent(content=f"""Solve this ARC puzzle:
+[solution grid with numbers only]
+
+## Task
+Solve this ARC puzzle:
 
 {examples_text}
 
 Test Input:
 {grid_to_string(test_input)}
 
-Analyze the pattern thoroughly, then provide the solution grid.""")
+Analyze the pattern thoroughly, then provide the solution grid."""
+        }
+    ]
     
-    conversation = Conversation([
-        Message(role=Role.SYSTEM, content=[system_content]),
-        Message(role=Role.DEVELOPER, content=[developer_content]),  
-        Message(role=Role.USER, content=[user_content])
-    ])
-    
-    return conversation.get_prompt() + "<|channel|>"
+    # Apply chat template
+    try:
+        prompt = tokenizer.apply_chat_template(
+            chat,
+            tokenize=False,
+            add_generation_prompt=True
+        )
+        return prompt + "<|channel|>"
+    except Exception as e:
+        # Fallback to manual format if chat template fails
+        print(f"⚠️ Chat template failed: {e}, using manual format")
+        return f"""<|start|>system<|message|>{chat[0]['content']}<|end|><|start|>user<|message|>{chat[1]['content']}<|end|><|start|>assistant<|channel|>"""
 
 
 def compute_five_component_reward(response: str, target_grid: np.ndarray, use_final_channel: bool = True, current_step: int = 0) -> Dict[str, float]:
@@ -379,7 +396,7 @@ def continual_learning_main():
         logger.info("=" * 60)
         
         # Create single-problem dataset
-        prompt = create_harmony_prompt(problem)
+        prompt = create_harmony_prompt(problem, tokenizer)
         dataset_dict = {
             "prompt": [prompt],
             "problem_id": [problem.uid]
