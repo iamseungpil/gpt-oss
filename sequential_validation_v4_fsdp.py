@@ -35,6 +35,17 @@ except ImportError:
     HAS_ARC = False
     print("❌ ARC module not found.")
 
+# Harmony imports
+try:
+    from openai_harmony import (
+        Role, Message, Conversation, SystemContent, DeveloperContent, 
+        TextContent, StreamableParser
+    )
+    HAS_HARMONY = True
+except ImportError:
+    HAS_HARMONY = False
+    print("❌ OpenAI Harmony module not found - using manual format")
+
 def log_with_timestamp(message):
     """Log message with timestamp and force flush."""
     timestamp = datetime.now().strftime("%H:%M:%S")
@@ -91,15 +102,63 @@ def compare_grids(predicted: np.ndarray, target: np.ndarray) -> bool:
 
 def create_harmony_prompt(problem) -> str:
     """Create Harmony format prompt for ARC problem."""
-    system_msg = f"""<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
+    
+    if HAS_HARMONY:
+        # Use proper Harmony library
+        system_content = SystemContent(content="You are ChatGPT, a large language model trained by OpenAI.\n\nReasoning: medium\n\n# Valid channels: analysis, commentary, final")
+        
+        developer_content = DeveloperContent(content="""# ARC Puzzle Solver
+
+You are solving Abstract Reasoning Corpus (ARC) puzzles.
+
+For each puzzle:
+1. Use the analysis channel for examining patterns and reasoning
+2. Identify the transformation rule from training examples
+3. Apply the rule to the test input
+4. Switch to the final channel for your solution grid
+
+You will naturally switch channels as you progress through the solution.""")
+        
+        # Build ARC examples
+        examples = []
+        for i, train_pair in enumerate(problem.train_pairs, 1):
+            examples.append(
+                f"Example {i}:\n"
+                f"Input:\n{grid_to_string(train_pair.x)}\n"
+                f"Output:\n{grid_to_string(train_pair.y)}"
+            )
+        
+        test_input = problem.test_pairs[0].x
+        examples_text = '\n\n'.join(examples)
+        
+        user_content = TextContent(content=f"""Solve this ARC puzzle:
+
+{examples_text}
+
+Test Input:
+{grid_to_string(test_input)}
+
+What is the output grid?""")
+        
+        conversation = Conversation([
+            Message(role=Role.SYSTEM, content=[system_content]),
+            Message(role=Role.DEVELOPER, content=[developer_content]),  
+            Message(role=Role.USER, content=[user_content])
+        ])
+        
+        return conversation.get_prompt()
+    
+    else:
+        # Fallback to manual format with medium reasoning
+        system_msg = f"""<|start|>system<|message|>You are ChatGPT, a large language model trained by OpenAI.
 Knowledge cutoff: 2024-06
 Current date: 2025-09-01
 
-Reasoning: high
+Reasoning: medium
 
 # Valid channels: analysis, commentary, final<|end|>"""
-    
-    developer_msg = """<|start|>developer<|message|># ARC Puzzle Solver
+        
+        developer_msg = """<|start|>developer<|message|># ARC Puzzle Solver
 
 You are solving Abstract Reasoning Corpus (ARC) puzzles.
 
@@ -110,20 +169,20 @@ For each puzzle:
 4. Switch to the final channel for your solution grid
 
 You will naturally switch channels as you progress through the solution.<|end|>"""
-    
-    # Build ARC examples
-    examples = []
-    for i, train_pair in enumerate(problem.train_pairs, 1):
-        examples.append(
-            f"Example {i}:\n"
-            f"Input:\n{grid_to_string(train_pair.x)}\n"
-            f"Output:\n{grid_to_string(train_pair.y)}"
-        )
-    
-    test_input = problem.test_pairs[0].x
-    examples_text = '\n\n'.join(examples)
-    
-    user_msg = f"""<|start|>user<|message|>Solve this ARC puzzle:
+        
+        # Build ARC examples
+        examples = []
+        for i, train_pair in enumerate(problem.train_pairs, 1):
+            examples.append(
+                f"Example {i}:\n"
+                f"Input:\n{grid_to_string(train_pair.x)}\n"
+                f"Output:\n{grid_to_string(train_pair.y)}"
+            )
+        
+        test_input = problem.test_pairs[0].x
+        examples_text = '\n\n'.join(examples)
+        
+        user_msg = f"""<|start|>user<|message|>Solve this ARC puzzle:
 
 {examples_text}
 
@@ -131,8 +190,8 @@ Test Input:
 {grid_to_string(test_input)}
 
 What is the output grid?<|end|>"""
-    
-    return f"{system_msg}{developer_msg}{user_msg}<|start|>assistant"
+        
+        return f"{system_msg}{developer_msg}{user_msg}<|start|>assistant"
 
 def setup_distributed():
     """Setup distributed training environment."""
