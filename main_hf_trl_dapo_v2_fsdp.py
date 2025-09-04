@@ -30,8 +30,8 @@ from transformers import (
     set_seed
 )
 
-# TRL imports for GRPO
-from trl import DAPOTrainer, DAPOConfig, setup_chat_format
+# TRL imports for GRPO  
+from trl import GRPOTrainer, GRPOConfig
 from peft import LoraConfig, get_peft_model, TaskType
 
 # ARC dataset
@@ -128,17 +128,17 @@ def create_training_prompt(problem, tokenizer):
     
     # Convert grids to strings
     train_examples_str = []
-    for i, (input_grid, output_grid) in enumerate(problem['train']):
-        input_str = '\n'.join(' '.join(str(int(cell)) for cell in row) for row in input_grid)
-        output_str = '\n'.join(' '.join(str(int(cell)) for cell in row) for row in output_grid)
+    for i, train_pair in enumerate(problem.train_pairs):
+        input_str = '\n'.join(' '.join(str(int(cell)) for cell in row) for row in train_pair.x)
+        output_str = '\n'.join(' '.join(str(int(cell)) for cell in row) for row in train_pair.y)
         train_examples_str.append(f"Example {i+1}:\nInput:\n{input_str}\n\nOutput:\n{output_str}")
     
     # Test input
-    test_input = problem['test'][0]['input']
+    test_input = problem.test_pairs[0].x
     test_input_str = '\n'.join(' '.join(str(int(cell)) for cell in row) for row in test_input)
     
     # Expected output for training
-    test_output = problem['test'][0]['output'] 
+    test_output = problem.test_pairs[0].y
     test_output_str = '\n'.join(' '.join(str(int(cell)) for cell in row) for row in test_output)
     
     user_content = f"""# ARC Puzzle Solver
@@ -196,12 +196,12 @@ class ARCDatasetFSDP(Dataset):
             return
             
         # Use first num_problems from train_problems
-        for i, (problem_id, problem_data) in enumerate(train_problems.items()):
-            if i >= num_problems:
-                break
+        for i in range(min(num_problems, len(train_problems))):
+            problem = train_problems[i]
+            problem_id = f"train_{i:03d}"
                 
             try:
-                prompt, completion = create_training_prompt(problem_data, tokenizer)
+                prompt, completion = create_training_prompt(problem, tokenizer)
                 
                 self.problems.append({
                     'problem_id': problem_id,
@@ -261,8 +261,8 @@ def wrap_model_with_fsdp(model):
     log_with_timestamp(f"✅ Model wrapped with FSDP")
     return model
 
-def load_model_and_tokenizer():
-    """Load GPT-OSS model and tokenizer with FSDP support."""
+def load_model_and_tokenizer(checkpoint_path=None):
+    """Load GPT-OSS model and tokenizer with FSDP support and optional checkpoint loading."""
     log_with_timestamp("📦 Loading GPT-OSS model and tokenizer...")
     
     model_name = "openai/gpt-oss-20b"
@@ -280,27 +280,37 @@ def load_model_and_tokenizer():
     log_with_timestamp("✅ Tokenizer loaded")
     
     # Load model with bfloat16 precision
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        torch_dtype=torch.bfloat16,
-        trust_remote_code=True,
-        device_map=None,  # Let FSDP handle device placement
-    )
-    
-    log_with_timestamp(f"✅ Base model loaded: {model.num_parameters():,} parameters")
-    
-    # Apply LoRA
-    lora_config = LoraConfig(
-        task_type=TaskType.CAUSAL_LM,
-        inference_mode=False,
-        r=16,
-        lora_alpha=32,
-        lora_dropout=0.1,
-        target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
-    )
-    
-    model = get_peft_model(model, lora_config)
-    log_with_timestamp(f"✅ LoRA applied: {model.num_parameters():,} total, {model.get_nb_trainable_parameters():,} trainable ({model.get_nb_trainable_parameters()/model.num_parameters()*100:.4f}%)")
+    if checkpoint_path and os.path.exists(checkpoint_path):
+        log_with_timestamp(f"🔄 Loading model from checkpoint: {checkpoint_path}")
+        model = AutoModelForCausalLM.from_pretrained(
+            checkpoint_path,
+            torch_dtype=torch.bfloat16,
+            trust_remote_code=True,
+            device_map=None,  # Let FSDP handle device placement
+        )
+        log_with_timestamp(f"✅ Model loaded from checkpoint: {model.num_parameters():,} parameters")
+    else:
+        log_with_timestamp(f"🔄 Loading base model from HuggingFace: {model_name}")
+        model = AutoModelForCausalLM.from_pretrained(
+            model_name,
+            torch_dtype=torch.bfloat16,
+            trust_remote_code=True,
+            device_map=None,  # Let FSDP handle device placement
+        )
+        log_with_timestamp(f"✅ Base model loaded: {model.num_parameters():,} parameters")
+        
+        # Apply LoRA only for base model (checkpoint already has LoRA)
+        lora_config = LoraConfig(
+            task_type=TaskType.CAUSAL_LM,
+            inference_mode=False,
+            r=16,
+            lora_alpha=32,
+            lora_dropout=0.1,
+            target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+        )
+        
+        model = get_peft_model(model, lora_config)
+        log_with_timestamp(f"✅ LoRA applied: {model.num_parameters():,} total, {model.get_nb_trainable_parameters():,} trainable ({model.get_nb_trainable_parameters()/model.num_parameters()*100:.4f}%)")
     
     # Wrap with FSDP
     if dist.is_initialized():
@@ -308,8 +318,8 @@ def load_model_and_tokenizer():
     
     return model, tokenizer
 
-def run_fsdp_training():
-    """Run DAPO training with FSDP."""
+def run_fsdp_training(checkpoint_path=None, output_dir=None):
+    """Run GRPO training with FSDP and checkpoint support."""
     
     # Check if distributed is initialized
     if not dist.is_initialized():
@@ -319,14 +329,18 @@ def run_fsdp_training():
         rank = dist.get_rank()
     
     if rank == 0:
-        log_with_timestamp("🚀 STARTING FSDP DAPO TRAINING")
-        log_with_timestamp("🖥️ Multi-GPU FSDP training with GRPO/DAPO")
+        log_with_timestamp("🚀 STARTING FSDP GRPO TRAINING")
+        log_with_timestamp("🖥️ Multi-GPU FSDP training with GRPO")
+        if checkpoint_path:
+            log_with_timestamp(f"🔄 Resuming from checkpoint: {checkpoint_path}")
+        if output_dir:
+            log_with_timestamp(f"💾 Output directory: {output_dir}")
     
     # Setup W&B
     config = setup_wandb()
     
     # Load model and tokenizer
-    model, tokenizer = load_model_and_tokenizer()
+    model, tokenizer = load_model_and_tokenizer(checkpoint_path)
     
     # Create dataset
     dataset = ARCDatasetFSDP(tokenizer, max_length=4096, num_problems=10)
@@ -371,43 +385,72 @@ def run_fsdp_training():
         },
     )
     
-    # DAPO configuration
-    dapo_trainer_config = {
-        'beta': 0.0,
-        'num_generations': 2,
-        'generation_batch_size': 2,
-        'steps_per_generation': 2,
-        'max_completion_length': 30000,
-        'max_prompt_length': 4096,
-        'temperature': 0.7,
-        'top_p': 0.9,
-        'loss_type': 'bnpo',
-        'epsilon': 0.2,
-        'epsilon_high': 0.28,
-        'ref_model_mixup_alpha': 0.6,
-        'ref_model_sync_steps': 512,
-        'scale_rewards': True,
-        'mask_truncated_completions': False,
-        'sync_ref_model': False,
-        'use_liger_loss': False,
-        'log_completions': False,
-        'shuffle_dataset': True,
-        'ds3_gather_for_generation': True,
-    }
+    def compute_reward(completions, prompts, **kwargs):
+        """Compute rewards for GRPO training based on channel switching detection."""
+        rewards = []
+        for completion in completions:
+            # Check for successful channel switching patterns
+            if "<|channel|>analysis<|message|>" in completion and "<|channel|>final<|message|>" in completion:
+                reward = 1.0  # High reward for proper structure
+            elif "<|channel|>" in completion:
+                reward = 0.5  # Medium reward for some channel usage
+            else:
+                reward = 0.1  # Low reward for no channel switching
+            rewards.append(reward)
+        return rewards
     
-    log_with_timestamp("🚀 Initializing DAPO trainer with FSDP...")
+    # Set default output directory if not provided
+    if output_dir is None:
+        output_dir = "/opt/dlami/nvme/gpt_oss/checkpoints_hf_trl_grpo_v2_fsdp"
+    
+    # Create output directory if it doesn't exist
+    if rank == 0:
+        os.makedirs(output_dir, exist_ok=True)
+        log_with_timestamp(f"📁 Output directory created: {output_dir}")
+    
+    # GRPO configuration 
+    grpo_config = GRPOConfig(
+        output_dir=output_dir,
+        learning_rate=5e-6,
+        per_device_train_batch_size=1,
+        gradient_accumulation_steps=4,
+        num_train_epochs=1,
+        max_steps=50,
+        warmup_steps=5,
+        logging_steps=1,
+        save_steps=25,  # Save checkpoint every 25 steps
+        save_total_limit=3,  # Keep only last 3 checkpoints
+        bf16=True,
+        gradient_checkpointing=True,
+        # Resume from checkpoint
+        resume_from_checkpoint=checkpoint_path if checkpoint_path and os.path.exists(checkpoint_path) else None,
+        # GRPO specific
+        num_generations=2,
+        generation_batch_size=2,
+        max_prompt_length=4096,
+        max_completion_length=12000,  # Reduced from 30k for stability
+        num_iterations=1,
+        epsilon=0.2,
+        beta=0.0,
+        loss_type="bnpo",
+        temperature=0.7,
+        top_p=0.9,
+        report_to=["wandb"] if rank == 0 else [],
+    )
+    
+    log_with_timestamp("🚀 Initializing GRPO trainer with FSDP...")
     
     # Initialize trainer
-    trainer = DAPOTrainer(
+    trainer = GRPOTrainer(
         model=model,
-        tokenizer=tokenizer,
-        args=training_args,
+        reward_funcs=[compute_reward],  # Required for GRPO
+        args=grpo_config,
         train_dataset=dataset,
-        **dapo_trainer_config
+        processing_class=tokenizer
     )
     
     if rank == 0:
-        log_with_timestamp(f"✅ DAPO trainer initialized")
+        log_with_timestamp(f"✅ GRPO trainer initialized")
         log_with_timestamp(f"📊 Model parameters: {model.num_parameters():,}")
         log_with_timestamp(f"📊 Training dataset size: {len(dataset)}")
         log_with_timestamp(f"🎯 Max steps: {training_args.max_steps}")
@@ -422,8 +465,30 @@ def run_fsdp_training():
         
         if rank == 0:
             # Save final model
-            trainer.save_model()
-            log_with_timestamp("💾 Final model saved")
+            final_checkpoint_path = os.path.join(output_dir, "final_checkpoint")
+            trainer.save_model(final_checkpoint_path)
+            log_with_timestamp(f"💾 Final model saved to: {final_checkpoint_path}")
+            
+            # Also save tokenizer
+            tokenizer.save_pretrained(final_checkpoint_path)
+            log_with_timestamp(f"💾 Tokenizer saved to: {final_checkpoint_path}")
+            
+            # Save training info
+            training_info = {
+                "model_name": "openai/gpt-oss-20b",
+                "training_type": "GRPO_FSDP",
+                "max_steps": grpo_config.max_steps,
+                "learning_rate": grpo_config.learning_rate,
+                "lora_r": 16,
+                "lora_alpha": 32,
+                "completion_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "num_problems": len(dataset.problems),
+                "world_size": dist.get_world_size() if dist.is_initialized() else 1
+            }
+            
+            with open(os.path.join(final_checkpoint_path, "training_info.json"), "w") as f:
+                json.dump(training_info, f, indent=2)
+            log_with_timestamp(f"💾 Training info saved to: {final_checkpoint_path}/training_info.json")
             
     except Exception as e:
         log_with_timestamp(f"❌ Training failed: {e}")
@@ -435,8 +500,12 @@ def run_fsdp_training():
 if __name__ == "__main__":
     import argparse
     
-    parser = argparse.ArgumentParser(description="GPT-OSS DAPO Training with FSDP")
+    parser = argparse.ArgumentParser(description="GPT-OSS GRPO Training with FSDP")
     parser.add_argument("--local_rank", type=int, default=0, help="Local rank for distributed training")
+    parser.add_argument("--checkpoint_path", type=str, default=None, help="Path to checkpoint to resume from")
+    parser.add_argument("--output_dir", type=str, default=None, help="Output directory for checkpoints")
+    parser.add_argument("--max_steps", type=int, default=50, help="Maximum training steps")
+    parser.add_argument("--save_steps", type=int, default=25, help="Save checkpoint every N steps")
     
     args = parser.parse_args()
     
@@ -447,7 +516,10 @@ if __name__ == "__main__":
     set_seed(42)
     
     try:
-        run_fsdp_training()
+        run_fsdp_training(
+            checkpoint_path=args.checkpoint_path,
+            output_dir=args.output_dir
+        )
     except KeyboardInterrupt:
         log_with_timestamp("⚠️ Training interrupted by user")
     except Exception as e:
