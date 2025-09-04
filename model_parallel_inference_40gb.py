@@ -228,7 +228,7 @@ class ModelParallelGPTOSS40GB:
         
         return logits
     
-    def generate_token_by_token_optimized(self, input_ids, max_new_tokens=2000, temperature=0.7, top_p=0.9):
+    def generate_token_by_token_optimized(self, input_ids, max_new_tokens=2000, temperature=0.7, top_p=0.9, eos_ids: Optional[List[int]] = None):
         """
         Generate tokens one by one with model parallelism - 40GB A100 optimized
         """
@@ -282,8 +282,8 @@ class ModelParallelGPTOSS40GB:
                     mem_alloc, _, mem_total = get_memory_info(self.device)
                     log_with_timestamp(f"🔄 Step {step}: token {next_token.item()}, {1/step_time:.2f} tok/sec, mem: {mem_alloc:.1f}GB")
                 
-                # Check for EOS tokens
-                if next_token.item() in [200002, 199998]:  # <|return|> or <|eos|>
+                # Check for EOS tokens (tokenizer-derived if provided)
+                if eos_ids and next_token.item() in eos_ids:
                     log_with_timestamp(f"🛑 EOS token reached at step {step}")
                     break
                     
@@ -380,7 +380,8 @@ Analysis and Solution:"""
             add_generation_prompt=True
         )
     
-    return prompt + "<|channel|>"
+    # Rely on chat template to add the correct assistant generation prefix
+    return prompt
 
 def run_model_parallel_inference_40gb(quantization="fp16"):
     """Run 40GB A100 optimized model parallel inference"""
@@ -419,11 +420,29 @@ def run_model_parallel_inference_40gb(quantization="fp16"):
         log_with_timestamp("🎯 Starting 40GB A100 model parallel generation...")
         
         # Generate with optimized model parallelism
+        # Derive EOS/stop token IDs from tokenizer to avoid hardcoded IDs
+        eos_list = []
+        if tokenizer.eos_token_id is not None:
+            eos_list.append(int(tokenizer.eos_token_id))
+        try:
+            ret_id = tokenizer.convert_tokens_to_ids("<|return|>")
+            if isinstance(ret_id, int) and ret_id >= 0:
+                eos_list.append(ret_id)
+        except Exception:
+            pass
+        try:
+            end_id = tokenizer.convert_tokens_to_ids("<|end|>")
+            if isinstance(end_id, int) and end_id >= 0:
+                eos_list.append(end_id)
+        except Exception:
+            pass
+
         output_tokens = model_parallel.generate_token_by_token_optimized(
             input_ids,
             max_new_tokens=2000,
             temperature=0.7,
-            top_p=0.9
+            top_p=0.9,
+            eos_ids=eos_list if eos_list else None
         )
         
         if output_tokens is not None:

@@ -195,6 +195,23 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
         
         # Generate with FIXED parameters (same as successful harmony_inference_final.py)
         with torch.no_grad():
+            # Derive safe EOS token IDs dynamically
+            eos_ids = []
+            if tokenizer.eos_token_id is not None:
+                eos_ids.append(int(tokenizer.eos_token_id))
+            try:
+                ret_id = tokenizer.convert_tokens_to_ids("<|return|>")
+                if isinstance(ret_id, int) and ret_id >= 0:
+                    eos_ids.append(ret_id)
+            except Exception:
+                pass
+            try:
+                end_id = tokenizer.convert_tokens_to_ids("<|end|>")
+                if isinstance(end_id, int) and end_id >= 0:
+                    eos_ids.append(end_id)
+            except Exception:
+                pass
+
             outputs = model.generate(
                 **inputs,
                 max_new_tokens=max_tokens,
@@ -202,7 +219,7 @@ def process_single_problem(problem_idx: int, model, tokenizer, max_tokens: int =
                 top_p=0.9,
                 do_sample=True,
                 pad_token_id=tokenizer.pad_token_id,
-                eos_token_id=[tokenizer.eos_token_id, 200002],
+                eos_token_id=eos_ids if eos_ids else tokenizer.eos_token_id,
                 # Remove problematic use_cache=False
                 # Let model use default caching behavior
             )

@@ -379,14 +379,13 @@ def continual_learning_main():
         # Create single-problem dataset using messages format
         messages = create_harmony_prompt(problem, tokenizer)
         # Convert messages to prompt using tokenizer.apply_chat_template
+        # Rely on chat template to add the correct assistant generation prefix
         prompt = tokenizer.apply_chat_template(
             messages,
             tokenize=False,
             add_generation_prompt=True,
             reasoning_effort="medium"
         )
-        # Add channel start for GPT-OSS assistant response
-        prompt = prompt + "<|channel|>"
         dataset_dict = {
             "prompt": [prompt],
             "problem_id": [problem.uid]
@@ -471,7 +470,7 @@ def continual_learning_main():
             processing_class=tokenizer,
         )
         
-        # GRPO will handle generation with 12k token limit
+        # GRPO handles generation with the configured limits
         
         try:
             logger.info(f"🎯 Starting training for problem {problem_idx + 1}...")
