@@ -1,0 +1,25 @@
+[13:38:52] [Rank 0] ✅ W&B initialized
+[13:38:52] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+[13:38:54] [Rank 0] ✅ Tokenizer loaded
+[13:38:54] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.00s/it]
+[13:39:22] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:39:22] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:39:22] [Rank 0] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:39:32] [Rank 0] ✅ Model wrapped with FSDP
+[13:39:32] [Rank 0] ✅ Loaded 10 training problems
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:39:33] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+[13:39:33] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:39:33] [Rank 0] ✅ GRPO trainer initialized
+[13:39:33] [Rank 0] 📊 Model parameters: 11,040,493,344
+[13:39:33] [Rank 0] 📊 Training dataset size: 500
+[13:39:33] [Rank 0] 🎯 Max steps: 50
+[13:39:33] [Rank 0] ================================================================================
+[13:39:33] [Rank 0] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+  0%|          | 0/50 [00:00<?, ?it/s]
+[13:39:35] [Rank 0] ❌ Training failed: mat2 must be a matrix, got 1-D tensor
+[13:39:35] [Rank 0] 📝 Full traceback saved: checkpoints_fsdp_fixed/error_rank0_20250905_133935.log

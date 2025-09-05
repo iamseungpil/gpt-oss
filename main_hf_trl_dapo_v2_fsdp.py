@@ -124,7 +124,10 @@ def setup_wandb():
     return config
 
 def create_training_prompt(problem, tokenizer):
-    """Create training prompt using tokenizer.apply_chat_template with reasoning_effort=medium."""
+    """Create training prompt using tokenizer.apply_chat_template with reasoning_effort=medium.
+
+    Harmony/chat-template only. Do not manually inject channel tokens.
+    """
     
     # Convert grids to strings
     train_examples_str = []
@@ -155,7 +158,7 @@ Please analyze the pattern and provide the solution."""
     
     # Create messages for chat template
     messages = [
-        {"role": "system", "content": "You are ChatGPT, a large language model trained by OpenAI, based on the GPT-4 architecture. You are chatting with the user via the ChatGPT iOS app. This means most of the time your lines should be a sentence or two, unless the user's request requires reasoning or long-form outputs. Never use emojis, unless explicitly asked to. Knowledge cutoff: 2023-10 Current date: 2024-07-07 Reasoning: medium"},
+        {"role": "system", "content": "You are a helpful assistant specializing in solving ARC puzzles. Provide concise reasoning and a final grid answer."},
         {"role": "user", "content": user_content}
     ]
     
@@ -174,14 +177,10 @@ Please analyze the pattern and provide the solution."""
             tokenize=False,
             add_generation_prompt=True
         )
-    
-    # Add channel start for GPT-OSS assistant response
-    prompt = prompt + "<|channel|>"
-    
-    # Create completion with channel switching and final answer
-    completion = f"<|channel|>analysis<|message|>\n\nLet me analyze the pattern in these examples...\n\n<|channel|>final<|message|>\n\n{test_output_str}<|return|>"
-    
-    return prompt, completion
+
+    # No manual channel tokens; rely on Harmony/chat template for stops
+    expected_output = test_output_str
+    return prompt, expected_output
 
 class ARCDatasetFSDP(Dataset):
     """ARC dataset for DAPO training with FSDP support."""
@@ -206,7 +205,7 @@ class ARCDatasetFSDP(Dataset):
                 self.problems.append({
                     'problem_id': problem_id,
                     'prompt': prompt,
-                    'completion': completion
+                    'expected_output': completion  # store for optional rewards/analysis
                 })
                 
             except Exception as e:
@@ -225,7 +224,6 @@ class ARCDatasetFSDP(Dataset):
         
         return {
             'prompt': problem['prompt'],
-            'completion': problem['completion'],
             'problem_id': problem['problem_id']
         }
 
@@ -247,6 +245,20 @@ def wrap_model_with_fsdp(model):
     )
     
     # Wrap model with FSDP
+    ignored = []
+    try:
+        emb = model.get_input_embeddings()
+        if emb is not None:
+            ignored.append(emb)
+    except Exception:
+        pass
+    try:
+        out_emb = model.get_output_embeddings()
+        if out_emb is not None:
+            ignored.append(out_emb)
+    except Exception:
+        pass
+
     model = FSDP(
         model,
         auto_wrap_policy=auto_wrap_policy,
@@ -256,6 +268,7 @@ def wrap_model_with_fsdp(model):
         sync_module_states=True,
         limit_all_gathers=True,
         use_orig_params=True,  # Required for LoRA
+        ignored_modules=ignored if ignored else None,
     )
     
     log_with_timestamp(f"✅ Model wrapped with FSDP")
@@ -310,11 +323,19 @@ def load_model_and_tokenizer(checkpoint_path=None):
         )
         
         model = get_peft_model(model, lora_config)
-        log_with_timestamp(f"✅ LoRA applied: {model.num_parameters():,} total, {model.get_nb_trainable_parameters():,} trainable ({model.get_nb_trainable_parameters()/model.num_parameters()*100:.4f}%)")
+        try:
+            trainable_params, total_params = model.get_nb_trainable_parameters()
+            pct = (trainable_params / total_params * 100) if total_params else 0.0
+            log_with_timestamp(
+                f"✅ LoRA applied: {total_params:,} total, {trainable_params:,} trainable ({pct:.4f}%)"
+            )
+        except Exception:
+            # Fallback if API differs
+            log_with_timestamp("✅ LoRA applied")
+
+        # Keep weights in default dtype; Accelerate/Trainer handles mixed precision (bf16)
     
-    # Wrap with FSDP
-    if dist.is_initialized():
-        model = wrap_model_with_fsdp(model)
+    # Let HF/Accelerate handle FSDP wrapping via trainer args to avoid PEFT/FSDP param shape issues
     
     return model, tokenizer
 
@@ -349,9 +370,9 @@ def run_fsdp_training(checkpoint_path=None, output_dir=None):
         log_with_timestamp("❌ No training problems loaded!")
         return
     
-    # Training arguments with FSDP settings
+    # Training arguments with FSDP settings (for logging config only)
     training_args = TrainingArguments(
-        output_dir="/opt/dlami/nvme/gpt_oss/checkpoints_hf_trl_dapo_v2_fsdp",
+        output_dir="checkpoints_fsdp_fixed",
         overwrite_output_dir=False,
         num_train_epochs=1,
         per_device_train_batch_size=1,
@@ -359,12 +380,12 @@ def run_fsdp_training(checkpoint_path=None, output_dir=None):
         warmup_steps=5,
         max_steps=50,
         learning_rate=5e-6,
-        bf16=True,
+        bf16=False,
         logging_steps=1,
-        logging_dir="/opt/dlami/nvme/gpt_oss/checkpoints_hf_trl_dapo_v2_fsdp/logs",
+        logging_dir="checkpoints_fsdp_fixed/logs",
         save_steps=25,
         save_total_limit=None,
-        gradient_checkpointing=True,
+        gradient_checkpointing=False,
         dataloader_drop_last=False,
         dataloader_num_workers=0,
         remove_unused_columns=False,
@@ -386,22 +407,25 @@ def run_fsdp_training(checkpoint_path=None, output_dir=None):
     )
     
     def compute_reward(completions, prompts, **kwargs):
-        """Compute rewards for GRPO training based on channel switching detection."""
+        """Heuristic reward: prefer grid-like outputs (digits/spaces, multiple lines)."""
+        import re
         rewards = []
+        grid_line = re.compile(r"^[0-9 ]+$")
         for completion in completions:
-            # Check for successful channel switching patterns
-            if "<|channel|>analysis<|message|>" in completion and "<|channel|>final<|message|>" in completion:
-                reward = 1.0  # High reward for proper structure
-            elif "<|channel|>" in completion:
-                reward = 0.5  # Medium reward for some channel usage
+            # Basic heuristic: multiple lines and lines look like grids of digits
+            lines = [ln.strip() for ln in completion.strip().splitlines() if ln.strip()]
+            if len(lines) >= 1 and all(grid_line.match(ln) for ln in lines):
+                reward = 1.0
+            elif len(completion.strip()) > 0:
+                reward = 0.3
             else:
-                reward = 0.1  # Low reward for no channel switching
+                reward = 0.0
             rewards.append(reward)
         return rewards
     
     # Set default output directory if not provided
     if output_dir is None:
-        output_dir = "/opt/dlami/nvme/gpt_oss/checkpoints_hf_trl_grpo_v2_fsdp"
+        output_dir = "checkpoints_fsdp_fixed"
     
     # Create output directory if it doesn't exist
     if rank == 0:
@@ -420,8 +444,14 @@ def run_fsdp_training(checkpoint_path=None, output_dir=None):
         logging_steps=1,
         save_steps=25,  # Save checkpoint every 25 steps
         save_total_limit=3,  # Keep only last 3 checkpoints
-        bf16=True,
-        gradient_checkpointing=True,
+        bf16=False,
+        gradient_checkpointing=False,
+        fsdp="full_shard auto_wrap",
+        fsdp_config={
+            "min_num_params": 1000000,
+            "activation_checkpointing": True,
+            "xla": False,
+        },
         # Resume from checkpoint
         resume_from_checkpoint=checkpoint_path if checkpoint_path and os.path.exists(checkpoint_path) else None,
         # GRPO specific
@@ -453,7 +483,7 @@ def run_fsdp_training(checkpoint_path=None, output_dir=None):
         log_with_timestamp(f"✅ GRPO trainer initialized")
         log_with_timestamp(f"📊 Model parameters: {model.num_parameters():,}")
         log_with_timestamp(f"📊 Training dataset size: {len(dataset)}")
-        log_with_timestamp(f"🎯 Max steps: {training_args.max_steps}")
+        log_with_timestamp(f"🎯 Max steps: {grpo_config.max_steps}")
         log_with_timestamp("================================================================================")
     
     # Start training
@@ -491,7 +521,18 @@ def run_fsdp_training(checkpoint_path=None, output_dir=None):
             log_with_timestamp(f"💾 Training info saved to: {final_checkpoint_path}/training_info.json")
             
     except Exception as e:
+        import traceback
+        tb = traceback.format_exc()
         log_with_timestamp(f"❌ Training failed: {e}")
+        # Persist full traceback for debugging
+        try:
+            rank_str = f"rank{rank}" if 'rank' in locals() else "rankx"
+            debug_path = os.path.join(output_dir if output_dir else '.', f"error_{rank_str}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+            with open(debug_path, 'w') as f:
+                f.write(tb)
+            log_with_timestamp(f"📝 Full traceback saved: {debug_path}")
+        except Exception:
+            pass
         raise
     finally:
         if rank == 0 and wandb.run is not None:

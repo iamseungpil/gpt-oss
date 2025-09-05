@@ -1,0 +1,62 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2_fsdp.py", line 491, in run_fsdp_training
+    trainer.train()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 4003, in training_step
+    inputs = self._prepare_inputs(inputs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 980, in _prepare_inputs
+    generation_batch = self._generate_and_score_completions(generation_batch)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1289, in _generate_and_score_completions
+    prompt_completion_ids = unwrapped_model.generate(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/peft/peft_model.py", line 1973, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/generation/utils.py", line 2539, in generate
+    result = self._sample(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/generation/utils.py", line 2867, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/utils/generic.py", line 940, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 663, in forward
+    outputs: MoeModelOutputWithPast = self.model(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 502, in forward
+    hidden_states = decoder_layer(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py", line 854, in forward
+    output = self._fsdp_wrapped_module(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/modeling_layers.py", line 94, in __call__
+    return super().__call__(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 364, in forward
+    hidden_states = self.input_layernorm(hidden_states)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 61, in forward
+    return (self.weight * hidden_states).to(input_dtype)  # main diff with Llama
+RuntimeError: The size of tensor a (0) must match the size of tensor b (2880) at non-singleton dimension 2

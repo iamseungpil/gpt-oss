@@ -1,0 +1,9 @@
+[13:31:40] [Rank 0] ✅ W&B initialized
+[13:31:40] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+[13:31:41] [Rank 0] ✅ Tokenizer loaded
+[13:31:41] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.13s/it]
+[13:32:10] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:32:10] [Rank 0] ❌ Training failed: unsupported format string passed to tuple.__format__

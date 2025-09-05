@@ -1,0 +1,14 @@
+2025-09-05 14:05:04,590 | INFO | 📦 Loading model: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+2025-09-05 14:05:06,905 | INFO | We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading checkpoint shards: 100%|██████████| 3/3 [00:03<00:00,  1.09s/it]
+trainable params: 7,962,624 || all params: 20,922,719,808 || trainable%: 0.0381
+2025-09-05 14:05:11,350 | INFO | 📊 Loaded 1 problems for continual learning
+2025-09-05 14:05:11,351 | INFO | ============================================================
+2025-09-05 14:05:11,351 | INFO | 🎯 CONTINUAL LEARNING: Problem 1/10
+2025-09-05 14:05:11,351 | INFO | 📋 Problem UID: 6d75e8bb
+2025-09-05 14:05:11,351 | INFO | ============================================================
+2025-09-05 14:05:11,538 | INFO | 🎯 Starting training for problem 1...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998, 'pad_token_id': 200002}.
+  0%|          | 0/2 [00:00<?, ?it/s]

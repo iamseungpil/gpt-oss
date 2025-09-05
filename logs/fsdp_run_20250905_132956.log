@@ -1,0 +1,2114 @@
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W905 13:31:38.420379068 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+[W905 13:31:38.421678492 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2845471:2845471 [0] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2845471:2845471 [0] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2845471:2845471 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2845471:2845471 [0] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2845472:2845472 [1] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2845472:2845472 [1] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2845472:2845472 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2845472:2845472 [1] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:31:38] ip-10-10-28-56:2845471:2845532 [0] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:31:38] ip-10-10-28-56:2845471:2845532 [0] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:31:38] ip-10-10-28-56:2845471:2845532 [0] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Using network Socket
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:31:38] ip-10-10-28-56:2845472:2845533 [1] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:31:38] ip-10-10-28-56:2845472:2845533 [1] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:31:38] ip-10-10-28-56:2845472:2845533 [1] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO Using network Socket
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO ncclCommInitRankConfig comm 0x2dfab280 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0xcedfae8a4d631940 - Init START
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO ncclCommInitRankConfig comm 0x10e255c0 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0xcedfae8a4d631940 - Init START
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO Bootstrap timings total 0.000540 (create 0.000025, send 0.000099, recv 0.000118, ring 0.000019, delay 0.000000)
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Bootstrap timings total 0.012181 (create 0.000029, send 0.000112, recv 0.011706, ring 0.000029, delay 0.000000)
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO MNNVL busId 0xa5000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO MNNVL busId 0xa4000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Setting affinity for GPU 6 to 48-95,144-191
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO Setting affinity for GPU 7 to 48-95,144-191
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO comm 0x2dfab280 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO comm 0x10e255c0 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Channel 00/02 : 0 1
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Channel 01/02 : 0 1
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0
+ip-10-10-28-56:2845472:2845537 [1] NCCL INFO [Proxy Service] Device 1 CPU core 48
+ip-10-10-28-56:2845471:2845536 [0] NCCL INFO [Proxy Service] Device 0 CPU core 58
+ip-10-10-28-56:2845471:2845538 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 155
+ip-10-10-28-56:2845472:2845539 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 60
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO CC Off, workFifoBytes 1048576
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO ncclCommInitRankConfig comm 0x10e255c0 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0xcedfae8a4d631940 - Init COMPLETE
+ip-10-10-28-56:2845472:2845533 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 0.61 (kernels 0.23, alloc 0.36, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO ncclCommInitRankConfig comm 0x2dfab280 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0xcedfae8a4d631940 - Init COMPLETE
+ip-10-10-28-56:2845471:2845532 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 0.61 (kernels 0.23, alloc 0.36, bootstrap 0.01, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2845472:2845540 [1] NCCL INFO Channel 00 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2845472:2845540 [1] NCCL INFO Channel 01 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2845471:2845541 [0] NCCL INFO Channel 00 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2845471:2845541 [0] NCCL INFO Channel 01 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2845472:2845540 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+ip-10-10-28-56:2845471:2845541 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[13:31:39] [Rank 1] ✅ NCCL communication test passed, sum: 1[13:31:39] [Rank 0] ✅ NCCL communication test passed, sum: 1
+
+[13:31:39] [Rank 1] 🚀 FSDP Distributed setup complete - Rank: 1/2
+[13:31:39] [Rank 0] 🚀 FSDP Distributed setup complete - Rank: 0/2
+[13:31:39] [Rank 0] 🚀 STARTING FSDP GRPO TRAINING
+[13:31:39] [Rank 0] 🖥️ Multi-GPU FSDP training with GRPO
+[13:31:39] [Rank 1] 📦 Loading GPT-OSS model and tokenizer...
+wandb: Currently logged in as: dbsgh797210 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+[13:31:40] [Rank 1] ✅ Tokenizer loaded
+[13:31:40] [Rank 1] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+wandb: creating run
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+wandb: Tracking run with wandb version 0.21.3
+wandb: Run data is saved locally in /home/ubuntu/gpt-oss/wandb/run-20250905_133139-8ctuw2j9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dapo-v2-fsdp-20250905-133139
+wandb: ⭐️ View project at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: 🚀 View run at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/8ctuw2j9
+[13:31:40] [Rank 0] ✅ W&B initialized
+[13:31:40] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][13:31:41] [Rank 0] ✅ Tokenizer loaded
+[13:31:41] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.58s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:22, 11.35s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.44s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.31s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.28s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.15s/it]
+[13:32:08] [Rank 1] ✅ Base model loaded: 20,914,757,184 parameters
+[13:32:08] [Rank 1] ❌ Training failed: unsupported format string passed to tuple.__format__
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.31s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.13s/it]
+[13:32:10] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:32:10] [Rank 0] ❌ Training failed: unsupported format string passed to tuple.__format__
+ip-10-10-28-56:2845472:2846087 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2845472:2846087 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2845472:2846087 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2845472:2846087 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2845472:2846087 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2845472:2846087 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2845472:2845537 [1] NCCL INFO misc/socket.cc:915 -> 3
+ip-10-10-28-56:2845472:2846087 [1] NCCL INFO comm 0x10e255c0 rank 1 nranks 2 cudaDev 1 busId a5000 - Abort COMPLETE
+W0905 13:32:12.925000 2845393 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 2845471 closing signal SIGTERM
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mdapo-v2-fsdp-20250905-133139[0m at: [34mhttps://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/8ctuw2j9[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250905_133139-8ctuw2j9/logs[0m
+E0905 13:32:14.241000 2845393 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 2845472) of binary: /home/ubuntu/miniconda3/envs/gpt-oss/bin/python
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 905, in <module>
+    main()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 277, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_hf_trl_dapo_v2_fsdp.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-05_13:32:12
+  host      : ip-10-10-28-56.ap-northeast-2.compute.internal
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2845472)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W905 13:33:07.688478597 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+[W905 13:33:07.688911957 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2846915:2846915 [0] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2846915:2846915 [0] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2846915:2846915 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2846915:2846915 [0] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2846916:2846916 [1] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2846916:2846916 [1] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2846916:2846916 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2846916:2846916 [1] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:33:08] ip-10-10-28-56:2846915:2846979 [0] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:33:08] ip-10-10-28-56:2846915:2846979 [0] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:33:08] ip-10-10-28-56:2846915:2846979 [0] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Using network Socket
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:33:08] ip-10-10-28-56:2846916:2846980 [1] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:33:08] ip-10-10-28-56:2846916:2846980 [1] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:33:08] ip-10-10-28-56:2846916:2846980 [1] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO Using network Socket
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO ncclCommInitRankConfig comm 0x30736780 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x423baa2ca9e8bf13 - Init START
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO ncclCommInitRankConfig comm 0x240a7db0 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x423baa2ca9e8bf13 - Init START
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO Bootstrap timings total 0.000517 (create 0.000025, send 0.000108, recv 0.000106, ring 0.000015, delay 0.000000)
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Bootstrap timings total 0.011702 (create 0.000031, send 0.000112, recv 0.011244, ring 0.000035, delay 0.000001)
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO MNNVL busId 0xa5000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO MNNVL busId 0xa4000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO Setting affinity for GPU 7 to 48-95,144-191
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Setting affinity for GPU 6 to 48-95,144-191
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO comm 0x30736780 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO comm 0x240a7db0 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Channel 00/02 : 0 1
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Channel 01/02 : 0 1
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0
+ip-10-10-28-56:2846916:2847006 [1] NCCL INFO [Proxy Service] Device 1 CPU core 67
+ip-10-10-28-56:2846915:2847007 [0] NCCL INFO [Proxy Service] Device 0 CPU core 56
+ip-10-10-28-56:2846916:2847008 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 164
+ip-10-10-28-56:2846915:2847009 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 153
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO CC Off, workFifoBytes 1048576
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO ncclCommInitRankConfig comm 0x240a7db0 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x423baa2ca9e8bf13 - Init COMPLETE
+ip-10-10-28-56:2846916:2846980 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 1.28 (kernels 0.90, alloc 0.37, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO ncclCommInitRankConfig comm 0x30736780 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x423baa2ca9e8bf13 - Init COMPLETE
+ip-10-10-28-56:2846915:2846979 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 1.29 (kernels 0.48, alloc 0.78, bootstrap 0.01, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2846915:2847018 [0] NCCL INFO Channel 00 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2846915:2847018 [0] NCCL INFO Channel 01 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2846916:2847019 [1] NCCL INFO Channel 00 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2846916:2847019 [1] NCCL INFO Channel 01 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2846916:2847019 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+ip-10-10-28-56:2846915:2847018 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[13:33:09] [Rank 0] ✅ NCCL communication test passed, sum: 1
+[13:33:09] [Rank 1] ✅ NCCL communication test passed, sum: 1[13:33:09] [Rank 0] 🚀 FSDP Distributed setup complete - Rank: 0/2
+
+[13:33:09] [Rank 1] 🚀 FSDP Distributed setup complete - Rank: 1/2
+[13:33:09] [Rank 0] 🚀 STARTING FSDP GRPO TRAINING[13:33:09] [Rank 1] 📦 Loading GPT-OSS model and tokenizer...
+
+[13:33:09] [Rank 0] 🖥️ Multi-GPU FSDP training with GRPO
+wandb: Currently logged in as: dbsgh797210 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+[13:33:10] [Rank 1] ✅ Tokenizer loaded
+[13:33:10] [Rank 1] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+wandb: creating run
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+wandb: Tracking run with wandb version 0.21.3
+wandb: Run data is saved locally in /home/ubuntu/gpt-oss/wandb/run-20250905_133309-tma1bpbz
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dapo-v2-fsdp-20250905-133309
+wandb: ⭐️ View project at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: 🚀 View run at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/tma1bpbz
+[13:33:10] [Rank 0] ✅ W&B initialized
+[13:33:10] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][13:33:11] [Rank 0] ✅ Tokenizer loaded
+[13:33:11] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.59s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:22, 11.43s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.44s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.37s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.35s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.20s/it]
+[13:33:38] [Rank 1] ✅ Base model loaded: 20,914,757,184 parameters
+[13:33:39] [Rank 1] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+Loading checkpoint shards: 100%|██████████| 3/3 [00:26<00:00,  8.11s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:26<00:00,  8.99s/it]
+[13:33:39] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:33:40] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:33:52] [Rank 0] ❌ Training failed: Must flatten tensors with uniform dtype but got torch.bfloat16 and torch.float32[13:33:52] [Rank 1] ❌ Training failed: Must flatten tensors with uniform dtype but got torch.bfloat16 and torch.float32
+
+ip-10-10-28-56:2846916:2847960 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2846916:2847960 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2846916:2847960 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2846916:2847960 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2846916:2847960 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2846916:2847960 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2846916:2847006 [1] NCCL INFO misc/socket.cc:915 -> 3
+ip-10-10-28-56:2846916:2847960 [1] NCCL INFO comm 0x240a7db0 rank 1 nranks 2 cudaDev 1 busId a5000 - Abort COMPLETE
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mdapo-v2-fsdp-20250905-133309[0m at: [34mhttps://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/tma1bpbz[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250905_133309-tma1bpbz/logs[0m
+[rank0]:[W905 13:33:53.904121593 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ip-10-10-28-56:2846915:2847968 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2846915:2847968 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2846915:2847968 [0] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2846915:2847007 [0] NCCL INFO misc/socket.cc:915 -> 3
+ip-10-10-28-56:2846915:2847968 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2846915:2847968 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2846915:2847968 [0] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2846915:2847968 [0] NCCL INFO comm 0x30736780 rank 0 nranks 2 cudaDev 0 busId a4000 - Abort COMPLETE
+W0905 13:33:54.573000 2846837 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 2846915 closing signal SIGTERM
+E0905 13:33:55.389000 2846837 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 2846916) of binary: /home/ubuntu/miniconda3/envs/gpt-oss/bin/python
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 905, in <module>
+    main()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 277, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_hf_trl_dapo_v2_fsdp.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-05_13:33:54
+  host      : ip-10-10-28-56.ap-northeast-2.compute.internal
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2846916)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W905 13:34:36.709504431 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+[W905 13:34:36.718327666 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2848707:2848707 [0] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2848707:2848707 [0] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2848707:2848707 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2848707:2848707 [0] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2848708:2848708 [1] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2848708:2848708 [1] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2848708:2848708 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2848708:2848708 [1] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:34:37] ip-10-10-28-56:2848707:2848778 [0] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:34:37] ip-10-10-28-56:2848707:2848778 [0] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:34:37] ip-10-10-28-56:2848707:2848778 [0] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Using network Socket
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:34:37] ip-10-10-28-56:2848708:2848779 [1] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:34:37] ip-10-10-28-56:2848708:2848779 [1] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:34:37] ip-10-10-28-56:2848708:2848779 [1] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO Using network Socket
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO ncclCommInitRankConfig comm 0x44b418f0 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x662b6932e8f38320 - Init START
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO ncclCommInitRankConfig comm 0x41b1e6b0 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x662b6932e8f38320 - Init START
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO Bootstrap timings total 0.000625 (create 0.000028, send 0.000095, recv 0.000199, ring 0.000027, delay 0.000000)
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Bootstrap timings total 0.071156 (create 0.000027, send 0.000105, recv 0.070701, ring 0.000041, delay 0.000000)
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO MNNVL busId 0xa4000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO MNNVL busId 0xa5000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO Setting affinity for GPU 7 to 48-95,144-191
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Setting affinity for GPU 6 to 48-95,144-191
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO comm 0x44b418f0 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO comm 0x41b1e6b0 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Channel 00/02 : 0 1
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Channel 01/02 : 0 1
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0
+ip-10-10-28-56:2848707:2848788 [0] NCCL INFO [Proxy Service] Device 0 CPU core 146
+ip-10-10-28-56:2848708:2848789 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 149
+ip-10-10-28-56:2848707:2848790 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 150
+ip-10-10-28-56:2848708:2848787 [1] NCCL INFO [Proxy Service] Device 1 CPU core 146
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO CC Off, workFifoBytes 1048576
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO ncclCommInitRankConfig comm 0x44b418f0 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x662b6932e8f38320 - Init COMPLETE
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO ncclCommInitRankConfig comm 0x41b1e6b0 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x662b6932e8f38320 - Init COMPLETE
+ip-10-10-28-56:2848707:2848778 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 1.30 (kernels 0.28, alloc 0.38, bootstrap 0.07, allgathers 0.00, topo 0.09, graphs 0.00, connections 0.48, rest 0.00)
+ip-10-10-28-56:2848708:2848779 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 1.30 (kernels 0.30, alloc 0.43, bootstrap 0.00, allgathers 0.00, topo 0.09, graphs 0.00, connections 0.48, rest 0.00)
+ip-10-10-28-56:2848708:2848792 [1] NCCL INFO Channel 00 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2848707:2848791 [0] NCCL INFO Channel 00 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2848708:2848792 [1] NCCL INFO Channel 01 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2848707:2848791 [0] NCCL INFO Channel 01 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2848708:2848792 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+ip-10-10-28-56:2848707:2848791 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[13:34:38] [Rank 0] ✅ NCCL communication test passed, sum: 1
+[13:34:38] [Rank 0] 🚀 FSDP Distributed setup complete - Rank: 0/2
+[13:34:38] [Rank 1] ✅ NCCL communication test passed, sum: 1
+[13:34:38] [Rank 1] 🚀 FSDP Distributed setup complete - Rank: 1/2
+[13:34:38] [Rank 1] 📦 Loading GPT-OSS model and tokenizer...
+[13:34:38] [Rank 0] 🚀 STARTING FSDP GRPO TRAINING
+[13:34:38] [Rank 0] 🖥️ Multi-GPU FSDP training with GRPO
+wandb: Currently logged in as: dbsgh797210 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: creating run
+[13:34:39] [Rank 1] ✅ Tokenizer loaded
+[13:34:39] [Rank 1] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+wandb: Tracking run with wandb version 0.21.3
+wandb: Run data is saved locally in /home/ubuntu/gpt-oss/wandb/run-20250905_133438-zrhm4qhe
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dapo-v2-fsdp-20250905-133438
+wandb: ⭐️ View project at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: 🚀 View run at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/zrhm4qhe
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+[13:34:39] [Rank 0] ✅ W&B initialized
+[13:34:39] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][13:34:41] [Rank 0] ✅ Tokenizer loaded
+[13:34:41] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.55s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:12<00:24, 12.02s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.41s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:23<00:11, 11.60s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.33s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.17s/it]
+[13:35:07] [Rank 1] ✅ Base model loaded: 20,914,757,184 parameters
+[13:35:08] [Rank 1] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:35:08] [Rank 1] 🔁 Cast model (incl. LoRA) to bfloat16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.40s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.31s/it]
+[13:35:10] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:35:10] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:35:10] [Rank 0] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:35:23] [Rank 0] ✅ Model wrapped with FSDP
+[13:35:23] [Rank 1] ✅ Model wrapped with FSDP
+[13:35:23] [Rank 1] ✅ Loaded 10 training problems
+[13:35:23] [Rank 0] ✅ Loaded 10 training problems
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:35:23] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+[13:35:24] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:35:24] [Rank 1] 🚀 Initializing GRPO trainer with FSDP...
+[13:35:24] [Rank 1] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+[13:35:24] [Rank 0] ✅ GRPO trainer initialized
+[13:35:24] [Rank 0] 📊 Model parameters: 10,461,359,904
+[13:35:24] [Rank 0] 📊 Training dataset size: 500
+[13:35:24] [Rank 0] 🎯 Max steps: 50
+[13:35:24] [Rank 0] ================================================================================
+[13:35:24] [Rank 0] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+  0%|          | 0/50 [00:00<?, ?it/s][13:35:24] [Rank 1] ❌ Training failed: 'weight' must be 2-D
+[13:35:24] [Rank 1] ❌ Training failed: 'weight' must be 2-D
+[13:35:24] [Rank 0] ❌ Training failed: 'weight' must be 2-D
+wandb: updating run metadata; uploading console lines 6-22
+ip-10-10-28-56:2848708:2849767 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2848708:2849767 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2848708:2849767 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2848708:2849767 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2848708:2849767 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2848708:2849767 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2848708:2848787 [1] NCCL INFO misc/socket.cc:915 -> 3
+wandb:                                                                                
+wandb: 🚀 View run dapo-v2-fsdp-20250905-133438 at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/zrhm4qhe
+wandb: ⭐️ View project at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250905_133438-zrhm4qhe/logs
+[13:35:25] [Rank 0] ❌ Training failed: 'weight' must be 2-D
+  0%|          | 0/50 [00:01<?, ?it/s]
+[rank0]:[W905 13:35:26.192617468 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ip-10-10-28-56:2848708:2849767 [1] NCCL INFO comm 0x41b1e6b0 rank 1 nranks 2 cudaDev 1 busId a5000 - Abort COMPLETE
+ip-10-10-28-56:2848707:2849785 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2848707:2849785 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2848707:2849785 [0] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2848707:2848788 [0] NCCL INFO misc/socket.cc:915 -> 3
+ip-10-10-28-56:2848707:2849785 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2848707:2849785 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2848707:2849785 [0] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2848707:2849785 [0] NCCL INFO comm 0x44b418f0 rank 0 nranks 2 cudaDev 0 busId a4000 - Abort COMPLETE
+W0905 13:35:27.376000 2848627 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 2848707 closing signal SIGTERM
+E0905 13:35:28.141000 2848627 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 2848708) of binary: /home/ubuntu/miniconda3/envs/gpt-oss/bin/python
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 905, in <module>
+    main()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 277, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_hf_trl_dapo_v2_fsdp.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-05_13:35:27
+  host      : ip-10-10-28-56.ap-northeast-2.compute.internal
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2848708)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W905 13:36:38.612638265 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+[W905 13:36:38.616308787 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2850718:2850718 [0] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2850718:2850718 [0] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2850718:2850718 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2850718:2850718 [0] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2850719:2850719 [1] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2850719:2850719 [1] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2850719:2850719 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2850719:2850719 [1] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:36:38] ip-10-10-28-56:2850719:2850786 [1] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:36:38] ip-10-10-28-56:2850719:2850786 [1] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:36:38] ip-10-10-28-56:2850719:2850786 [1] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO Using network Socket
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:36:38] ip-10-10-28-56:2850718:2850785 [0] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:36:38] ip-10-10-28-56:2850718:2850785 [0] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:36:38] ip-10-10-28-56:2850718:2850785 [0] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Using network Socket
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO ncclCommInitRankConfig comm 0x197b93e0 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x11430d8f9587018f - Init START
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO ncclCommInitRankConfig comm 0x1ca73ad0 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x11430d8f9587018f - Init START
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO Bootstrap timings total 0.011873 (create 0.000027, send 0.000095, recv 0.011380, ring 0.000029, delay 0.000000)
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Bootstrap timings total 0.000634 (create 0.000028, send 0.000097, recv 0.000198, ring 0.000057, delay 0.000000)
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO MNNVL busId 0xa4000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO MNNVL busId 0xa5000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO Setting affinity for GPU 7 to 48-95,144-191
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Setting affinity for GPU 6 to 48-95,144-191
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO comm 0x197b93e0 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO comm 0x1ca73ad0 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Channel 00/02 : 0 1
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Channel 01/02 : 0 1
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2850719:2850790 [1] NCCL INFO [Proxy Service] Device 1 CPU core 52
+ip-10-10-28-56:2850719:2850791 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 53
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0
+ip-10-10-28-56:2850718:2850792 [0] NCCL INFO [Proxy Service] Device 0 CPU core 145
+ip-10-10-28-56:2850718:2850793 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 150
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO CC Off, workFifoBytes 1048576
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO ncclCommInitRankConfig comm 0x197b93e0 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x11430d8f9587018f - Init COMPLETE
+ip-10-10-28-56:2850719:2850786 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 0.63 (kernels 0.23, alloc 0.36, bootstrap 0.01, allgathers 0.01, topo 0.02, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO ncclCommInitRankConfig comm 0x1ca73ad0 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x11430d8f9587018f - Init COMPLETE
+ip-10-10-28-56:2850718:2850785 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 0.63 (kernels 0.23, alloc 0.37, bootstrap 0.00, allgathers 0.01, topo 0.02, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2850719:2850795 [1] NCCL INFO Channel 00 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2850718:2850796 [0] NCCL INFO Channel 00 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2850719:2850795 [1] NCCL INFO Channel 01 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2850718:2850796 [0] NCCL INFO Channel 01 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2850718:2850796 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+ip-10-10-28-56:2850719:2850795 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[13:36:39] [Rank 0] ✅ NCCL communication test passed, sum: 1
+[13:36:39] [Rank 1] ✅ NCCL communication test passed, sum: 1
+[13:36:39] [Rank 0] 🚀 FSDP Distributed setup complete - Rank: 0/2
+[13:36:39] [Rank 1] 🚀 FSDP Distributed setup complete - Rank: 1/2
+[13:36:39] [Rank 0] 🚀 STARTING FSDP GRPO TRAINING
+[13:36:39] [Rank 0] 🖥️ Multi-GPU FSDP training with GRPO
+[13:36:39] [Rank 1] 📦 Loading GPT-OSS model and tokenizer...
+wandb: Currently logged in as: dbsgh797210 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+[13:36:40] [Rank 1] ✅ Tokenizer loaded
+[13:36:40] [Rank 1] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+wandb: creating run
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+wandb: Tracking run with wandb version 0.21.3
+wandb: Run data is saved locally in /home/ubuntu/gpt-oss/wandb/run-20250905_133639-2o08mf42
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dapo-v2-fsdp-20250905-133639
+wandb: ⭐️ View project at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: 🚀 View run at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/2o08mf42
+[13:36:40] [Rank 0] ✅ W&B initialized
+[13:36:40] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][13:36:42] [Rank 0] ✅ Tokenizer loaded
+[13:36:42] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:12<00:24, 12.00s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.50s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:23<00:11, 11.59s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.39s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.24s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.19s/it]
+[13:37:09] [Rank 1] ✅ Base model loaded: 20,914,757,184 parameters
+[13:37:09] [Rank 1] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:37:09] [Rank 1] 🔁 Cast model (incl. LoRA) to bfloat16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.32s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.16s/it]
+[13:37:10] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:37:10] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:37:10] [Rank 0] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:37:21] [Rank 1] ✅ Model wrapped with FSDP
+[13:37:21] [Rank 0] ✅ Model wrapped with FSDP
+[13:37:21] [Rank 1] ✅ Loaded 10 training problems
+[13:37:21] [Rank 0] ✅ Loaded 10 training problems
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:37:21] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+[13:37:22] [Rank 1] 🚀 Initializing GRPO trainer with FSDP...
+[13:37:22] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:37:22] [Rank 1] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+[13:37:22] [Rank 0] ✅ GRPO trainer initialized
+[13:37:22] [Rank 0] 📊 Model parameters: 10,461,359,904
+[13:37:22] [Rank 0] 📊 Training dataset size: 500
+[13:37:22] [Rank 0] 🎯 Max steps: 50
+[13:37:22] [Rank 0] ================================================================================
+[13:37:22] [Rank 0] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+  0%|          | 0/50 [00:00<?, ?it/s][13:37:22] [Rank 0] ❌ Training failed: 'weight' must be 2-D
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2_fsdp.py", line 476, in run_fsdp_training
+    trainer.train()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 4003, in training_step
+    inputs = self._prepare_inputs(inputs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 980, in _prepare_inputs
+    generation_batch = self._generate_and_score_completions(generation_batch)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1289, in _generate_and_score_completions
+    prompt_completion_ids = unwrapped_model.generate(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/peft/peft_model.py", line 1973, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/generation/utils.py", line 2539, in generate
+    result = self._sample(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/generation/utils.py", line 2867, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/utils/generic.py", line 940, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 663, in forward
+    outputs: MoeModelOutputWithPast = self.model(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 474, in forward
+    inputs_embeds = self.embed_tokens(input_ids)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/sparse.py", line 192, in forward
+    return F.embedding(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/functional.py", line 2546, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+RuntimeError: 'weight' must be 2-D
+[13:37:22] [Rank 1] ❌ Training failed: 'weight' must be 2-D
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2_fsdp.py", line 476, in run_fsdp_training
+    trainer.train()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 4003, in training_step
+    inputs = self._prepare_inputs(inputs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 980, in _prepare_inputs
+    generation_batch = self._generate_and_score_completions(generation_batch)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1289, in _generate_and_score_completions
+    prompt_completion_ids = unwrapped_model.generate(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/peft/peft_model.py", line 1973, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/generation/utils.py", line 2539, in generate
+    result = self._sample(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/generation/utils.py", line 2867, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/utils/generic.py", line 940, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 663, in forward
+    outputs: MoeModelOutputWithPast = self.model(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 474, in forward
+    inputs_embeds = self.embed_tokens(input_ids)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/sparse.py", line 192, in forward
+    return F.embedding(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/functional.py", line 2546, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+RuntimeError: 'weight' must be 2-D
+
+[13:37:22] [Rank 1] ❌ Training failed: 'weight' must be 2-D
+
+wandb: updating run metadata
+ip-10-10-28-56:2850719:2851743 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2850719:2851743 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2850719:2851743 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2850719:2851743 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2850719:2851743 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2850719:2851743 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2850719:2850790 [1] NCCL INFO misc/socket.cc:915 -> 3
+wandb: uploading summary, console lines 8-71
+ip-10-10-28-56:2850719:2851743 [1] NCCL INFO comm 0x197b93e0 rank 1 nranks 2 cudaDev 1 busId a5000 - Abort COMPLETE
+wandb:                                                                                
+wandb: 🚀 View run dapo-v2-fsdp-20250905-133639 at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/2o08mf42
+wandb: ⭐️ View project at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250905_133639-2o08mf42/logs
+[13:37:23] [Rank 0] ❌ Training failed: 'weight' must be 2-D
+  0%|          | 0/50 [00:01<?, ?it/s]
+[rank0]:[W905 13:37:24.239226991 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ip-10-10-28-56:2850718:2851750 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2850718:2851750 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2850718:2851750 [0] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2850718:2850792 [0] NCCL INFO misc/socket.cc:915 -> 3
+ip-10-10-28-56:2850718:2851750 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2850718:2851750 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2850718:2851750 [0] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2850718:2851750 [0] NCCL INFO comm 0x1ca73ad0 rank 0 nranks 2 cudaDev 0 busId a4000 - Abort COMPLETE
+W0905 13:37:25.070000 2850650 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 2850718 closing signal SIGTERM
+E0905 13:37:25.985000 2850650 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 2850719) of binary: /home/ubuntu/miniconda3/envs/gpt-oss/bin/python
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 905, in <module>
+    main()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 277, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_hf_trl_dapo_v2_fsdp.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-05_13:37:25
+  host      : ip-10-10-28-56.ap-northeast-2.compute.internal
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2850719)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W905 13:38:50.023713022 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+[W905 13:38:50.026903307 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2853070:2853070 [0] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2853070:2853070 [0] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2853070:2853070 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2853070:2853070 [0] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2853071:2853071 [1] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2853071:2853071 [1] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2853071:2853071 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2853071:2853071 [1] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:38:50] ip-10-10-28-56:2853071:2853132 [1] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:38:50] ip-10-10-28-56:2853071:2853132 [1] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:38:50] ip-10-10-28-56:2853071:2853132 [1] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:38:50] ip-10-10-28-56:2853070:2853131 [0] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:38:50] ip-10-10-28-56:2853070:2853131 [0] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:38:50] ip-10-10-28-56:2853070:2853131 [0] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO Using network Socket
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Using network Socket
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO ncclCommInitRankConfig comm 0x24926600 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0xd71dd11394a07312 - Init START
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO ncclCommInitRankConfig comm 0x1ce61260 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0xd71dd11394a07312 - Init START
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO Bootstrap timings total 0.000525 (create 0.000026, send 0.000097, recv 0.000116, ring 0.000018, delay 0.000000)
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Bootstrap timings total 0.010042 (create 0.000035, send 0.000104, recv 0.009579, ring 0.000020, delay 0.000000)
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO MNNVL busId 0xa4000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO MNNVL busId 0xa5000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Setting affinity for GPU 6 to 48-95,144-191
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO Setting affinity for GPU 7 to 48-95,144-191
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO comm 0x24926600 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO comm 0x1ce61260 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Channel 00/02 : 0 1
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Channel 01/02 : 0 1
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0
+ip-10-10-28-56:2853071:2853161 [1] NCCL INFO [Proxy Service] Device 1 CPU core 56
+ip-10-10-28-56:2853070:2853160 [0] NCCL INFO [Proxy Service] Device 0 CPU core 49
+ip-10-10-28-56:2853071:2853162 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 153
+ip-10-10-28-56:2853070:2853163 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 57
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO CC Off, workFifoBytes 1048576
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO ncclCommInitRankConfig comm 0x24926600 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0xd71dd11394a07312 - Init COMPLETE
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO ncclCommInitRankConfig comm 0x1ce61260 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0xd71dd11394a07312 - Init COMPLETE
+ip-10-10-28-56:2853070:2853131 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 0.77 (kernels 0.26, alloc 0.45, bootstrap 0.01, allgathers 0.00, topo 0.02, graphs 0.00, connections 0.04, rest 0.00)
+ip-10-10-28-56:2853071:2853132 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 0.77 (kernels 0.26, alloc 0.45, bootstrap 0.00, allgathers 0.00, topo 0.02, graphs 0.00, connections 0.04, rest 0.00)
+ip-10-10-28-56:2853070:2853174 [0] NCCL INFO Channel 00 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2853070:2853174 [0] NCCL INFO Channel 01 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2853071:2853175 [1] NCCL INFO Channel 00 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2853071:2853175 [1] NCCL INFO Channel 01 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2853071:2853175 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+ip-10-10-28-56:2853070:2853174 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[13:38:51] [Rank 0] ✅ NCCL communication test passed, sum: 1
+[13:38:51] [Rank 0] 🚀 FSDP Distributed setup complete - Rank: 0/2[13:38:51] [Rank 1] ✅ NCCL communication test passed, sum: 1
+
+[13:38:51] [Rank 1] 🚀 FSDP Distributed setup complete - Rank: 1/2
+[13:38:51] [Rank 0] 🚀 STARTING FSDP GRPO TRAINING
+[13:38:51] [Rank 1] 📦 Loading GPT-OSS model and tokenizer...[13:38:51] [Rank 0] 🖥️ Multi-GPU FSDP training with GRPO
+
+wandb: Currently logged in as: dbsgh797210 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: creating run
+[13:38:52] [Rank 1] ✅ Tokenizer loaded
+[13:38:52] [Rank 1] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+wandb: Tracking run with wandb version 0.21.3
+wandb: Run data is saved locally in /home/ubuntu/gpt-oss/wandb/run-20250905_133851-v3nx5d6h
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dapo-v2-fsdp-20250905-133851
+wandb: ⭐️ View project at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: 🚀 View run at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/v3nx5d6h
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+[13:38:52] [Rank 0] ✅ W&B initialized
+[13:38:52] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][13:38:54] [Rank 0] ✅ Tokenizer loaded
+[13:38:54] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:22, 11.23s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:22, 11.44s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.28s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.37s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.26s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.07s/it]
+[13:39:20] [Rank 1] ✅ Base model loaded: 20,914,757,184 parameters
+[13:39:21] [Rank 1] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:39:21] [Rank 1] 🔁 Cast model (incl. LoRA) to bfloat16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.12s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.00s/it]
+[13:39:22] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:39:22] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:39:22] [Rank 0] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:39:32] [Rank 1] ✅ Model wrapped with FSDP
+[13:39:32] [Rank 0] ✅ Model wrapped with FSDP
+[13:39:32] [Rank 1] ✅ Loaded 10 training problems
+[13:39:32] [Rank 0] ✅ Loaded 10 training problems
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:39:33] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+[13:39:33] [Rank 1] 🚀 Initializing GRPO trainer with FSDP...
+[13:39:33] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:39:33] [Rank 1] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+[13:39:33] [Rank 0] ✅ GRPO trainer initialized
+[13:39:33] [Rank 0] 📊 Model parameters: 11,040,493,344
+[13:39:33] [Rank 0] 📊 Training dataset size: 500
+[13:39:33] [Rank 0] 🎯 Max steps: 50
+[13:39:33] [Rank 0] ================================================================================
+[13:39:33] [Rank 0] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+  0%|          | 0/50 [00:00<?, ?it/s][13:39:35] [Rank 0] ❌ Training failed: mat2 must be a matrix, got 1-D tensor[13:39:35] [Rank 1] ❌ Training failed: The size of tensor a (0) must match the size of tensor b (2880) at non-singleton dimension 2
+
+[13:39:35] [Rank 1] 📝 Full traceback saved: checkpoints_fsdp_fixed/error_rank1_20250905_133935.log
+[13:39:35] [Rank 1] ❌ Training failed: The size of tensor a (0) must match the size of tensor b (2880) at non-singleton dimension 2
+[13:39:35] [Rank 0] 📝 Full traceback saved: checkpoints_fsdp_fixed/error_rank0_20250905_133935.log
+wandb: updating run metadata
+ip-10-10-28-56:2853071:2854123 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2853071:2854123 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2853071:2854123 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2853071:2854123 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2853071:2854123 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2853071:2854123 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2853071:2853161 [1] NCCL INFO misc/socket.cc:915 -> 3
+ip-10-10-28-56:2853071:2854123 [1] NCCL INFO comm 0x1ce61260 rank 1 nranks 2 cudaDev 1 busId a5000 - Abort COMPLETE
+wandb: uploading summary, console lines 10-24
+wandb:                                                                                
+wandb: 🚀 View run dapo-v2-fsdp-20250905-133851 at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/v3nx5d6h
+wandb: ⭐️ View project at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250905_133851-v3nx5d6h/logs
+[13:39:36] [Rank 0] ❌ Training failed: mat2 must be a matrix, got 1-D tensor
+  0%|          | 0/50 [00:01<?, ?it/s]
+[rank0]:[W905 13:39:36.668566338 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ip-10-10-28-56:2853070:2854142 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2853070:2854142 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2853070:2854142 [0] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2853070:2853160 [0] NCCL INFO misc/socket.cc:915 -> 3
+ip-10-10-28-56:2853070:2854142 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2853070:2854142 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2853070:2854142 [0] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2853070:2854142 [0] NCCL INFO comm 0x24926600 rank 0 nranks 2 cudaDev 0 busId a4000 - Abort COMPLETE
+W0905 13:39:37.800000 2852999 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 2853070 closing signal SIGTERM
+E0905 13:39:38.765000 2852999 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 2853071) of binary: /home/ubuntu/miniconda3/envs/gpt-oss/bin/python
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 905, in <module>
+    main()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 277, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_hf_trl_dapo_v2_fsdp.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-05_13:39:37
+  host      : ip-10-10-28-56.ap-northeast-2.compute.internal
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2853071)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W905 13:40:41.618826993 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+[W905 13:40:41.620692693 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2855028:2855028 [0] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2855028:2855028 [0] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2855028:2855028 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2855028:2855028 [0] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2855029:2855029 [1] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2855029:2855029 [1] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2855029:2855029 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2855029:2855029 [1] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:40:41] ip-10-10-28-56:2855028:2855100 [0] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:40:41] ip-10-10-28-56:2855028:2855100 [0] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:40:41] ip-10-10-28-56:2855028:2855100 [0] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Using network Socket
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:40:41] ip-10-10-28-56:2855029:2855101 [1] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:40:41] ip-10-10-28-56:2855029:2855101 [1] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:40:41] ip-10-10-28-56:2855029:2855101 [1] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO Using network Socket
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO ncclCommInitRankConfig comm 0x33c2f7d0 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x31c62760ee798243 - Init START
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO ncclCommInitRankConfig comm 0x2bfc2a20 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x31c62760ee798243 - Init START
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO Bootstrap timings total 0.000540 (create 0.000026, send 0.000113, recv 0.000115, ring 0.000015, delay 0.000000)
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Bootstrap timings total 0.011936 (create 0.000028, send 0.000103, recv 0.011488, ring 0.000019, delay 0.000000)
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO MNNVL busId 0xa5000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO MNNVL busId 0xa4000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO Setting affinity for GPU 7 to 48-95,144-191
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Setting affinity for GPU 6 to 48-95,144-191
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO comm 0x33c2f7d0 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO comm 0x2bfc2a20 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Channel 00/02 : 0 1
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Channel 01/02 : 0 1
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0
+ip-10-10-28-56:2855029:2855104 [1] NCCL INFO [Proxy Service] Device 1 CPU core 151
+ip-10-10-28-56:2855028:2855105 [0] NCCL INFO [Proxy Service] Device 0 CPU core 152
+ip-10-10-28-56:2855029:2855106 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 153
+ip-10-10-28-56:2855028:2855107 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 154
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO CC Off, workFifoBytes 1048576
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO ncclCommInitRankConfig comm 0x2bfc2a20 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x31c62760ee798243 - Init COMPLETE
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2855029:2855101 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 0.62 (kernels 0.23, alloc 0.37, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO ncclCommInitRankConfig comm 0x33c2f7d0 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x31c62760ee798243 - Init COMPLETE
+ip-10-10-28-56:2855028:2855100 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 0.62 (kernels 0.23, alloc 0.37, bootstrap 0.01, allgathers 0.00, topo 0.02, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2855028:2855108 [0] NCCL INFO Channel 00 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2855029:2855109 [1] NCCL INFO Channel 00 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2855028:2855108 [0] NCCL INFO Channel 01 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2855029:2855109 [1] NCCL INFO Channel 01 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2855029:2855109 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+ip-10-10-28-56:2855028:2855108 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[13:40:42] [Rank 0] ✅ NCCL communication test passed, sum: 1[13:40:42] [Rank 1] ✅ NCCL communication test passed, sum: 1
+
+[13:40:42] [Rank 0] 🚀 FSDP Distributed setup complete - Rank: 0/2[13:40:42] [Rank 1] 🚀 FSDP Distributed setup complete - Rank: 1/2
+
+[13:40:42] [Rank 0] 🚀 STARTING FSDP GRPO TRAINING
+[13:40:42] [Rank 0] 🖥️ Multi-GPU FSDP training with GRPO
+[13:40:42] [Rank 1] 📦 Loading GPT-OSS model and tokenizer...
+wandb: Currently logged in as: dbsgh797210 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+[13:40:43] [Rank 1] ✅ Tokenizer loaded
+[13:40:43] [Rank 1] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+wandb: Tracking run with wandb version 0.21.3
+wandb: Run data is saved locally in /home/ubuntu/gpt-oss/wandb/run-20250905_134042-hjlesp1w
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dapo-v2-fsdp-20250905-134042
+wandb: ⭐️ View project at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: 🚀 View run at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/hjlesp1w
+[13:40:43] [Rank 0] ✅ W&B initialized
+[13:40:43] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][13:40:45] [Rank 0] ✅ Tokenizer loaded
+[13:40:45] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.80s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:22, 11.48s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:23<00:11, 11.52s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.39s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.38s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.25s/it]
+[13:41:12] [Rank 1] ✅ Base model loaded: 20,914,757,184 parameters
+[13:41:13] [Rank 1] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:41:13] [Rank 1] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:41:13] [Rank 1] ✅ Loaded 10 training problems
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.30s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.15s/it]
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:41:13] [Rank 1] 🚀 Initializing GRPO trainer with FSDP...
+[13:41:13] [Rank 1] ❌ Training failed: The activation_checkpointing in FSDP config and the gradient_checkpointing in training arg can't be set to True simultaneously. Please use FSDP's activation_checkpointing logic when using FSDP.
+[13:41:13] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:41:13] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:41:13] [Rank 0] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:41:13] [Rank 0] ✅ Loaded 10 training problems
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:41:14] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:41:14] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:41:14] [Rank 0] ❌ Training failed: The activation_checkpointing in FSDP config and the gradient_checkpointing in training arg can't be set to True simultaneously. Please use FSDP's activation_checkpointing logic when using FSDP.
+ip-10-10-28-56:2855029:2855874 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2855029:2855874 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2855029:2855874 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2855029:2855874 [1] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2855029:2855874 [1] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2855029:2855874 [1] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2855029:2855104 [1] NCCL INFO misc/socket.cc:915 -> 3
+ip-10-10-28-56:2855029:2855874 [1] NCCL INFO comm 0x2bfc2a20 rank 1 nranks 2 cudaDev 1 busId a5000 - Abort COMPLETE
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mdapo-v2-fsdp-20250905-134042[0m at: [34mhttps://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/hjlesp1w[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250905_134042-hjlesp1w/logs[0m
+[rank0]:[W905 13:41:17.453723339 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ip-10-10-28-56:2855028:2856024 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2855028:2856024 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2855028:2856024 [0] NCCL INFO misc/socket.cc:863 -> 3
+ip-10-10-28-56:2855028:2855105 [0] NCCL INFO misc/socket.cc:915 -> 3
+ip-10-10-28-56:2855028:2856024 [0] NCCL INFO misc/socket.cc:64 -> 3
+ip-10-10-28-56:2855028:2856024 [0] NCCL INFO misc/socket.cc:81 -> 3
+ip-10-10-28-56:2855028:2856024 [0] NCCL INFO misc/socket.cc:863 -> 3
+W0905 13:41:17.516000 2854947 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 2855028 closing signal SIGTERM
+E0905 13:41:18.481000 2854947 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 2855029) of binary: /home/ubuntu/miniconda3/envs/gpt-oss/bin/python
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 905, in <module>
+    main()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 277, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_hf_trl_dapo_v2_fsdp.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-05_13:41:17
+  host      : ip-10-10-28-56.ap-northeast-2.compute.internal
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2855029)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W905 13:42:00.718499764 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2856400:2856400 [0] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2856400:2856400 [0] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2856400:2856400 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2856400:2856400 [0] NCCL INFO Comm config Blocking set to 1
+[W905 13:42:00.724920086 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2856401:2856401 [1] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2856401:2856401 [1] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2856401:2856401 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2856401:2856401 [1] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:42:00] ip-10-10-28-56:2856400:2856468 [0] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:42:00] ip-10-10-28-56:2856400:2856468 [0] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:42:00] ip-10-10-28-56:2856400:2856468 [0] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Using network Socket
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:42:00] ip-10-10-28-56:2856401:2856469 [1] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:42:00] ip-10-10-28-56:2856401:2856469 [1] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:42:00] ip-10-10-28-56:2856401:2856469 [1] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO Using network Socket
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO ncclCommInitRankConfig comm 0x369a29a0 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x333dc60805e764c6 - Init START
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO ncclCommInitRankConfig comm 0x11858530 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x333dc60805e764c6 - Init START
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO Bootstrap timings total 0.000514 (create 0.000029, send 0.000098, recv 0.000115, ring 0.000023, delay 0.000000)
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Bootstrap timings total 0.011726 (create 0.000029, send 0.000101, recv 0.011292, ring 0.000016, delay 0.000000)
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO MNNVL busId 0xa5000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO MNNVL busId 0xa4000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO Setting affinity for GPU 7 to 48-95,144-191
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Setting affinity for GPU 6 to 48-95,144-191
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO comm 0x369a29a0 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO comm 0x11858530 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Channel 00/02 : 0 1
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Channel 01/02 : 0 1
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0
+ip-10-10-28-56:2856401:2856485 [1] NCCL INFO [Proxy Service] Device 1 CPU core 57
+ip-10-10-28-56:2856400:2856484 [0] NCCL INFO [Proxy Service] Device 0 CPU core 48
+ip-10-10-28-56:2856401:2856486 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 58
+ip-10-10-28-56:2856400:2856487 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 155
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO CC Off, workFifoBytes 1048576
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO ncclCommInitRankConfig comm 0x11858530 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x333dc60805e764c6 - Init COMPLETE
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO ncclCommInitRankConfig comm 0x369a29a0 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x333dc60805e764c6 - Init COMPLETE
+ip-10-10-28-56:2856401:2856469 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 0.62 (kernels 0.23, alloc 0.37, bootstrap 0.00, allgathers 0.00, topo 0.02, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2856400:2856468 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 0.63 (kernels 0.23, alloc 0.36, bootstrap 0.01, allgathers 0.00, topo 0.02, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2856400:2856489 [0] NCCL INFO Channel 00 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2856401:2856488 [1] NCCL INFO Channel 00 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2856400:2856489 [0] NCCL INFO Channel 01 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2856401:2856488 [1] NCCL INFO Channel 01 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2856401:2856488 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+ip-10-10-28-56:2856400:2856489 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[13:42:01] [Rank 1] ✅ NCCL communication test passed, sum: 1[13:42:01] [Rank 0] ✅ NCCL communication test passed, sum: 1
+
+[13:42:01] [Rank 0] 🚀 FSDP Distributed setup complete - Rank: 0/2
+[13:42:01] [Rank 1] 🚀 FSDP Distributed setup complete - Rank: 1/2
+[13:42:01] [Rank 0] 🚀 STARTING FSDP GRPO TRAINING
+[13:42:01] [Rank 0] 🖥️ Multi-GPU FSDP training with GRPO
+[13:42:01] [Rank 1] 📦 Loading GPT-OSS model and tokenizer...
+wandb: Currently logged in as: dbsgh797210 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+[13:42:02] [Rank 1] ✅ Tokenizer loaded
+[13:42:02] [Rank 1] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+wandb: creating run
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+wandb: Tracking run with wandb version 0.21.3
+wandb: Run data is saved locally in /home/ubuntu/gpt-oss/wandb/run-20250905_134201-556yx884
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dapo-v2-fsdp-20250905-134201
+wandb: ⭐️ View project at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: 🚀 View run at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/556yx884
+[13:42:02] [Rank 0] ✅ W&B initialized
+[13:42:02] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][13:42:04] [Rank 0] ✅ Tokenizer loaded
+[13:42:04] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:22, 11.40s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.59s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.36s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.42s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.27s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.11s/it]
+[13:42:30] [Rank 1] ✅ Base model loaded: 20,914,757,184 parameters
+[13:42:31] [Rank 1] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:42:31] [Rank 1] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:42:31] [Rank 1] ✅ Loaded 10 training problems
+[13:42:31] [Rank 1] 🚀 Initializing GRPO trainer with FSDP...
+[13:42:31] [Rank 1] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.34s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.19s/it]
+[13:42:33] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:42:33] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:42:33] [Rank 0] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:42:33] [Rank 0] ✅ Loaded 10 training problems
+[13:42:33] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+[13:42:33] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:42:33] [Rank 0] ✅ GRPO trainer initialized
+[13:42:33] [Rank 0] 📊 Model parameters: 20,922,719,808
+[13:42:33] [Rank 0] 📊 Training dataset size: 500
+[13:42:33] [Rank 0] 🎯 Max steps: 50
+[13:42:33] [Rank 0] ================================================================================
+[13:42:33] [Rank 0] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+  0%|          | 0/50 [00:00<?, ?it/s][13:42:52] [Rank 1] ❌ Training failed: expected mat1 and mat2 to have the same dtype, but got: float != c10::BFloat16
+[13:42:52] [Rank 0] ❌ Training failed: expected mat1 and mat2 to have the same dtype, but got: float != c10::BFloat16[13:42:52] [Rank 1] 📝 Full traceback saved: checkpoints_fsdp_fixed/error_rank1_20250905_134252.log
+[13:42:52] [Rank 1] ❌ Training failed: expected mat1 and mat2 to have the same dtype, but got: float != c10::BFloat16
+
+[13:42:52] [Rank 0] 📝 Full traceback saved: checkpoints_fsdp_fixed/error_rank0_20250905_134252.log
+wandb: updating run metadata
+ip-10-10-28-56:2856400:2856484 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+wandb: uploading summary, console lines 20-22
+wandb:                                                                                
+wandb: 🚀 View run dapo-v2-fsdp-20250905-134201 at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/556yx884
+wandb: ⭐️ View project at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250905_134201-556yx884/logs
+[13:42:53] [Rank 0] ❌ Training failed: expected mat1 and mat2 to have the same dtype, but got: float != c10::BFloat16
+  0%|          | 0/50 [00:05<?, ?it/s]
+W0905 13:42:54.603000 2856329 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 2856400 closing signal SIGTERM
+E0905 13:42:55.469000 2856329 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 2856401) of binary: /home/ubuntu/miniconda3/envs/gpt-oss/bin/python
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 905, in <module>
+    main()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 277, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_hf_trl_dapo_v2_fsdp.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-05_13:42:54
+  host      : ip-10-10-28-56.ap-northeast-2.compute.internal
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2856401)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W905 13:43:49.145932634 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+[W905 13:43:49.147208687 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2858408:2858408 [0] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2858408:2858408 [0] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2858408:2858408 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2858408:2858408 [0] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2858409:2858409 [1] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2858409:2858409 [1] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2858409:2858409 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2858409:2858409 [1] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:43:49] ip-10-10-28-56:2858409:2858469 [1] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:43:49] ip-10-10-28-56:2858409:2858469 [1] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:43:49] ip-10-10-28-56:2858409:2858469 [1] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO Using network Socket
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:43:49] ip-10-10-28-56:2858408:2858468 [0] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:43:49] ip-10-10-28-56:2858408:2858468 [0] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:43:49] ip-10-10-28-56:2858408:2858468 [0] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Using network Socket
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO ncclCommInitRankConfig comm 0x3b2f4a70 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x264da005e3969178 - Init START
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO ncclCommInitRankConfig comm 0x495a9960 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x264da005e3969178 - Init START
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO Bootstrap timings total 0.034650 (create 0.000028, send 0.000113, recv 0.034183, ring 0.000023, delay 0.000000)
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Bootstrap timings total 0.000606 (create 0.000027, send 0.000100, recv 0.000174, ring 0.000040, delay 0.000000)
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO MNNVL busId 0xa4000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO MNNVL busId 0xa5000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Setting affinity for GPU 6 to 48-95,144-191
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO Setting affinity for GPU 7 to 48-95,144-191
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO comm 0x3b2f4a70 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO comm 0x495a9960 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Channel 00/02 : 0 1
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Channel 01/02 : 0 1
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0
+ip-10-10-28-56:2858409:2858474 [1] NCCL INFO [Proxy Service] Device 1 CPU core 149
+ip-10-10-28-56:2858409:2858476 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 50
+ip-10-10-28-56:2858408:2858475 [0] NCCL INFO [Proxy Service] Device 0 CPU core 152
+ip-10-10-28-56:2858408:2858477 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 55
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO CC Off, workFifoBytes 1048576
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO ncclCommInitRankConfig comm 0x3b2f4a70 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x264da005e3969178 - Init COMPLETE
+ip-10-10-28-56:2858409:2858469 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 0.62 (kernels 0.23, alloc 0.34, bootstrap 0.03, allgathers 0.00, topo 0.02, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO ncclCommInitRankConfig comm 0x495a9960 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x264da005e3969178 - Init COMPLETE
+ip-10-10-28-56:2858408:2858468 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 0.63 (kernels 0.24, alloc 0.37, bootstrap 0.00, allgathers 0.00, topo 0.02, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2858409:2858478 [1] NCCL INFO Channel 00 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2858408:2858479 [0] NCCL INFO Channel 00 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2858409:2858478 [1] NCCL INFO Channel 01 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2858408:2858479 [0] NCCL INFO Channel 01 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2858409:2858478 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+ip-10-10-28-56:2858408:2858479 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[13:43:49] [Rank 1] ✅ NCCL communication test passed, sum: 1
+[13:43:49] [Rank 1] 🚀 FSDP Distributed setup complete - Rank: 1/2
+[13:43:49] [Rank 0] ✅ NCCL communication test passed, sum: 1
+[13:43:49] [Rank 0] 🚀 FSDP Distributed setup complete - Rank: 0/2
+[13:43:49] [Rank 1] 📦 Loading GPT-OSS model and tokenizer...
+[13:43:49] [Rank 0] 🚀 STARTING FSDP GRPO TRAINING
+[13:43:49] [Rank 0] 🖥️ Multi-GPU FSDP training with GRPO
+wandb: Currently logged in as: dbsgh797210 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+[13:43:51] [Rank 1] ✅ Tokenizer loaded
+[13:43:51] [Rank 1] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+wandb: creating run
+wandb: Tracking run with wandb version 0.21.3
+wandb: Run data is saved locally in /home/ubuntu/gpt-oss/wandb/run-20250905_134350-etlioio9
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dapo-v2-fsdp-20250905-134349
+wandb: ⭐️ View project at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: 🚀 View run at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/etlioio9
+[13:43:51] [Rank 0] ✅ W&B initialized
+[13:43:51] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][13:43:52] [Rank 0] ✅ Tokenizer loaded
+[13:43:52] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:22, 11.46s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.55s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.41s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.43s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.30s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.15s/it]
+[13:44:19] [Rank 1] ✅ Base model loaded: 20,914,757,184 parameters
+[13:44:19] [Rank 1] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:44:19] [Rank 1] ✅ Loaded 10 training problems
+[13:44:20] [Rank 1] 🚀 Initializing GRPO trainer with FSDP...
+[13:44:20] [Rank 1] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.35s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.19s/it]
+[13:44:21] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:44:21] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:44:21] [Rank 0] ✅ Loaded 10 training problems
+[13:44:21] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+[13:44:21] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:44:21] [Rank 0] ✅ GRPO trainer initialized
+[13:44:21] [Rank 0] 📊 Model parameters: 20,922,719,808
+[13:44:21] [Rank 0] 📊 Training dataset size: 500
+[13:44:21] [Rank 0] 🎯 Max steps: 50
+[13:44:21] [Rank 0] ================================================================================
+[13:44:21] [Rank 0] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+  0%|          | 0/50 [00:00<?, ?it/s][13:44:35] [Rank 1] ❌ Training failed: expected mat1 and mat2 to have the same dtype, but got: float != c10::BFloat16
+[13:44:35] [Rank 1] 📝 Full traceback saved: checkpoints_fsdp_fixed/error_rank1_20250905_134435.log
+[13:44:35] [Rank 1] ❌ Training failed: expected mat1 and mat2 to have the same dtype, but got: float != c10::BFloat16
+[13:44:35] [Rank 0] ❌ Training failed: expected mat1 and mat2 to have the same dtype, but got: float != c10::BFloat16
+[13:44:35] [Rank 0] 📝 Full traceback saved: checkpoints_fsdp_fixed/error_rank0_20250905_134435.log
+wandb: updating run metadata
+ip-10-10-28-56:2858408:2858475 [0] NCCL INFO [Service thread] Connection closed by localRank 1
+wandb: uploading output.log; uploading config.yaml
+wandb:                                                                                
+wandb: 🚀 View run dapo-v2-fsdp-20250905-134349 at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/etlioio9
+wandb: ⭐️ View project at: https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250905_134350-etlioio9/logs
+[13:44:37] [Rank 0] ❌ Training failed: expected mat1 and mat2 to have the same dtype, but got: float != c10::BFloat16
+  0%|          | 0/50 [00:02<?, ?it/s]
+W0905 13:44:38.277000 2858333 site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 2858408 closing signal SIGTERM
+E0905 13:44:39.292000 2858333 site-packages/torch/distributed/elastic/multiprocessing/api.py:874] failed (exitcode: 1) local_rank: 1 (pid: 2858409) of binary: /home/ubuntu/miniconda3/envs/gpt-oss/bin/python
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 905, in <module>
+    main()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 901, in main
+    run(args)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in run
+    elastic_launch(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 143, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 277, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_hf_trl_dapo_v2_fsdp.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-09-05_13:44:38
+  host      : ip-10-10-28-56.ap-northeast-2.compute.internal
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 2858409)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W905 13:45:32.029393193 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+[W905 13:45:32.030585832 Utils.hpp:166] Warning: Environment variable NCCL_BLOCKING_WAIT is deprecated; use TORCH_NCCL_BLOCKING_WAIT instead (function operator())
+ip-10-10-28-56:2860284:2860284 [0] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2860284:2860284 [0] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2860284:2860284 [0] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2860284:2860284 [0] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2860285:2860285 [1] NCCL INFO cudaDriverVersion 12080
+ip-10-10-28-56:2860285:2860285 [1] NCCL INFO Bootstrap: Using enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2860285:2860285 [1] NCCL INFO NCCL version 2.27.3+cuda12.9
+ip-10-10-28-56:2860285:2860285 [1] NCCL INFO Comm config Blocking set to 1
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:45:32] ip-10-10-28-56:2860285:2860356 [1] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:45:32] ip-10-10-28-56:2860285:2860356 [1] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:45:32] ip-10-10-28-56:2860285:2860356 [1] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO Using network Socket
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/Plugin: Plugin name set by env to libnccl-net.so
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v10 symbol.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/Plugin: Loaded net plugin Libfabric (v9)
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v10 symbol.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v9 symbol.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v8 symbol.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v6 symbol.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Successfully loaded external plugin libnccl-net.so
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.14.2
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Using Libfabric version 2.1
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Using CUDA driver version 12080 with runtime 12080
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Configuring AWS-specific options
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Setting provider_filter to efa
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Setting FI_EFA_FORK_SAFE environment variable to 1
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Setting NCCL_NET_FORCE_FLUSH=0 for Hopper GPUs
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Setting NCCL_NVLSTREE_MAX_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Setting NCCL_NVLS_CHUNKSIZE to 512KiB
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Internode latency set at 75.0 us
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI Using transport protocol RDMA (platform set)
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/OFI No eligible providers were found
+
+[2025-09-05 13:45:32] ip-10-10-28-56:2860284:2860355 [0] nccl_net_ofi_create_plugin:218 NCCL WARN NET/OFI Failed to initialize rdma protocol
+
+[2025-09-05 13:45:32] ip-10-10-28-56:2860284:2860355 [0] nccl_net_ofi_create_plugin:335 NCCL WARN NET/OFI aws-ofi-nccl initialization failed
+
+[2025-09-05 13:45:32] ip-10-10-28-56:2860284:2860355 [0] nccl_net_ofi_init:155 NCCL WARN NET/OFI Initializing plugin failed
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO plugin/net/net_v9.cc:57 -> 2
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 1.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NET/Socket : Using [0]enp71s0:10.10.28.56<0>
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Initialized NET plugin Socket
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Assigned NET plugin Socket to comm
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Using network Socket
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO ncclCommInitRankConfig comm 0x4b776560 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x172a78efa0423fc3 - Init START
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO ncclCommInitRankConfig comm 0xdbc3d70 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x172a78efa0423fc3 - Init START
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO RAS client listening socket at 127.0.0.1<28028>
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO Bootstrap timings total 0.036795 (create 0.000029, send 0.000114, recv 0.036337, ring 0.000017, delay 0.000000)
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Bootstrap timings total 0.000544 (create 0.000027, send 0.000111, recv 0.000093, ring 0.000022, delay 0.000000)
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO MNNVL busId 0xa4000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO MNNVL busId 0xa5000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO NCCL_P2P_DISABLE set by environment to 1
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO Setting affinity for GPU 7 to 48-95,144-191
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Setting affinity for GPU 6 to 48-95,144-191
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO comm 0xdbc3d70 rank 0 nRanks 2 nNodes 1 localRanks 2 localRank 0 MNNVL 0
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO comm 0x4b776560 rank 1 nRanks 2 nNodes 1 localRanks 2 localRank 1 MNNVL 0
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Channel 00/02 : 0 1
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Channel 01/02 : 0 1
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO P2P Chunksize set to 131072
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO PROFILER/Plugin: Could not find: libnccl-profiler.so. 
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Check P2P Type isAllDirectP2p 0 directMode 0
+ip-10-10-28-56:2860285:2860362 [1] NCCL INFO [Proxy Service] Device 1 CPU core 52
+ip-10-10-28-56:2860285:2860363 [1] NCCL INFO [Proxy Service UDS] Device 1 CPU core 149
+ip-10-10-28-56:2860284:2860364 [0] NCCL INFO [Proxy Service UDS] Device 0 CPU core 54
+ip-10-10-28-56:2860284:2860361 [0] NCCL INFO [Proxy Service] Device 0 CPU core 83
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO CC Off, workFifoBytes 1048576
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO 2 coll channels, 2 collnet channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO TUNER/Plugin: Could not find: libnccl-tuner.so. Using internal tuner plugin.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO ncclCommInitRankConfig comm 0xdbc3d70 rank 0 nranks 2 cudaDev 0 nvmlDev 6 busId a4000 commId 0x172a78efa0423fc3 - Init COMPLETE
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v4 symbol.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v3 symbol.
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO TUNER/Plugin: Failed to find ncclTunerPlugin_v2 symbol, using internal tuner instead.
+ip-10-10-28-56:2860284:2860355 [0] NCCL INFO Init timings - ncclCommInitRankConfig: rank 0 nranks 2 total 0.63 (kernels 0.24, alloc 0.37, bootstrap 0.00, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO ncclCommInitRankConfig comm 0x4b776560 rank 1 nranks 2 cudaDev 1 nvmlDev 7 busId a5000 commId 0x172a78efa0423fc3 - Init COMPLETE
+ip-10-10-28-56:2860285:2860356 [1] NCCL INFO Init timings - ncclCommInitRankConfig: rank 1 nranks 2 total 0.62 (kernels 0.23, alloc 0.34, bootstrap 0.04, allgathers 0.00, topo 0.01, graphs 0.00, connections 0.00, rest 0.00)
+ip-10-10-28-56:2860284:2860366 [0] NCCL INFO Channel 00 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2860285:2860365 [1] NCCL INFO Channel 00 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2860284:2860366 [0] NCCL INFO Channel 01 : 0[6] -> 1[7] via SHM/direct/direct
+ip-10-10-28-56:2860285:2860365 [1] NCCL INFO Channel 01 : 1[7] -> 0[6] via SHM/direct/direct
+ip-10-10-28-56:2860285:2860365 [1] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+ip-10-10-28-56:2860284:2860366 [0] NCCL INFO Connected all rings, use ring PXN 0 GDR 1
+[13:45:32] [Rank 0] ✅ NCCL communication test passed, sum: 1
+[13:45:32] [Rank 0] 🚀 FSDP Distributed setup complete - Rank: 0/2
+[13:45:32] [Rank 1] ✅ NCCL communication test passed, sum: 1
+[13:45:32] [Rank 1] 🚀 FSDP Distributed setup complete - Rank: 1/2
+[13:45:32] [Rank 1] 📦 Loading GPT-OSS model and tokenizer...
+[13:45:32] [Rank 0] 🚀 STARTING FSDP GRPO TRAINING
+[13:45:32] [Rank 0] 🖥️ Multi-GPU FSDP training with GRPO
+wandb: Currently logged in as: dbsgh797210 to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: creating run
+wandb: Tracking run with wandb version 0.21.3
+wandb: Run data is saved locally in /home/ubuntu/gpt-oss/wandb/run-20250905_134533-nov7fm82
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dapo-v2-fsdp-20250905-134532
+wandb: ⭐️ View project at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp
+wandb: 🚀 View run at https://wandb.ai/dbsgh797210/gpt-oss-arc-training-fsdp/runs/nov7fm82
+[13:45:34] [Rank 0] ✅ W&B initialized
+[13:45:34] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+[13:45:34] [Rank 1] ✅ Tokenizer loaded
+[13:45:34] [Rank 1] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s][13:45:35] [Rank 0] ✅ Tokenizer loaded
+[13:45:35] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.90s/it]Loading checkpoint shards:  33%|███▎      | 1/3 [00:11<00:23, 11.53s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:23<00:11, 11.58s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:22<00:11, 11.43s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.24s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.17s/it]
+[13:46:03] [Rank 1] ✅ Base model loaded: 20,914,757,184 parameters
+[13:46:03] [Rank 1] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:46:03] [Rank 1] ✅ Loaded 10 training problems
+[13:46:03] [Rank 1] 🚀 Initializing GRPO trainer with FSDP...
+[13:46:03] [Rank 1] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  8.39s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.22s/it]
+[13:46:04] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:46:04] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:46:04] [Rank 0] ✅ Loaded 10 training problems
+[13:46:04] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+[13:46:04] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:46:04] [Rank 0] ✅ GRPO trainer initialized
+[13:46:04] [Rank 0] 📊 Model parameters: 20,922,719,808
+[13:46:04] [Rank 0] 📊 Training dataset size: 500
+[13:46:04] [Rank 0] 🎯 Max steps: 50
+[13:46:04] [Rank 0] ================================================================================
+[13:46:04] [Rank 0] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+  0%|          | 0/50 [00:00<?, ?it/s]

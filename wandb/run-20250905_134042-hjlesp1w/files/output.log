@@ -1,0 +1,16 @@
+[13:40:43] [Rank 0] ✅ W&B initialized
+[13:40:43] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+[13:40:45] [Rank 0] ✅ Tokenizer loaded
+[13:40:45] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.15s/it]
+[13:41:13] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:41:13] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:41:13] [Rank 0] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:41:13] [Rank 0] ✅ Loaded 10 training problems
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:41:14] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:41:14] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:41:14] [Rank 0] ❌ Training failed: The activation_checkpointing in FSDP config and the gradient_checkpointing in training arg can't be set to True simultaneously. Please use FSDP's activation_checkpointing logic when using FSDP.

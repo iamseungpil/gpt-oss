@@ -1,0 +1,72 @@
+[13:36:40] [Rank 0] ✅ W&B initialized
+[13:36:40] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+[13:36:42] [Rank 0] ✅ Tokenizer loaded
+[13:36:42] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:27<00:00,  9.16s/it]
+[13:37:10] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:37:10] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:37:10] [Rank 0] 🔁 Cast model (incl. LoRA) to bfloat16
+[13:37:21] [Rank 0] ✅ Model wrapped with FSDP
+[13:37:21] [Rank 0] ✅ Loaded 10 training problems
+When using FSDP full shard, instead of using `gradient_checkpointing` in TrainingArguments, please use `activation_checkpointing` in `fsdp_config`. The former introduces a redundant AllGather operation in backward pass. Reference: https://github.com/huggingface/transformers/issues/30404
+[13:37:21] [Rank 0] 📁 Output directory created: checkpoints_fsdp_fixed
+[13:37:22] [Rank 0] 🚀 Initializing GRPO trainer with FSDP...
+[13:37:22] [Rank 0] ✅ GRPO trainer initialized
+[13:37:22] [Rank 0] 📊 Model parameters: 10,461,359,904
+[13:37:22] [Rank 0] 📊 Training dataset size: 500
+[13:37:22] [Rank 0] 🎯 Max steps: 50
+[13:37:22] [Rank 0] ================================================================================
+[13:37:22] [Rank 0] 🚀 Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 199998}.
+  0%|          | 0/50 [00:00<?, ?it/s]
+[13:37:22] [Rank 0] ❌ Training failed: 'weight' must be 2-D
+Traceback (most recent call last):
+  File "/home/ubuntu/gpt-oss/main_hf_trl_dapo_v2_fsdp.py", line 476, in run_fsdp_training
+    trainer.train()
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/trainer.py", line 4003, in training_step
+    inputs = self._prepare_inputs(inputs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/extras/profiling.py", line 98, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 980, in _prepare_inputs
+    generation_batch = self._generate_and_score_completions(generation_batch)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/trl/trainer/grpo_trainer.py", line 1289, in _generate_and_score_completions
+    prompt_completion_ids = unwrapped_model.generate(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/peft/peft_model.py", line 1973, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/generation/utils.py", line 2539, in generate
+    result = self._sample(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/generation/utils.py", line 2867, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/utils/generic.py", line 940, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 663, in forward
+    outputs: MoeModelOutputWithPast = self.model(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/utils/generic.py", line 1064, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/transformers/models/gpt_oss/modeling_gpt_oss.py", line 474, in forward
+    inputs_embeds = self.embed_tokens(input_ids)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/modules/sparse.py", line 192, in forward
+    return F.embedding(
+  File "/home/ubuntu/miniconda3/envs/gpt-oss/lib/python3.10/site-packages/torch/nn/functional.py", line 2546, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+RuntimeError: 'weight' must be 2-D

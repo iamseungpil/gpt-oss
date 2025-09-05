@@ -22,7 +22,8 @@ import gc
 
 # Environment setup
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-os.environ["WANDB_API_KEY"] = "2f4e627868f1f9dad10bcb1a14fbf96817e6baa9"
+# Respect existing WANDB_API_KEY if set; do not overwrite secrets in runtime
+os.environ.setdefault("WANDB_API_KEY", os.environ.get("WANDB_API_KEY", ""))
 # Memory optimization
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
@@ -358,15 +359,21 @@ def continual_learning_main():
         task_type=TaskType.CAUSAL_LM,
     )
     
-    # Apply LoRA
+    # Apply LoRA and ensure dtype consistency with base model (bf16)
     model = get_peft_model(model, lora_config)
+    try:
+        model = model.to(dtype=torch.bfloat16)
+    except Exception:
+        pass
     model.print_trainable_parameters()
     
     # Clear initial memory
     clear_memory_cache()
     
     # Load all 10 problems for continual learning
-    problems = train_problems[:10]  # Problems 0-9
+    # Allow overriding number of problems via env (default: 10)
+    num_problems = int(os.environ.get("NUM_PROBLEMS", "10"))
+    problems = train_problems[:num_problems]  # Problems 0..num_problems-1
     logger.info(f"📊 Loaded {len(problems)} problems for continual learning")
     
     # Continual learning: train each problem sequentially
@@ -395,6 +402,10 @@ def continual_learning_main():
         all_targets = [problem.test_pairs[0].y]
     
         # GRPO Config with 30k token support
+        # Optional overrides via env for quick smoke tests
+        max_steps_override = int(os.environ.get("MAX_STEPS", "50"))
+        save_steps_override = int(os.environ.get("SAVE_STEPS", "25"))
+
         grpo_config = GRPOConfig(
             output_dir=str(DATA_DIR / "checkpoints_hf_trl_dapo_v2"),
             learning_rate=5e-6,  # Reduced for stability with long sequences
@@ -403,7 +414,7 @@ def continual_learning_main():
             gradient_accumulation_steps=8,  # Further increased for 30k token sequences
             warmup_steps=5,
             logging_steps=1,
-            save_steps=25,
+            save_steps=save_steps_override,
             bf16=True,
             fp16=False,
             optim="adamw_torch",
@@ -418,10 +429,10 @@ def continual_learning_main():
             beta=0.0,
             loss_type="bnpo",
             max_prompt_length=4096,  # Increased for ARC prompts
-            max_completion_length=30000,  # Full 30k tokens for proper channel switching  
+            max_completion_length=12000,  # 12k per repo defaults
             num_generations=2,  # GRPO requires at least 2 generations
             generation_batch_size=2,  # Match num_generations
-            max_steps=50,  # 50 steps per problem
+            max_steps=max_steps_override,  # steps per problem
             
             # Memory optimization
             gradient_checkpointing=True,

@@ -1,0 +1,10 @@
+[13:33:10] [Rank 0] ✅ W&B initialized
+[13:33:10] [Rank 0] 📦 Loading GPT-OSS model and tokenizer...
+[13:33:11] [Rank 0] ✅ Tokenizer loaded
+[13:33:11] [Rank 0] 🔄 Loading base model from HuggingFace: openai/gpt-oss-20b
+`torch_dtype` is deprecated! Use `dtype` instead!
+MXFP4 quantization requires triton >= 3.4.0 and kernels installed, we will default to dequantizing the model to bf16
+Loading checkpoint shards: 100%|██████████| 3/3 [00:26<00:00,  8.99s/it]
+[13:33:39] [Rank 0] ✅ Base model loaded: 20,914,757,184 parameters
+[13:33:40] [Rank 0] ✅ LoRA applied: 20,922,719,808 total, 7,962,624 trainable (0.0381%)
+[13:33:52] [Rank 0] ❌ Training failed: Must flatten tensors with uniform dtype but got torch.bfloat16 and torch.float32
