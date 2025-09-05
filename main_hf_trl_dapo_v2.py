@@ -406,6 +406,10 @@ def continual_learning_main():
         max_steps_override = int(os.environ.get("MAX_STEPS", "50"))
         save_steps_override = int(os.environ.get("SAVE_STEPS", "25"))
 
+        max_completion_override = int(os.environ.get("MAX_COMPLETION_LENGTH", "12000"))
+        num_generations_override = int(os.environ.get("NUM_GENERATIONS", "2"))
+        gen_batch_override = int(os.environ.get("GENERATION_BATCH_SIZE", str(num_generations_override)))
+
         grpo_config = GRPOConfig(
             output_dir=str(DATA_DIR / "checkpoints_hf_trl_dapo_v2"),
             learning_rate=5e-6,  # Reduced for stability with long sequences
@@ -429,9 +433,9 @@ def continual_learning_main():
             beta=0.0,
             loss_type="bnpo",
             max_prompt_length=4096,  # Increased for ARC prompts
-            max_completion_length=12000,  # 12k per repo defaults
-            num_generations=2,  # GRPO requires at least 2 generations
-            generation_batch_size=2,  # Match num_generations
+            max_completion_length=max_completion_override,
+            num_generations=num_generations_override,  # GRPO requires at least 2 generations
+            generation_batch_size=gen_batch_override,  # Match num_generations
             max_steps=max_steps_override,  # steps per problem
             
             # Memory optimization
